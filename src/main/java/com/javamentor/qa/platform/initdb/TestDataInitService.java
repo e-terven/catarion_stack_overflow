@@ -5,6 +5,7 @@ import com.javamentor.qa.platform.models.entity.question.Tag;
 import com.javamentor.qa.platform.models.entity.question.answer.Answer;
 import com.javamentor.qa.platform.models.entity.user.User;
 import com.javamentor.qa.platform.models.entity.user.reputation.Reputation;
+import com.javamentor.qa.platform.service.abstracts.model.UserService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -16,10 +17,15 @@ import java.util.List;
 @Service
 public class TestDataInitService {
 
+    private final UserService userService;
+
+    public TestDataInitService(UserService userService) {
+        this.userService = userService;
+    }
 
     @Transactional
     public void createEntity() {
-
+        createUsers();
     }
 
     public PasswordEncoder passwordEncoder() {

@@ -1,5 +1,5 @@
 package com.javamentor.qa.platform.service.abstracts.dto;
 
-public interface TagDtoService {
+public interface PaginationDtoService<T> {
 
 }

@@ -41,8 +41,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter implements WebM
     @Override
     public void configure(WebSecurity web) {
         web.ignoring()
-                .antMatchers("/swagger-ui/**", "/v3/api-docs/**",
-                        "/error", "/webjars/**", "/login", "resources/static/**");
+                .antMatchers(
+                        "/swagger-ui/**",
+                        "/v3/api-docs/**",
+                        "/error",
+                        "/webjars/**",
+                        "/login",
+                        "resources/static/**");
     }
 
     @Override

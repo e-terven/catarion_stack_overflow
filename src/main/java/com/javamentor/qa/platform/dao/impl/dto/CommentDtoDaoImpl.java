@@ -12,4 +12,5 @@ public class CommentDtoDaoImpl implements CommentDtoDao {
     @PersistenceContext
     private EntityManager entityManager;
 
+
 }
