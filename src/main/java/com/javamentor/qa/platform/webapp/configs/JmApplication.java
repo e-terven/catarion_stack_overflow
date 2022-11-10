@@ -6,14 +6,16 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.ComponentScan;
 
+
 @SpringBootApplication
 @EnableConfigurationProperties
 @ComponentScan("com.javamentor.qa.platform")
 @EntityScan("com.javamentor.qa.platform.models.entity")
 public class JmApplication {
 
-    public static void main(String[] args) {
-        SpringApplication.run(JmApplication.class, args);
-    }
+  public static void main(String[] args) {
+    SpringApplication.run(JmApplication.class, args);
+  }
+
 
 }
