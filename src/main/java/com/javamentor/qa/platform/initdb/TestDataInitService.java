@@ -62,8 +62,11 @@ public class TestDataInitService {
         user1.setIsEnabled(true);
 
         users.add(user1);
+        if (userService.getByEmail(user1.getEmail()).isEmpty()) {
 
-        userService.persistAll(users);
+            userService.persist(user1);
+        }
+        //userService.persistAll(users);
     }
 
     List<Tag> tags = new ArrayList<>();
