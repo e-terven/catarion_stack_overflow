@@ -23,6 +23,7 @@
         <spring.messaging.version>5.2.8.RELEASE</spring.messaging.version>
         <thymeleaf.layout.dialect.version>2.5.1</thymeleaf.layout.dialect.version>
         <springdoc.version>1.6.9</springdoc.version>
+        <jjwt.version>0.8.0</jjwt.version>
     </properties>
 
     <dependencies>
@@ -132,6 +133,12 @@
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger-ui</artifactId>
             <version>2.6.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt</artifactId>
+            <version>${jjwt.version}</version>
         </dependency>
 
 
