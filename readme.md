@@ -589,18 +589,32 @@ this.mockMvc
 
 5. Если ожидаемые результаты не совпадут, тест сообщит об ошибке и распечатает все параметры. В ином случае вы увидите сообщение о том, что тест успешно пройден.
 
+## Настройка профиля подключения к БД
 
-# Как работать с профилями
-Зайти в настройки конфигурации
+Для запуска БД с локальными настройками
 
-![img.png](src/main/resources/static/images/git_tutor/git_profile_1.png)
+Заходим в _Edit Configuration_`->`_Configuration_`->`_Environment variables_
 
+![](src/main/resources/static/images/VMOption2.png)
 
-1. Установить активный профиль local
-2. Отобразить вкладку переменных среды (если выключена)
+![](src/main/resources/static/images/OMG.png)
 
-![img_1.png](src/main/resources/static/images/git_tutor/git_profile_2.png)
+Вписываем в VM Option `-ea -Dspring.profiles.active=local/dev` - выбираем профиль для запуска
 
-3. Открыть окно редактирования переменных среды
-4. Вставить свои значения для переменных
-![img_2.png](src/main/resources/static/images/git_tutor/git_profile_3.png)
+Environment variables `HIBERNATE_DDL=;MYPSQL_SERVER=;MYPSQL_PORT=;MYPSQL_DB=;DB_USERNAME=;DB_PASSWORD=`
+
+где
+
+HIBERNATE_DDL - настройка ddl
+
+MYPSQL_SERVER' - адрес сервера (по умолчанию localhost)
+
+MYPSQL_PORT - порт
+
+MYPSQL_DB - название БД
+
+DB_USERNAME - твой логин
+
+DB_PASSWORD - твой пароль
+
+-ea -Dspring.profiles.active= - выбери профиль
