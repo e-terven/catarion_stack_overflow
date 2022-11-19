@@ -599,22 +599,25 @@ this.mockMvc
 
 ![](src/main/resources/static/images/OMG.png)
 
+Имена переменных должны совпадать с теми, что записаны в файле application-local.properties.
+Значения - это данные для подключения к вашей локальной БД.
+
 Вписываем в VM Option `-ea -Dspring.profiles.active=local/dev` - выбираем профиль для запуска
 
-Environment variables `HIBERNATE_DDL=;MYPSQL_SERVER=;MYPSQL_PORT=;MYPSQL_DB=;DB_USERNAME=;DB_PASSWORD=`
+Environment variables `HIBERNATE_DDL=;DB_BASE=;DB_SERVER=;DB_PORT=;DB_NAME=;DB_USERNAME=;DB_PASS=`
 
 где
 
 HIBERNATE_DDL - настройка ddl
 
-MYPSQL_SERVER' - адрес сервера (по умолчанию localhost)
+DB_BASE - тип используемой БД
 
-MYPSQL_PORT - порт
+DB_SERVER - адрес сервера (по умолчанию localhost)
 
-MYPSQL_DB - название БД
+DB_PORT - порт
+
+DB_NAME - название БД
 
 DB_USERNAME - твой логин
 
-DB_PASSWORD - твой пароль
-
--ea -Dspring.profiles.active= - выбери профиль
+DB_PASS - твой пароль
