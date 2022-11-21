@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @Schema(description = "пользователь")
-public class UserDto {
+public class  UserDto {
     @Parameter(description = "id пользователя")
     private Long id;
     @Schema(description = "почта пользователя")
@@ -36,5 +36,5 @@ public class UserDto {
 
 
 //    @Schema(description = "список топ-3 тэгов пользователя")
-//    private List<TagDto> listTop3TagDto;
+//   private List<TagDto> listTop3TagDto;
 }
