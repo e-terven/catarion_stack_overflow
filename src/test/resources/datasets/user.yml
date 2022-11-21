@@ -1,0 +1,7 @@
+USER_ENTITY:
+  - ID: 1
+    FIRST_NAME: "John"
+    LAST_NAME: "Doe"
+    EMAIL: "john.doe@gmail.com"
+    LAST_REDACTION_DATE: "2019-01-01"
+    ROLE_ID: 1
