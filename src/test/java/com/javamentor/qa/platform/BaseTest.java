@@ -33,7 +33,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @AutoConfigureMockMvc
 @SpringBootTest(classes = JmApplication.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @DBRider
-@DBUnit(caseInsensitiveStrategy = LOWERCASE)
+@DBUnit(caseInsensitiveStrategy = LOWERCASE, allowEmptyFields = true)
 public abstract class BaseTest {
     /**
      * мок для выполнения запросов
