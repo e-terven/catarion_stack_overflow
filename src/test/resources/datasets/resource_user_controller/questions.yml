@@ -1,0 +1,11 @@
+QUESTION:
+  - ID: 1
+    DESCRIPTION: "What is your favorite color?"
+    TITLE: "Favorite color"
+    USER_ID: 1
+    LAST_REDACTION_DATE: "2019-01-01"
+  - ID: 2
+    DESCRIPTION: "What is your favorite food?"
+    TITLE: "Favorite food"
+    USER_ID: 1
+    LAST_REDACTION_DATE: "2019-01-01"

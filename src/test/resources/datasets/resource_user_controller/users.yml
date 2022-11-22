@@ -1,0 +1,9 @@
+USER_ENTITY:
+  - ID: 1
+    FIRST_NAME: "John"
+    LAST_NAME: "Doe"
+    EMAIL: "test@ya.ru"
+    LAST_REDACTION_DATE: "2019-01-01"
+    PASSWORD: "test"
+#    PASSWORD: "$2a$10$hQ926lR/BBRlsskiaunrV.mR7giRpXp.JFEfRCQGV66d2vAA.Fufi"
+    ROLE_ID: 1

@@ -17,7 +17,7 @@ class UserDaoImplTest extends BaseTest {
     private UserDao userDao;
 
     @Test
-    @DataSet(value = {"user.yml", "role.yml"}, cleanBefore = true, cleanAfter = true)
+    @DataSet(value = {"datasets/user.yml", "datasets/role.yml"}, cleanBefore = true, cleanAfter = true)
     @Transactional
     void shouldListUsers() {
         assertThat(userDao).isNotNull();
