@@ -1,19 +1,19 @@
 package com.javamentor.qa.platform;
 
 import com.github.database.rider.core.api.configuration.DBUnit;
-import com.github.database.rider.spring.api.DBRider;
+import com.github.database.rider.junit5.api.DBRider;
 import com.google.gson.Gson;
 import com.javamentor.qa.platform.models.dto.AuthenticationRequestDTO;
 import com.javamentor.qa.platform.models.dto.TokenResponseDTO;
 import com.javamentor.qa.platform.webapp.configs.JmApplication;
 import lombok.SneakyThrows;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.TestPropertySource;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static com.github.database.rider.core.api.configuration.Orthography.LOWERCASE;
@@ -28,10 +28,10 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  * created on 16.11.2022
  */
 
-@RunWith(SpringRunner.class)
+@ExtendWith(SpringExtension.class)
+@SpringBootTest(classes = JmApplication.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @TestPropertySource(locations = "classpath:application-test.properties")
 @AutoConfigureMockMvc
-@SpringBootTest(classes = JmApplication.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @DBRider
 @DBUnit(caseInsensitiveStrategy = LOWERCASE, allowEmptyFields = true)
 public abstract class BaseTest {
@@ -40,7 +40,6 @@ public abstract class BaseTest {
      */
     @Autowired
     protected MockMvc mockMvc;
-
 
 
     @SneakyThrows

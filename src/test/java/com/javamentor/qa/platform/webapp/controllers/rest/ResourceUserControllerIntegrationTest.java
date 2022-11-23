@@ -1,17 +1,16 @@
 package com.javamentor.qa.platform.webapp.controllers.rest;
 
 import com.github.database.rider.core.api.dataset.DataSet;
+import com.github.database.rider.core.api.dataset.DataSetFormat;
+import com.github.database.rider.core.api.exporter.ExportDataSet;
 import com.javamentor.qa.platform.BaseTest;
-import com.javamentor.qa.platform.service.abstracts.dto.UserDtoService;
-import lombok.SneakyThrows;
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.test.web.servlet.MockMvc;
 
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
@@ -24,38 +23,29 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  */
 class ResourceUserControllerIntegrationTest extends BaseTest {
 
-    private final String USERNAME = "test@ya.ru";
+    @Autowired
+    private MockMvc mockMvc;
+
+    private final String USERNAME = "test1@ya.ru";
     private final String PASSWORD = "test";
 
-    /**
-     * Мок сервиса для получения пользователя по Id
-     */
-    @MockBean
-    private UserDtoService userDtoService;
 
-    /**
-     * Тест на получение пользователя по Id
-     */
     @Test
-    @SneakyThrows
-    @DataSet(value = {"datasets/resource_user_controller/users.yml", "datasets/resource_user_controller/roles.yml", "datasets/resource_user_controller/questions.yml", "datasets/resource_user_controller/answers.yml", "datasets/resource_user_controller/reputations.yml",}, cleanBefore = true, cleanAfter = true)
-    void getUserDtoById() {
-        //todo: вопрос
-
-        // получаем токен для аутентификации
-        String token = getToken(USERNAME, PASSWORD);
-        // делаем запрос
-        this.mockMvc.perform(get("/api/user/1").header("Authorization", "Bearer " + token)).andDo(print())
-                // проверяем статус
+    @DataSet(value = "datasets/resource_user_controller/users.yml", cleanBefore = true, cleanAfter = true, disableConstraints = true)
+    @ExportDataSet(format = DataSetFormat.YML,outputName="target/exported/yml/allTables.yml")
+    public void getUserById() throws Exception {
+        mockMvc.perform(get("/api/user/100")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .header("Authorization", "Bearer " + getToken(USERNAME, PASSWORD)))
+                .andDo(print())
                 .andExpect(status().isOk())
-                // проверяем, что тип ответа JSON
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
-                // проверяем, что в ответе есть поле Id
-                .andExpect(jsonPath("$.id", equalTo(1)))
-                // проверяем, что в ответе есть поле email
-                .andExpect(jsonPath("$.email", is("john.doe@gmail.com")));
-
-        // проверяем, что метод вызвался один раз
-        verify(userDtoService, times(1)).getById(1L);
+                .andExpect(jsonPath("$.id", is(equalTo(100))))
+                .andExpect(jsonPath("$.fullName", is(equalTo("Alexey Zarubin"))))
+                .andExpect(jsonPath("$.email", is(equalTo("test1@ya.ru"))))
+                .andExpect(jsonPath("$.reputation", is(equalTo(20))))
+                .andExpect(jsonPath("$.registrationDate", is(equalTo("2019-01-01T00:00:00"))));
     }
 }
+
+

@@ -1,11 +1,10 @@
 package com.javamentor.qa.platform.webapp.controllers.rest;
 
+import com.github.database.rider.core.api.dataset.DataSet;
 import com.javamentor.qa.platform.BaseTest;
 import com.javamentor.qa.platform.models.dto.AuthenticationRequestDTO;
-import com.javamentor.qa.platform.service.abstracts.dto.UserDtoService;
 import lombok.SneakyThrows;
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 
 import static org.hamcrest.Matchers.is;
@@ -22,20 +21,15 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 class AuthenticationControllerTest extends BaseTest {
 
     private final String URL = "/api/auth/token";
-    private final String LOGIN = "test@ya.ru";
+    private final String LOGIN = "test1@ya.ru";
     private final String PASSWORD = "test";
     private final String ROLE = "ROLE_USER";
-
-    /**
-     * Мок сервиса для получения пользователя по Id
-     */
-    @MockBean
-    private UserDtoService userDtoService;
 
     /**
      * Тест на получение токена
      */
     @Test
+    @DataSet(value = "datasets/resource_user_controller/users.yml", cleanBefore = true, cleanAfter = true, disableConstraints = true)
     @SneakyThrows
     void getToken_shouldReturnToken() {
         String jsonQuery = toJson(new AuthenticationRequestDTO(LOGIN, PASSWORD));
