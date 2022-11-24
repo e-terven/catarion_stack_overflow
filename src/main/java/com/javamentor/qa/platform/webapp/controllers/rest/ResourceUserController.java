@@ -9,6 +9,8 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,14 +25,12 @@ import java.util.Optional;
  * created on 12.11.2022
  */
 @RestController
+@AllArgsConstructor
 @RequestMapping("/api/user")
 @Tag(name = "UserDTOController", description = "API для работы с UserDTO")
 public class ResourceUserController {
-    private final UserDtoService userDtoService;
 
-    public ResourceUserController(UserDtoService userDtoService) {
-        this.userDtoService = userDtoService;
-    }
+    private final UserDtoService userDtoService;
 
     @Operation(summary = "Получение пользователя по id")
     @ApiResponses({
@@ -41,7 +41,7 @@ public class ResourceUserController {
     })
     @GetMapping("/{id}")
     public ResponseEntity<UserDto> getUserDtoById(
-            @Parameter(description = "id пользолвателя", required = true)
+            @Parameter(description = "id пользователя", required = true)
             @PathVariable Long id) {
         Optional<UserDto> userDto = userDtoService.getById(id);
         return userDto.map(ResponseEntity::ok)

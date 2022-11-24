@@ -12,6 +12,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,7 +24,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequiredArgsConstructor
+@AllArgsConstructor
 @RequestMapping("api/user/question/{questionId}/answer")
 public class ResourceAnswerController {
 
@@ -32,10 +33,8 @@ public class ResourceAnswerController {
     private final AnswerService answerService;
     private final VoteAnswerService voteAnswerService;
 
-    @Operation(
-            summary = "Получение списка ответов",
-            description = "Получение списка DTO ответов по уникальному идентификатору (Id) вопроса"
-    )
+    @Operation(summary = "Получение списка ответов",
+            description = "Получение списка DTO ответов по уникальному идентификатору (Id) вопроса")
     @ApiResponses({
             @ApiResponse(responseCode = "200", description = "Запрос успешно выполнен"),
             @ApiResponse(responseCode = "400",
