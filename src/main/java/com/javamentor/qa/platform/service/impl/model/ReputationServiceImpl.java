@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class ReputationServiceImpl extends ReadWriteServiceImpl<Reputation, Long> implements ReputationService {
-
     public ReputationServiceImpl(ReadWriteDao<Reputation, Long> readWriteDao) {
         super(readWriteDao);
     }

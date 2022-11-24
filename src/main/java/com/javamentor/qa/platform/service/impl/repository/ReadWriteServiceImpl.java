@@ -44,7 +44,6 @@ public abstract class ReadWriteServiceImpl<E, K> extends ReadOnlyServiceImpl<E, 
         readWriteDao.persistAll(entities);
     }
 
-
     @Transactional
     public void persistAll(Collection<E> entities) {
         if (entities == null || entities.isEmpty()) {
@@ -60,7 +59,6 @@ public abstract class ReadWriteServiceImpl<E, K> extends ReadOnlyServiceImpl<E, 
         }
         readWriteDao.deleteAll(entities);
     }
-
 
     @Transactional
     public void updateAll(Iterable<? extends E> entities) {
