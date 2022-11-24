@@ -1,7 +1,7 @@
 package com.javamentor.qa.platform;
 
 import com.github.database.rider.core.api.configuration.DBUnit;
-import com.github.database.rider.junit5.api.DBRider;
+import com.github.database.rider.spring.api.DBRider;
 import com.google.gson.Gson;
 import com.javamentor.qa.platform.models.dto.AuthenticationRequestDTO;
 import com.javamentor.qa.platform.models.dto.TokenResponseDTO;

@@ -7,6 +7,8 @@ import com.javamentor.qa.platform.service.abstracts.model.AnswerService;
 import com.javamentor.qa.platform.service.impl.repository.ReadWriteServiceImpl;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class AnswerServiceImpl extends ReadWriteServiceImpl<Answer, Long> implements AnswerService {
 
@@ -18,8 +20,13 @@ public class AnswerServiceImpl extends ReadWriteServiceImpl<Answer, Long> implem
     }
 
     @Override
+    public Optional<Answer> getAnswerForVote(Long answerId, Long userId) {
+        return answerDao.getAnswerForVote(answerId, userId);
+    }
+
+    @Override
     public boolean putAMarkerToDeleteByID(Long id) {
-        if (answerDao.getById(id).isEmpty()){
+        if (answerDao.getById(id).isEmpty()) {
             return false;
         }
         answerDao.deleteById(id);
