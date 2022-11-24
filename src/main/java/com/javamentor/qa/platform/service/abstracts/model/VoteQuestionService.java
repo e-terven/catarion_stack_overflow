@@ -5,4 +5,6 @@ import com.javamentor.qa.platform.service.abstracts.repository.ReadWriteService;
 
 public interface VoteQuestionService extends ReadWriteService<VoteQuestion, Long> {
 
+    Long voteUpQuestion (long userId, long questionId);
+
 }
