@@ -1,5 +1,9 @@
 package com.javamentor.qa.platform.service.abstracts.dto;
 
-public interface PaginationDtoService<T> {
+import com.javamentor.qa.platform.models.dto.PageDto;
 
+import java.util.Map;
+
+public interface PaginationDtoService<T> {
+    PageDto<T> getPageDto(Map<Object, Object> param);
 }
