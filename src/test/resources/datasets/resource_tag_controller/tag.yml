@@ -1,0 +1,20 @@
+USER_ENTITY:
+  - ID: 100
+    FULL_NAME: "Users"
+    EMAIL: "test@ya.ru"
+    LAST_REDACTION_DATE: "2019-01-01"
+    PASSWORD: "$2a$10$/G8cEDs0AGvQUeKsQRQsCevlQLflLHxCVYENre9BcZPtLuabNWOC2"
+    IS_ENABLED: true
+    IS_DELETED: false
+    PERSIST_DATE: "2019-01-01"
+    ROLE_ID: 100
+TAG:
+  - ID: 1000
+    NAME: "tag"
+    DESCRIPTION: "My tag"
+    PERSIST_DATE: "2019-01-01"
+TAG_IGNORE:
+  - ID: 10
+    IGNORED_TAG_ID: 1
+    USER_ID: 100
+    PERSIST_DATE: "2019-01-01"
