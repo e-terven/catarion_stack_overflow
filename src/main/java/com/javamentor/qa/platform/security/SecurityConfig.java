@@ -46,8 +46,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter implements WebM
                         "/v3/api-docs/**",
                         "/error",
                         "/webjars/**",
-                        "/login",
-                        "resources/static/**");
+                        "/login");
+
     }
 
     @Override
@@ -64,6 +64,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter implements WebM
                 .antMatchers("api/user/**").hasRole("USER")
                 // всем остальным разрешаем доступ
                 .antMatchers("/**","/questions","regpage").permitAll()
+                .antMatchers("/static/**", "/templates/**").permitAll()
                 .and()
                 .logout()
                 .logoutUrl("/logout")
