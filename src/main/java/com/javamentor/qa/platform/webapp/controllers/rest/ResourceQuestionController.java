@@ -2,6 +2,7 @@ package com.javamentor.qa.platform.webapp.controllers.rest;
 
 import com.javamentor.qa.platform.models.dto.QuestionDto;
 import com.javamentor.qa.platform.models.entity.user.User;
+import com.javamentor.qa.platform.service.abstracts.dto.CommentDtoService;
 import com.javamentor.qa.platform.service.abstracts.dto.QuestionDtoService;
 import com.javamentor.qa.platform.service.abstracts.model.VoteQuestionService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -12,6 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -22,6 +24,7 @@ public class ResourceQuestionController {
     private final QuestionDtoService questionDtoService;
 
     private final VoteQuestionService voteQuestionService;
+    private final CommentDtoService commentDtoService;
 
     @Operation(summary = "Получения вопроса по id")
     @ApiResponse(responseCode = "200", description = "Вопрос найден")
@@ -43,5 +46,14 @@ public class ResourceQuestionController {
     public ResponseEntity<Long> voteUpQuestion(@PathVariable Long questionId,
                                                        @AuthenticationPrincipal User user) {
         return ResponseEntity.ok(voteQuestionService.voteUpQuestion(user.getId(), questionId));
+    }
+
+    @Operation(summary = "Получения всех комментариев к вопросу по id")
+    @ApiResponse(responseCode = "200", description = "Вопрос найден")
+    @ApiResponse(responseCode = "404", description = "Вопрос не найден")
+
+    @GetMapping("/{id}/comment")
+    public ResponseEntity<List>getAllCommentsOnQuestion(@PathVariable Long questionId){
+        return ResponseEntity.ok(commentDtoService.getAllQuestionCommentDtoById(questionId));
     }
 }
