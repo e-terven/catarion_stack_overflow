@@ -1,5 +1,7 @@
 package com.javamentor.qa.platform.models.entity.question;
 
+import com.javamentor.qa.platform.models.dto.TagDto;
+import com.javamentor.qa.platform.models.dto.UserDto;
 import com.javamentor.qa.platform.models.entity.chat.Chat;
 import com.javamentor.qa.platform.models.entity.user.User;
 import lombok.AllArgsConstructor;
@@ -51,6 +53,7 @@ public class TrackedTag implements Serializable {
         this.trackedTag = trackedTag;
         this.user = user;
     }
+
 
     @Override
     public boolean equals(Object o) {
