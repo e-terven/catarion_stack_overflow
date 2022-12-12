@@ -12,12 +12,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.javamentor.qa.platform.models.dto.IgnoredTagDto;
+import com.javamentor.qa.platform.models.dto.RelatedTagDto;
 import com.javamentor.qa.platform.service.abstracts.dto.TagDtoService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
-
 import java.util.List;
-
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -53,14 +52,14 @@ public class ResourceTagController {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         return ResponseEntity.ok(tagDtoService.getAllIgnoredTags(user.getId()));
     }
+
+  @GetMapping("/related")
+  @Operation(summary = "Лист, содержащий топ-10 тегов")
+  @ApiResponse(responseCode = "200", description = "Лист содержащий топ-10 тегов выведен")
+
+  public ResponseEntity<List<RelatedTagDto>> getTop10Tags() {
+    return ResponseEntity.ok(tagDtoService.getTopTags());
+  }
 }
-
-
-
-
-
-
-
-
 
 
