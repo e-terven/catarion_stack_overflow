@@ -7,6 +7,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
@@ -16,6 +18,12 @@ public class IgnoredTagDto {
 
   @Parameter(description = "id игнорируемого тега")
   private Long id;
+  @Parameter(description = "Tag id")
+  private Long ignoredTagId;
+  @Parameter(description = "User id")
+  private Long userId;
+  @Parameter(description = "Local time")
+  private LocalDateTime persist_data;
   @Schema(description = "имя игнорируемого тега")
   private String name;
 }
