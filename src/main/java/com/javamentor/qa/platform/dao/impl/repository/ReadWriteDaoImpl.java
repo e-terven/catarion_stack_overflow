@@ -1,12 +1,14 @@
 package com.javamentor.qa.platform.dao.impl.repository;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.lang.reflect.ParameterizedType;
 import java.util.Collection;
 
+@Transactional
 public abstract class ReadWriteDaoImpl<E, K> extends ReadOnlyDaoImpl<E, K> {
 
     @PersistenceContext
