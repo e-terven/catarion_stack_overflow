@@ -19,8 +19,6 @@ public class UserDto {
     private Long id;
     @Schema(description = "почта пользователя")
     private String email;
-//    @Schema (description = "пароль")
-//    private String password;
     @Schema(description = "имя пользователя")
     private String fullName;
     @Schema(description = "ссылка на изображение пользователя")
@@ -33,8 +31,6 @@ public class UserDto {
     private LocalDateTime registrationDate;
     @Schema(description = "количество голосов пользователя")
     private Long votes;
-
-
 //    @Schema(description = "список топ-3 тэгов пользователя")
-//   private List<TagDto> listTop3TagDto;
+//    private List<TagDto> listTop3TagDto;
 }

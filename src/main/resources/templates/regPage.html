@@ -11,81 +11,38 @@
     <style>
         form {
             margin: 0 auto;
-            width: 350px;
+            width: 250px;
         }
     </style>
 </head>
-<header>
-    <div class="container-fluid fixed-top w-75" >
-        <nav class="navbar navbar-expand-lg navbar-light">
-            <div class="dropdown">
-                <button class="btn btn-link"
-                        type="button" id="dropdownMenuMain" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false">
-                    <h5><b>=</b></h5>
-                </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuMain">
-                    <a class="dropdown-item" href="#">Главная</a>
-                    <h5 class="dropdown-header">Публичные</h5>
-                    <a class="dropdown-item" href="#">Вопросы</a>
-                    <a class="dropdown-item" href="#">Метки</a>
-                    <a class="dropdown-item" href="#">Участники</a>
-                    <a class="dropdown-item" href="#">Неотвеченные</a>
-                </div>
-            </div>
-
-            <a class="navbar-brand ml-3" href="#"><img src="/images/logo-whole.png" width="200" height="60" class="d-inline-block align-top" alt="Логотип"></a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-
-                <div class="input-group mb-0">
-                    <input type="text" class="form-control" placeholder="Поиск" aria-label="Поиск"
-                           aria-describedby="button-addon2">
-                    <div class="input-group-append">
-                        <button class="btn btn-outline-secondary" type="button" id="button-addon2">Поиск</button>
-                    </div>
-                </div>
-            </div>
-            <div class="container w-auto ml-0">
-                <a class="btn btn-info  mr-1" href="#" role="button">Войти</a>
-                <a class="btn btn-primary  mr-1" href="#" role="button">Регистрация</a>
-            </div>
-        </nav>
-    </div>
-
-</header>
 <body>
 <div class="container">
     <form class="text-center mt-5">
         <div class="container">
-            <br>
-            <h5 class="text-lg-center">Присоединяйтесь к сообществу «Stack Overflow на русском». Это бесплатно и займёт не больше минуты.</h5>
-            <br>
-            <a class="btn btn-outline-dark w-100 mt-2" href="#" role="button">Зарегистрироваться через Google</a>
-            <a class="btn btn-dark w-100 mt-2" href="#" role="button">Зарегистрироваться через GitHub</a>
-            <a class="btn btn-primary w-100 mt-2" href="#" role="button">Зарегистрироваться через Facebook</a>
-            <a class="btn btn-outline-primary w-100 mt-2" href="#" role="button">Зарегистрироваться через ВКонтакте</a>
-            <a class="btn btn-outline-primary w-100 mt-2" href="#" role="button">Зарегистрироваться через Яндекс</a>
+            <h1>Регистрация</h1>
+            <p>Чтобы создать аккаунт, заполните все поля</p>
+            <hr>
 
-            <br><br>
-            <div class="shadow-lg p-3 mb-5 bg-white rounded-lg">
-            <label for="fullName"><b>Отображаемое имя</b></label>
-            <input type="text" class="form-control" placeholder="Введите ваше имя" name="fullName" id="fullName" required>
 
-            <label for="email"><b>Почта</b></label>
-            <input type="text" class="form-control" placeholder="Введите email" name="email" id="email" required>
-
+            <label for="fullName"><b>Имя пользователя</b></label>
+            <label>
+                <input type="text" placeholder="Введите ваше имя" name="fullName" id="fullName" required>
+            </label>
+            <label for="email"><b>Email</b></label>
+            <label>
+                <input type="text" placeholder="Введите email" name="email" id="email" required>
+            </label>
             <label for="password"><b>Пароль</b></label>
-            <input type="text" class="form-control" placeholder="Придумайте пароль" name="password" id="password" required>
+            <label>
+                <input type="text" placeholder="Придумайте пароль" name="password" id="password" required>
+            </label>
 
-            <br>
-            <button type="submit" id="register" class="btn btn-primary">Регистрация</button>
-                </div>
+            <button type="submit" id="register" class="btn btn-success">Зарегистрироваться</button>
             <br/>
-            <p class="font-weight-normal">Уже есть учётная запись? <a href="#" class="stretched-link">Войдите</a></p>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
         </div>
     </form>
 </div>
@@ -94,11 +51,9 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
         crossorigin="anonymous"></script>
-
-<!--<script type="text/javascript" src="/js/sidebar.js"></script>-->
-<!--<script type="text/javascript" src="/js/header.js"></script>-->
-<!--<script type="text/javascript" src="/js/footer.js"></script>-->
-
+<script type="text/javascript" src="/js/sidebar.js"></script>
+<script type="text/javascript" src="/js/header.js"></script>
+<script type="text/javascript" src="/js/footer.js"></script>
 </body>
 </html>
 

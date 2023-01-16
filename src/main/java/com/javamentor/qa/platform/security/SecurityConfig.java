@@ -41,13 +41,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter implements WebM
     @Override
     public void configure(WebSecurity web) {
         web.ignoring()
-                .antMatchers(
-                        "/swagger-ui/**",
-                        "/v3/api-docs/**",
-                        "/error",
-                        "/webjars/**",
-                        "/login");
-
+                .antMatchers("/swagger-ui/**", "/v3/api-docs/**",
+                        "/error", "/webjars/**", "/login", "resources/static/**");
     }
 
     @Override
@@ -63,8 +58,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter implements WebM
                 // ограничиваем доступ api/user/** - разрешен только USER
                 .antMatchers("api/user/**").hasRole("USER")
                 // всем остальным разрешаем доступ
-                .antMatchers("/**","/questions","regpage").permitAll()
-                .antMatchers("/static/**", "/templates/**").permitAll()
+                .antMatchers("/**").permitAll()
                 .and()
                 .logout()
                 .logoutUrl("/logout")

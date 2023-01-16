@@ -1,7 +1,5 @@
 package com.javamentor.qa.platform.models.entity.question;
 
-import com.javamentor.qa.platform.models.dto.TagDto;
-import com.javamentor.qa.platform.models.dto.UserDto;
 import com.javamentor.qa.platform.models.entity.chat.Chat;
 import com.javamentor.qa.platform.models.entity.user.User;
 import lombok.AllArgsConstructor;
@@ -19,7 +17,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import java.io.Serial;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
@@ -32,8 +29,6 @@ import java.time.LocalDateTime;
 @Table(name = "tag_tracked")
 public class TrackedTag implements Serializable {
 
-    @Serial
-    private static final long serialVersionUID = 360723913742024874L;
     @Id
     @GeneratedValue(generator = "TrackedTag_seq")
     private Long id;
@@ -53,7 +48,6 @@ public class TrackedTag implements Serializable {
         this.trackedTag = trackedTag;
         this.user = user;
     }
-
 
     @Override
     public boolean equals(Object o) {

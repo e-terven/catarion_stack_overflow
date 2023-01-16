@@ -473,7 +473,7 @@ Swagger - это фреймворк, позволяющий автоматиче
 Swagger имеет также и другие полезные аннотации, рекомендуется их найти и изучить.
 
 2. Для тех кто будет писать контроллеры и расписывать их аннотациями Swagger,
-   документацию по созданному вами api можно будет смотреть и проверять здесь: http://localhost:8080/swagger-ui/index.html
+   документацию по созданному вами api можно будет смотреть и проверять здесь: http://localhost:8080/swagger-ui/
 
 
 3. Сама документация будет формироваться автоматически на основании кода и аннотаций,
@@ -585,39 +585,6 @@ this.mockMvc
     .andExpect(MockMvcResultMatchers.status().isOk()) //хотим получить статус ОК
     .andExpect(MockMvcResultMatchers.content().contentType(MediaType.APPLICATION_JSON)) //хотим получить json
     .andExpect(MockMvcResultMatchers.jsonPath("$.fullName", Matchers.is("Алеша Попович"))); //проверка по полю
-``` 
+```
 
 5. Если ожидаемые результаты не совпадут, тест сообщит об ошибке и распечатает все параметры. В ином случае вы увидите сообщение о том, что тест успешно пройден.
-
-## Настройка профиля подключения к БД
-
-Для запуска БД с локальными настройками
-
-Заходим в _Edit Configuration_`->`_Configuration_`->`_Environment variables_
-
-![](src/main/resources/static/images/VMOption2.png)
-
-![](src/main/resources/static/images/OMG.png)
-
-Имена переменных должны совпадать с теми, что записаны в файле application-local.properties.
-Значения - это данные для подключения к вашей локальной БД.
-
-Вписываем в VM Option `-ea -Dspring.profiles.active=local/dev` - выбираем профиль для запуска
-
-Environment variables `HIBERNATE_DDL=;DB_BASE=;DB_SERVER=;DB_PORT=;DB_NAME=;DB_USERNAME=;DB_PASS=`
-
-где
-
-HIBERNATE_DDL - настройка ddl
-
-DB_BASE - тип используемой БД
-
-DB_SERVER - адрес сервера (по умолчанию localhost)
-
-DB_PORT - порт
-
-DB_NAME - название БД
-
-DB_USERNAME - твой логин
-
-DB_PASS - твой пароль

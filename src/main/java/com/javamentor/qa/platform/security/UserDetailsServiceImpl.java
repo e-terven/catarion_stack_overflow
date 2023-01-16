@@ -23,7 +23,6 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     @Transactional
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         Optional<User> userByEmail = userDao.getByEmail(email);
-        return userByEmail.orElseThrow(() -> new UsernameNotFoundException("Не удалось найти такой аккаунт," +
-                " проверьте правильность введенных данных"));
+        return userByEmail.orElseThrow(() -> new UsernameNotFoundException("Не удалось найти такой аккаунт, проверьте правильность введенных данных"));
     }
 }

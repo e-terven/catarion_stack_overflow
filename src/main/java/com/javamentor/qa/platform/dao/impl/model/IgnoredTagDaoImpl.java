@@ -4,11 +4,6 @@ import com.javamentor.qa.platform.dao.abstracts.model.IgnoredTagDao;
 import com.javamentor.qa.platform.dao.impl.repository.ReadWriteDaoImpl;
 import com.javamentor.qa.platform.models.entity.question.IgnoredTag;
 import org.springframework.stereotype.Repository;
-import com.javamentor.qa.platform.models.dto.TagDto;
-import com.javamentor.qa.platform.models.dto.IgnoredTagDto;
-import com.javamentor.qa.platform.models.dto.UserDto;
-import com.javamentor.qa.platform.models.entity.question.Tag;
-import com.javamentor.qa.platform.models.entity.user.User;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;

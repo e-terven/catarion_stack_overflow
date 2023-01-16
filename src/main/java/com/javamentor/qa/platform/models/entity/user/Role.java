@@ -12,7 +12,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import java.io.Serial;
 
 @Entity
 @Getter
@@ -22,8 +21,6 @@ import java.io.Serial;
 @Table(name = "role")
 public class Role implements GrantedAuthority {
 
-    @Serial
-    private static final long serialVersionUID = -3078431332553462997L;
     @Id
     @GeneratedValue(generator = "Role_seq")
     private Long id;
