@@ -523,6 +523,48 @@ https://habr.com/ru/post/310460/
 - services: -относятся к сервисам, которые мы настраиваем (БД).
 - build: context: . говорит о том, что мы будем искать Dockerfile в той же директории, что и docker-compose.yml.
 
+# Использование профилей Spring
+
+Профили Spring позволяют кастомизировать приложение для работы в различном окружении. В зависимости от активного профиля можно инстанциировать различные реализации одного и того же бина, а также присваивать различные значения свойствам приложения.
+
+### Задание переменных среды окружения через настройку конфигурации запуска проекта
+
+Открываем конфигурацию запуска проекта
+![img.png](src/main/resources/static/images/spring-profiles/img.png)
+
+![project-configuration.png](src/main/resources/static/images/spring-profiles/project-configuration.png)
+
+1. Если не отображается пункт environment variables, выбираем отображение настройки переменных среды (environment variables)
+2. Задаем переменные среды
+```
+SPRING_PROFILES_ACTIVE=dev;
+
+SPRING_DEV_DB_BASE=postgresql;
+SPRING_DEV_DB_SERVER=localhost;
+SPRING_DEV_DB_PORT=5432;
+SPRING_DEV_DB_NAME=stackoverkata;
+SPRING_DEV_DB_CHARACTER_ENCODING=UTF-8;
+SPRING_DEV_DB_USE_UNICODE=true;
+SPRING_DEV_DB_USE_SSL=false;
+SPRING_DEV_DB_SERVER_TIMEZONE=UTC;
+SPRING_DEV_DB_ALLOW_PUBLIC_KEY_RETRIEVAL=true;
+SPRING_DEV_DATASOURCE_USERNAME=postgres;
+SPRING_DEV_DATASOURCE_PASSWORD=root;
+
+SPRING_LOCAL_DB_BASE=postgresql;
+SPRING_LOCAL_DB_SERVER=localhost;
+SPRING_LOCAL_DB_PORT=5432;
+SPRING_LOCAL_DB_NAME=stackoverkata;
+SPRING_LOCAL_DB_CHARACTER_ENCODING=UTF-8;
+SPRING_LOCAL_DB_USE_UNICODE=true;
+SPRING_LOCAL_DB_USE_SSL=false;
+SPRING_LOCAL_DB_SERVER_TIMEZONE=UTC;
+SPRING_LOCAL_DB_ALLOW_PUBLIC_KEY_RETRIEVAL=true;
+SPRING_LOCAL_DATASOURCE_USERNAME=postgres;
+SPRING_LOCAL_DATASOURCE_PASSWORD=root;
+```
+3. Применяем изменения
+
 # Как писать тесты к rest-контроллерам
 
 ### Основные требования
