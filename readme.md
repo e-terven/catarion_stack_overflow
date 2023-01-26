@@ -537,31 +537,27 @@ https://habr.com/ru/post/310460/
 1. Если не отображается пункт environment variables, выбираем отображение настройки переменных среды (environment variables)
 2. Задаем переменные среды
 ```
-SPRING_PROFILES_ACTIVE=dev;
+Вписываем в VM Option `-ea -Dspring.profiles.active=local/dev` - выбираем профиль для запуска
 
-SPRING_DEV_DB_BASE=postgresql;
-SPRING_DEV_DB_SERVER=localhost;
-SPRING_DEV_DB_PORT=5432;
-SPRING_DEV_DB_NAME=stackoverkata;
-SPRING_DEV_DB_CHARACTER_ENCODING=UTF-8;
-SPRING_DEV_DB_USE_UNICODE=true;
-SPRING_DEV_DB_USE_SSL=false;
-SPRING_DEV_DB_SERVER_TIMEZONE=UTC;
-SPRING_DEV_DB_ALLOW_PUBLIC_KEY_RETRIEVAL=true;
-SPRING_DEV_DATASOURCE_USERNAME=postgres;
-SPRING_DEV_DATASOURCE_PASSWORD=root;
+Environment variables `HIBERNATE_DDL=;DB_BASE=;DB_SERVER=;DB_PORT=;DB_NAME=;DB_USERNAME=;DB_PASS=`
 
-SPRING_LOCAL_DB_BASE=postgresql;
-SPRING_LOCAL_DB_SERVER=localhost;
-SPRING_LOCAL_DB_PORT=5432;
-SPRING_LOCAL_DB_NAME=stackoverkata;
-SPRING_LOCAL_DB_CHARACTER_ENCODING=UTF-8;
-SPRING_LOCAL_DB_USE_UNICODE=true;
-SPRING_LOCAL_DB_USE_SSL=false;
-SPRING_LOCAL_DB_SERVER_TIMEZONE=UTC;
-SPRING_LOCAL_DB_ALLOW_PUBLIC_KEY_RETRIEVAL=true;
-SPRING_LOCAL_DATASOURCE_USERNAME=postgres;
-SPRING_LOCAL_DATASOURCE_PASSWORD=root;
+где
+
+HIBERNATE_DDL - настройка ddl
+
+DB_BASE - тип используемой DB
+
+DB_SERVER' - адрес сервера (по умолчанию localhost)
+
+DB_PORT - порт
+
+DB_NAME - название БД
+
+DB_USERNAME - твой логин
+
+DB_PASS - твой пароль
+
+-ea -Dspring.profiles.active= - выбери профиль
 ```
 3. Применяем изменения
 
