@@ -1,5 +1,4 @@
-package com.javamentor.qa.platform.webapp.controller.rest;
-
+package com.javamentor.qa.platform.webapp.controllers.rest;
 
 import com.javamentor.qa.platform.models.dto.QuestionDto;
 import com.javamentor.qa.platform.models.entity.user.User;
@@ -15,13 +14,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import java.util.Optional;
-
 
 @RestController
 @RequestMapping("/api/user/question")
-@Tag(name = "Статистика по вопросу" , description = "api которое возвращает DTO вопроса по Id")
+@Tag(name = "Статистика по вопросу", description = "api которое возвращает DTO вопроса по Id")
 public class ResourceQuestionController {
+
     private final QuestionDtoService questionDtoService;
 
 
@@ -29,16 +27,16 @@ public class ResourceQuestionController {
         this.questionDtoService = questionDtoService;
     }
 
+    @GetMapping("/{id}")
     @Operation(summary = "Получения данных о вопросе по его уникальному (id) идентификатору")
     @ApiResponses({
             @ApiResponse(responseCode = "200", description = "Запрос успешно выполнен"),
             @ApiResponse(responseCode = "400", description = "Вопрос по данному уникальному идентификатору (Id) не найден")
     })
-    @GetMapping("/{id}")
     public ResponseEntity<QuestionDto> getQuestionById(@PathVariable Long questionId,
-                                             @AuthenticationPrincipal User user) {
+                                                       @AuthenticationPrincipal User user) {
 
-        return  questionDtoService.getById(questionId, user.getId()).map(ResponseEntity::ok)
+        return questionDtoService.getById(questionId, user.getId()).map(ResponseEntity::ok)
                 .orElseGet(() -> new ResponseEntity<>(new QuestionDto(), HttpStatus.NOT_FOUND));
     }
 

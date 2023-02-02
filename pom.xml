@@ -149,13 +149,6 @@
             <version>2.4.5</version>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/org.liquibase/liquibase-core -->
-        <dependency>
-            <groupId>org.liquibase</groupId>
-            <artifactId>liquibase-core</artifactId>
-            <version>4.19.0</version>
-        </dependency>
-
     </dependencies>
 
     <build>
@@ -192,29 +185,6 @@
                     <outputDir>${project.build.directory}</outputDir>
                 </configuration>
             </plugin>
-
-            <!-- https://mvnrepository.com/artifact/org.liquibase/liquibase-maven-plugin -->
-            <plugin>
-                <groupId>org.liquibase</groupId>
-                <artifactId>liquibase-maven-plugin</artifactId>
-                <version>4.19.0</version>
-                <configuration>
-                    <changeLogFile>src/main/resources/db/changelog/2023/01/20-changelog.xml</changeLogFile>
-                    <driver>com.mysql.cj.jdbc.Driver</driver>
-                    <url>jdbc:mysql://localhost:3306/stackoverkata</url>
-                    <username>postgres</username>
-                    <password>root</password>
-                </configuration>
-                <executions>
-                    <execution>
-                        <phase>process-resources</phase>
-                        <goals>
-                            <goal>update</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-
         </plugins>
     </build>
 
