@@ -16,7 +16,6 @@ import java.util.Optional;
 @RequestMapping("/api/user")
 public class ResourceUserController {
 
-
     private final UserDtoService userDtoService;
 
     public ResourceUserController(UserDtoService userDtoService) {

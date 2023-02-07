@@ -37,11 +37,8 @@ public class UserDtoDaoImpl extends ReadWriteDaoImpl<UserDto, Long> implements U
                 JOIN Reputation r ON u.id = r.author.id
                 WHERE u.id = :id
                 GROUP BY u.id
-                """, UserDto.class).setParameter("id", id));
-
-
-
-
+                """, UserDto.class)
+                .setParameter("id", id));
     }
 
 }
