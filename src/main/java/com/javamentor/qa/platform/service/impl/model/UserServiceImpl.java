@@ -1,6 +1,7 @@
 package com.javamentor.qa.platform.service.impl.model;
 
 import com.javamentor.qa.platform.dao.abstracts.model.UserDao;
+import com.javamentor.qa.platform.dao.abstracts.repository.ReadWriteDao;
 import com.javamentor.qa.platform.models.entity.user.User;
 import com.javamentor.qa.platform.service.abstracts.model.UserService;
 import com.javamentor.qa.platform.service.impl.repository.ReadWriteServiceImpl;
@@ -14,8 +15,8 @@ public class UserServiceImpl extends ReadWriteServiceImpl<User, Long> implements
 
     private final UserDao userDao;
 
-    public UserServiceImpl(UserDao userDao) {
-        super(userDao);
+    public UserServiceImpl(ReadWriteDao<User, Long> readWriteDao, UserDao userDao) {
+        super(readWriteDao);
         this.userDao = userDao;
     }
 
@@ -24,4 +25,11 @@ public class UserServiceImpl extends ReadWriteServiceImpl<User, Long> implements
     public Optional<User> getByEmail(String email) {
         return userDao.getByEmail(email);
     }
+
+    @Override
+    public Optional<User> getById(Long id) {
+        return super.getById(id);
+    }
+
+
 }
