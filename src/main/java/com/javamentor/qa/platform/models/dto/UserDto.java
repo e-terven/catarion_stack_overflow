@@ -3,12 +3,13 @@ package com.javamentor.qa.platform.models.dto;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
 import java.time.LocalDateTime;
 
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
@@ -33,6 +34,10 @@ public class UserDto {
     private LocalDateTime registrationDate;
     @Schema(description = "количество голосов пользователя")
     private Long votes;
-//    @Schema(description = "список топ-3 тэгов пользователя")
-//    private List<TagDto> listTop3TagDto;
+
+
+
+
+//   @Schema(description = "список топ-3 тэгов пользователя")
+//   private List<TagDto> listTop3TagDto;
 }
