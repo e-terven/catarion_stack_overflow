@@ -4,7 +4,6 @@ import com.javamentor.qa.platform.models.dto.AnswerDTO;
 import com.javamentor.qa.platform.models.dto.CommentAnswerDto;
 import com.javamentor.qa.platform.models.entity.user.User;
 import com.javamentor.qa.platform.service.abstracts.dto.AnswerDtoService;
-import com.javamentor.qa.platform.service.abstracts.dto.CommentAnswerDtoService;
 import com.javamentor.qa.platform.service.abstracts.model.AnswerService;
 import com.javamentor.qa.platform.service.abstracts.model.CommentAnswerService;
 import com.javamentor.qa.platform.service.abstracts.model.QuestionService;
@@ -18,6 +17,7 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -76,5 +76,18 @@ public class ResourceAnswerController {
         }
         return new ResponseEntity<>(commentAnswerService.addCommentToAnswer(userService.getById(user.getId()).get(),
                 answerService.getById(answerId).get(), text), HttpStatus.OK);
+    }
+
+    @PutMapping("/{answerId}")
+    @Operation(summary = "Флаг, помечающий объект, как удалённый")
+    @ApiResponse(responseCode = "200", description = "успешно")
+    @ApiResponse(responseCode = "400", description = "Ответа по данному ID не существует")
+    public ResponseEntity<HttpStatus> isDeleteAnswerById(@PathVariable Long answerId) {
+        if (!answerService.existsById(answerId)) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        } else {
+            answerService.isDeletedById(answerId);
+        }
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.transaction.Transactional;
 
 @Repository
 public class AnswerDaoImpl extends ReadWriteDaoImpl<Answer, Long> implements AnswerDao {
@@ -14,4 +15,11 @@ public class AnswerDaoImpl extends ReadWriteDaoImpl<Answer, Long> implements Ans
     @PersistenceContext
     private EntityManager entityManager;
 
+    @Override
+    @Transactional
+    public void isDeletedById(Long id) {
+        Answer answer = entityManager.find(Answer.class, id);
+        answer.setIsDeleted(true);
+        entityManager.merge(answer);
+    }
 }
