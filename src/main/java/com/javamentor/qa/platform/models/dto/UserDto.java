@@ -20,8 +20,8 @@ public class UserDto {
     private Long id;
     @Schema(description = "почта пользователя")
     private String email;
-    @Schema (description = "пароль")
-    private String password;
+//    @Schema (description = "пароль")
+//    private String password;
     @Schema(description = "имя пользователя")
     private String fullName;
     @Schema(description = "ссылка на изображение пользователя")
