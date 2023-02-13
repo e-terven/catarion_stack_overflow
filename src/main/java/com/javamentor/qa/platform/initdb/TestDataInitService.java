@@ -50,7 +50,6 @@ public class TestDataInitService {
     }
 
     @Transactional
-    @PostConstruct
     public void createEntity() {
         createUsers();
         createTags();
@@ -94,7 +93,7 @@ public class TestDataInitService {
         user2.setAbout("I`m just User");
         user2.setImageLink("https://animaljournal.ru/articles/pets/grizuni/morskaya_svinka/morskaya_svinka_kak_uhajivat.jpg");
         user2.setNickname("_user2_");
-        user2.setRole(new Role("ROLE_USER"));
+        user2.setRole(new Role("ROLE_ADMIN"));
         users.add(user2);
 
         userService.persistAll(users);
