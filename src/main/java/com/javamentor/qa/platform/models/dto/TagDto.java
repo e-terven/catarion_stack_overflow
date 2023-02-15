@@ -11,6 +11,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
+
 @Schema(description = "тег")
 public class TagDto {
 
@@ -20,6 +21,4 @@ public class TagDto {
     private String name;
     @Schema(description = "описание тега")
     private String description;
-
-
 }
