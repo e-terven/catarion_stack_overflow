@@ -4,23 +4,14 @@ import com.javamentor.qa.platform.models.dto.AnswerDTO;
 import com.javamentor.qa.platform.models.dto.CommentAnswerDto;
 import com.javamentor.qa.platform.models.entity.user.User;
 import com.javamentor.qa.platform.service.abstracts.dto.AnswerDtoService;
-import com.javamentor.qa.platform.service.abstracts.model.AnswerService;
-import com.javamentor.qa.platform.service.abstracts.model.CommentAnswerService;
-import com.javamentor.qa.platform.service.abstracts.model.QuestionService;
-import com.javamentor.qa.platform.service.abstracts.model.UserService;
+import com.javamentor.qa.platform.service.abstracts.model.*;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
@@ -36,16 +27,20 @@ public class ResourceAnswerController {
     private final UserService userService;
     private final AnswerService answerService;
 
+    private final VoteAnswerService voteAnswerService;
+
     public ResourceAnswerController(AnswerDtoService answerDtoService,
                                     QuestionService questionService,
                                     CommentAnswerService commentAnswerService,
                                     UserService userService,
-                                    AnswerService answerService) {
+                                    AnswerService answerService,
+                                    VoteAnswerService voteAnswerService) {
         this.answerDtoService = answerDtoService;
         this.questionService = questionService;
         this.commentAnswerService = commentAnswerService;
         this.userService = userService;
         this.answerService = answerService;
+        this.voteAnswerService = voteAnswerService;
     }
 
     @GetMapping
@@ -89,5 +84,24 @@ public class ResourceAnswerController {
             answerService.isDeletedById(answerId);
         }
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @PostMapping("/{id}/upVote")
+    @Operation(description = "увеличивает репутацию автору ответа")
+    @ApiResponse(responseCode = "200", description = "успешно")
+    @ApiResponse(responseCode = "400", description = "Ответа по ID не существует")
+    public ResponseEntity<Long> upVote(@AuthenticationPrincipal User user,
+                                                          @PathVariable long id) {
+        if (!answerService.existsById(id)) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+        }
+
+        Long authorId = answerService.getById(id).get().getUser().getId();
+
+        if(user.getId() == authorId){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        } else {
+        return new ResponseEntity<>(voteAnswerService.upVote(id), HttpStatus.OK);
+        }
     }
 }
