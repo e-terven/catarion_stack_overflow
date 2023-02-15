@@ -6,10 +6,12 @@ import com.javamentor.qa.platform.service.abstracts.model.QuestionService;
 import com.javamentor.qa.platform.service.impl.repository.ReadWriteServiceImpl;
 import org.springframework.stereotype.Service;
 
+
 @Service
 public class QuestionServiceImpl extends ReadWriteServiceImpl<Question, Long> implements QuestionService {
 
     public QuestionServiceImpl(ReadWriteDao<Question, Long> readWriteDao) {
         super(readWriteDao);
+
     }
 }
