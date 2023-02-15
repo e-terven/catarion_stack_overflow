@@ -73,17 +73,17 @@ public class ResourceAnswerController {
                 answerService.getById(answerId).get(), text), HttpStatus.OK);
     }
 
-    @PutMapping("/{answerId}")
+    @DeleteMapping("/{answerId}")
     @Operation(summary = "Флаг, помечающий объект, как удалённый")
     @ApiResponse(responseCode = "200", description = "успешно")
     @ApiResponse(responseCode = "400", description = "Ответа по данному ID не существует")
-    public ResponseEntity<HttpStatus> isDeleteAnswerById(@PathVariable Long answerId) {
-        if (!answerService.existsById(answerId)) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
-        } else {
-            answerService.isDeletedById(answerId);
+    public ResponseEntity<String> isDeleteAnswerById(@PathVariable Long questionId,
+                                                     @PathVariable Long answerId){
+        if (answerService.existsById(answerId)) {
+            answerService.deleteById(answerId);
+            return new ResponseEntity<>("Answer with id" + answerId + "was deleted", HttpStatus.OK);
         }
-        return new ResponseEntity<>(HttpStatus.OK);
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
     @PostMapping("/{id}/upVote")
