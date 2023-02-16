@@ -8,6 +8,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Builder
 @AllArgsConstructor
@@ -38,6 +39,6 @@ public class UserDto {
 
 
 
-//   @Schema(description = "список топ-3 тэгов пользователя")
-//   private List<TagDto> listTop3TagDto;
+   @Schema(description = "список тэгов пользователя")
+   private List<TagDto> listTagDto;
 }
