@@ -24,10 +24,11 @@ public class ResourceUserController {
 
     @GetMapping("/{id}")
     @Operation(summary = "Получение user по id")
-    @ApiResponse(responseCode = "200", description = "успешно")
+    @ApiResponse(responseCode = "200", description = "Пользователя по id найден")
     @ApiResponse(responseCode = "400", description = "Пользователя по id не существует")
     public ResponseEntity<UserDto> getUserDtoById(@PathVariable Long id) {
-        Optional<UserDto> userDto = userDtoService.getById(id);
-        return userDto.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
+        return userDtoService.getById(id).map(ResponseEntity::ok).orElseGet(() ->
+                ResponseEntity.badRequest().build());
     }
+
 }

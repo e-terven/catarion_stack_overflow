@@ -1,5 +1,6 @@
 package com.javamentor.qa.platform.service.impl.dto;
 
+import com.javamentor.qa.platform.dao.abstracts.dto.TagDtoDao;
 import com.javamentor.qa.platform.models.dto.TagDto;
 import com.javamentor.qa.platform.models.entity.question.Tag;
 import com.javamentor.qa.platform.service.abstracts.dto.TagDtoService;
@@ -12,9 +13,11 @@ import java.util.List;
 @Service
 public class TagDtoServiceImpl implements TagDtoService {
     private final TagService tagService;
+    private TagDtoDao tagDtoDao;
 
-    public TagDtoServiceImpl(TagService tagService) {
+    public TagDtoServiceImpl(TagService tagService, TagDtoDao tagDtoDao) {
         this.tagService = tagService;
+        this.tagDtoDao = tagDtoDao;
     }
 
     @Override
@@ -34,6 +37,10 @@ public class TagDtoServiceImpl implements TagDtoService {
             }
         }
         return tagList;
+    }
+    @Override
+    public List<TagDto> getTagsByUserId(Long id) {
+        return tagDtoDao.getTagsByUserId(id);
     }
 
 }
