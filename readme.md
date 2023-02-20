@@ -523,44 +523,6 @@ https://habr.com/ru/post/310460/
 - services: -относятся к сервисам, которые мы настраиваем (БД).
 - build: context: . говорит о том, что мы будем искать Dockerfile в той же директории, что и docker-compose.yml.
 
-# Использование профилей Spring
-
-Профили Spring позволяют кастомизировать приложение для работы в различном окружении. В зависимости от активного профиля можно инстанциировать различные реализации одного и того же бина, а также присваивать различные значения свойствам приложения.
-
-### Задание переменных среды окружения через настройку конфигурации запуска проекта
-
-Открываем конфигурацию запуска проекта
-![img.png](src/main/resources/static/images/spring-profiles/img.png)
-
-![project-configuration.png](src/main/resources/static/images/spring-profiles/project-configuration.png)
-
-1. Если не отображается пункт environment variables, выбираем отображение настройки переменных среды (environment variables)
-2. Задаем переменные среды
-```
-Вписываем в VM Option `-ea -Dspring.profiles.active=local/dev` - выбираем профиль для запуска
-
-Environment variables `HIBERNATE_DDL=;DB_BASE=;DB_SERVER=;DB_PORT=;DB_NAME=;DB_USERNAME=;DB_PASS=`
-
-где
-
-HIBERNATE_DDL - настройка ddl
-
-DB_BASE - тип используемой DB
-
-DB_SERVER' - адрес сервера (по умолчанию localhost)
-
-DB_PORT - порт
-
-DB_NAME - название БД
-
-DB_USERNAME - твой логин
-
-DB_PASS - твой пароль
-
--ea -Dspring.profiles.active= - выбери профиль
-```
-3. Применяем изменения
-
 # Как писать тесты к rest-контроллерам
 
 ### Основные требования

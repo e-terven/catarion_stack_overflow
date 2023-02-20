@@ -1,7 +1,6 @@
 package com.javamentor.qa.platform.security;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -22,9 +21,6 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 public class SecurityConfig extends WebSecurityConfigurerAdapter implements WebMvcConfigurer {
 
     private final UserDetailsServiceImpl userDetailsService;
-
-    @Autowired
-    private final JwtTokenProvider jwtTokenProvider;
 
     @Override
     public void configure(AuthenticationManagerBuilder authenticationManagerBuilder) throws Exception {
@@ -57,15 +53,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter implements WebM
         http.csrf().disable();
         http.cors().disable();
         http
+                // делаем страницу регистрации недоступной для авторизированных пользователей
                 .authorizeRequests()
+                // ограничиваем доступ api/user/** - разрешен только USER
                 .antMatchers("api/user/**").hasRole("USER")
-                .antMatchers("/**","/api/auth/token").permitAll()
+                // всем остальным разрешаем доступ
+                .antMatchers("/**").permitAll()
                 .and()
                 .logout()
                 .logoutUrl("/logout")
-                .logoutSuccessUrl("/")
-                .and()
-                .apply(new JwtConfigurer(jwtTokenProvider));
+                .logoutSuccessUrl("/");
     }
 
     @Override

@@ -5,6 +5,4 @@ import com.javamentor.qa.platform.service.abstracts.repository.ReadWriteService;
 
 public interface AnswerService extends ReadWriteService<Answer, Long> {
 
-    public void isDeletedById(Long id);
-
 }
