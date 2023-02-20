@@ -21,23 +21,29 @@ public class QuestionDtoDaoImpl  extends ReadWriteDaoImpl<QuestionDto, Long> imp
         return SingleResultUtil.getSingleResultOrNull(entityManager.createQuery(
                         """
                             select
-                               q.id as id_вопроса,
-                               q.title as заголовок_вопроса,
-                               q.description as описание_вопроса,
-                               q.lastUpdateDateTime as дата_последнего_обновления,
-                               q.persistDateTime as дата_создания_вопроса,
-                               u.id as id_пользователя,
-                               u.fullName as имя_пользователя,
-                               u.imageLink as ссылка_на_изображение_пользователя,
-                               coalesce((select sum(r.count) from Reputation r where r.author.id = u.id), 0),
-                               (select count(qv.id) from QuestionViewed  qv where qv.question.id = q.id),
-                               (select count(a.id) from Answer  a where a.question.id = q.id),
-                               (select quv.vote from VoteQuestion quv where quv.question.id = q.id and quv.user.id =:userId),
-                               (select count(b) from BookMarks b where b.question.id = :questionId and b.user.id = :userId),
-                               (select (case when count(a) > 0 then true else false end) from Answer a where a.question.id = :questionId and a.user.id = :userId)
-                            from Question as q
-                            LEFT join q.user as u
-                            where q.id =:questionId""")
+                                                       q.id as id_вопроса,
+                                                       q.title as заголовок_вопроса,
+                                                       q.description as описание_вопроса,
+                                                       q.lastUpdateDateTime as дата_последнего_обновления,
+                                                       q.persistDateTime as дата_создания_вопроса,
+                                                       u.id as id_пользователя,
+                                                       u.fullName as имя_пользователя,
+                                                       u.imageLink as ссылка_на_изображение_пользователя,
+                                                       coalesce(sum(r.count), 0) as сумма_репутации,
+                                                       count(distinct qv.id) as количество_просмотров_вопроса,
+                                                       count(distinct a.id) as количество_ответов_на_вопрос,
+                                                       quv.vote as оценка_вопроса_пользователем,
+                                                       count(distinct b) as количество_закладок_вопроса,
+                                                       case when count(distinct a.user.id) > 0 then true else false end as пользователь_ответил_на_вопрос
+                                                   from Question q
+                                                   left join q.user u
+                                                   left join Reputation r on u.id = r.author.id
+                                                   left join QuestionViewed qv on q.id = qv.question.id
+                                                   left join Answer a on q.id = a.question.id
+                                                   left join VoteQuestion quv on q.id = quv.question.id and quv.user.id = :userId
+                                                   left join BookMarks b on q.id = b.question.id and b.user.id = :userId
+                                                   where q.id = :questionId
+                                                   group by q.id, u.id, quv.vote""")
 
                 .setParameter("questionId", questionId)
                 .setParameter("userId", authorizedUserId));
