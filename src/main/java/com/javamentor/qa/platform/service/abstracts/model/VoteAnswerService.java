@@ -8,4 +8,5 @@ import org.springframework.transaction.annotation.Transactional;
 public interface VoteAnswerService extends ReadWriteService<VoteAnswer, Long> {
     @Transactional
     Long upVote(long VoteAnswerId);
+    public Long downVote(long VoteAnswerId);
 }
