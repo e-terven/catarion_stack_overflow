@@ -104,4 +104,18 @@ public class ResourceAnswerController {
         return new ResponseEntity<>(voteAnswerService.upVote(id), HttpStatus.OK);
         }
     }
+    @PostMapping("/{id}/downVote")
+    @Operation(description = "уменьшает репутацию автору ответа")
+    @ApiResponse(responseCode = "200", description = "успешно")
+    @ApiResponse(responseCode = "400", description = "Ответа по ID не существует")
+
+    public ResponseEntity<Long> answerDownVote(@PathVariable Long questionId,
+                                               @PathVariable Long id,
+                                               @AuthenticationPrincipal User user) {
+        if (!answerService.existsById(id)) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
+        return new ResponseEntity<>(voteAnswerService.downVote(id),HttpStatus.OK);
+    }
 }

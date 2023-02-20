@@ -56,4 +56,33 @@ public class VoteAnswerServiceImpl extends ReadWriteServiceImpl<VoteAnswer, Long
         }
         return Long.valueOf(reputation.getCount());
     }
+
+    @Override
+    @Transactional
+    public Long downVote(long VoteAnswerId) {
+
+        VoteAnswer voteAnswer;
+        Reputation reputation;
+
+        Optional<VoteAnswer> voteAnswerOptional = voteAnswerDao.getById(VoteAnswerId);
+        voteAnswer = voteAnswerOptional.orElseGet(VoteAnswer::new);
+        if (voteAnswer.getAnswer() == null) {
+            voteAnswer.getAnswer().getUser().setId(0L);
+            voteAnswer.getAnswer().setId(0L);
+            voteAnswer.setVoteType(null);
+        }
+        Long authorId = voteAnswer.getAnswer().getUser().getId();
+        Long answerId = voteAnswer.getAnswer().getId();
+
+        Optional<Reputation> reputationOptional = reputationService.getByAuthor(authorId, answerId);
+        reputation = reputationOptional.orElseGet(Reputation::new);
+        if (reputation.getCount() == null) {
+            reputation.setCount(0);
+        }
+
+        if (voteAnswer.getVoteType() == VoteType.DOWN) {
+            reputation.setCount(reputation.getCount() - 5);
+        }
+        return Long.valueOf(reputation.getCount());
+    }
 }
