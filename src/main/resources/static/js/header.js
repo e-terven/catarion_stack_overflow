@@ -1,7 +1,7 @@
 const headerHTML = `
 <div class="container d-flex justify-content-between align-items-center py-2">
   <a href="#" class="d-flex text-dark text-decoration-none">
-    <img src="/images/kata-logo.png" alt="logo" class="rounded-lg mr-2" width="25" height="25">
+    <img src="/static/images/kata-logo.png" alt="logo" class="rounded-lg mr-2" width="25" height="25">
     <h5 class="m-0"><span class="font-weight-normal">stack</span> overflow</h4>
   </a>
   <form class="mx-4 col-6">

@@ -1,0 +1,633 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.19.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1677176005304-1" author="anast (generated)">
+        <createSequence cacheSize="1" cycle="false" dataType="bigint" incrementBy="1" maxValue="9223372036854775807"
+                        minValue="1" sequenceName="answer_seq" startValue="1"/>
+    </changeSet>
+    <changeSet id="1677176005304-2" author="anast (generated)">
+        <createSequence cacheSize="1" cycle="false" dataType="bigint" incrementBy="1" maxValue="9223372036854775807"
+                        minValue="1" sequenceName="answer_vote_seq" startValue="1"/>
+    </changeSet>
+    <changeSet id="1677176005304-3" author="anast (generated)">
+        <createSequence cacheSize="1" cycle="false" dataType="bigint" incrementBy="1" maxValue="9223372036854775807"
+                        minValue="1" sequenceName="badge_seq" startValue="1"/>
+    </changeSet>
+    <changeSet id="1677176005304-4" author="anast (generated)">
+        <createSequence cacheSize="1" cycle="false" dataType="bigint" incrementBy="1" maxValue="9223372036854775807"
+                        minValue="1" sequenceName="chat_seq" startValue="1"/>
+    </changeSet>
+    <changeSet id="1677176005304-5" author="anast (generated)">
+        <createSequence cacheSize="1" cycle="false" dataType="bigint" incrementBy="1" maxValue="9223372036854775807"
+                        minValue="1" sequenceName="comment_seq" startValue="1"/>
+    </changeSet>
+    <changeSet id="1677176005304-6" author="anast (generated)">
+        <createSequence cacheSize="1" cycle="false" dataType="bigint" incrementBy="1" maxValue="9223372036854775807"
+                        minValue="1" sequenceName="ignore_tag_seq" startValue="1"/>
+    </changeSet>
+    <changeSet id="1677176005304-7" author="anast (generated)">
+        <createSequence cacheSize="1" cycle="false" dataType="bigint" incrementBy="1" maxValue="9223372036854775807"
+                        minValue="1" sequenceName="message_seq" startValue="1"/>
+    </changeSet>
+    <changeSet id="1677176005304-8" author="anast (generated)">
+        <createSequence cacheSize="1" cycle="false" dataType="bigint" incrementBy="1" maxValue="9223372036854775807"
+                        minValue="1" sequenceName="question_seq" startValue="1"/>
+    </changeSet>
+    <changeSet id="1677176005304-9" author="anast (generated)">
+        <createSequence cacheSize="1" cycle="false" dataType="bigint" incrementBy="1" maxValue="9223372036854775807"
+                        minValue="1" sequenceName="question_viewed_seq" startValue="1"/>
+    </changeSet>
+    <changeSet id="1677176005304-10" author="anast (generated)">
+        <createSequence cacheSize="1" cycle="false" dataType="bigint" incrementBy="1" maxValue="9223372036854775807"
+                        minValue="1" sequenceName="related_tag_seq" startValue="1"/>
+    </changeSet>
+    <changeSet id="1677176005304-11" author="anast (generated)">
+        <createSequence cacheSize="1" cycle="false" dataType="bigint" incrementBy="1" maxValue="9223372036854775807"
+                        minValue="1" sequenceName="reputation_seq" startValue="1"/>
+    </changeSet>
+    <changeSet id="1677176005304-12" author="anast (generated)">
+        <createSequence cacheSize="1" cycle="false" dataType="bigint" incrementBy="1" maxValue="9223372036854775807"
+                        minValue="1" sequenceName="role_seq" startValue="1"/>
+    </changeSet>
+    <changeSet id="1677176005304-13" author="anast (generated)">
+        <createSequence cacheSize="1" cycle="false" dataType="bigint" incrementBy="1" maxValue="9223372036854775807"
+                        minValue="1" sequenceName="tag_seq" startValue="1"/>
+    </changeSet>
+    <changeSet id="1677176005304-14" author="anast (generated)">
+        <createSequence cacheSize="1" cycle="false" dataType="bigint" incrementBy="1" maxValue="9223372036854775807"
+                        minValue="1" sequenceName="tracked_tag_seq" startValue="1"/>
+    </changeSet>
+    <changeSet id="1677176005304-15" author="anast (generated)">
+        <createSequence cacheSize="1" cycle="false" dataType="bigint" incrementBy="1" maxValue="9223372036854775807"
+                        minValue="1" sequenceName="user_badges_seq" startValue="1"/>
+    </changeSet>
+    <changeSet id="1677176005304-16" author="anast (generated)">
+        <createSequence cacheSize="1" cycle="false" dataType="bigint" incrementBy="1" maxValue="9223372036854775807"
+                        minValue="1" sequenceName="user_favorite_question_seq" startValue="1"/>
+    </changeSet>
+    <changeSet id="1677176005304-17" author="anast (generated)">
+        <createSequence cacheSize="1" cycle="false" dataType="bigint" incrementBy="1" maxValue="9223372036854775807"
+                        minValue="1" sequenceName="user_seq" startValue="1"/>
+    </changeSet>
+    <changeSet id="1677176005304-18" author="anast (generated)">
+        <createSequence cacheSize="1" cycle="false" dataType="bigint" incrementBy="1" maxValue="9223372036854775807"
+                        minValue="1" sequenceName="vote_question_seq" startValue="1"/>
+    </changeSet>
+    <changeSet id="1677176005304-19" author="anast (generated)">
+        <createTable tableName="answer">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="answer_pkey"/>
+            </column>
+            <column name="date_accept_time" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="html_body" type="TEXT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="is_deleted" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="is_deleted_by_moderator" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="is_helpful" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="persist_date" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="update_date" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="question_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="user_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="1677176005304-20" author="anast (generated)">
+        <createTable tableName="badges">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="badges_pkey"/>
+            </column>
+            <column name="badge_name" type="VARCHAR(255)"/>
+            <column name="description" type="VARCHAR(255)"/>
+            <column name="reputations_for_merit" type="INTEGER"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1677176005304-21" author="anast (generated)">
+        <createTable tableName="bookmarks">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="bookmarks_pkey"/>
+            </column>
+            <column name="question_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="user_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="1677176005304-22" author="anast (generated)">
+        <createTable tableName="chat">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="chat_pkey"/>
+            </column>
+            <column name="chat_type" type="INTEGER"/>
+            <column name="persist_date" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="title" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1677176005304-23" author="anast (generated)">
+        <createTable tableName="comment">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="comment_pkey"/>
+            </column>
+            <column name="comment_type" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_redaction_date" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="persist_date" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="text" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="user_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="1677176005304-24" author="anast (generated)">
+        <createTable tableName="comment_answer">
+            <column name="comment_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="comment_answer_pkey"/>
+            </column>
+            <column name="answer_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="1677176005304-25" author="anast (generated)">
+        <createTable tableName="comment_question">
+            <column name="comment_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="comment_question_pkey"/>
+            </column>
+            <column name="question_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="1677176005304-26" author="anast (generated)">
+        <createTable tableName="group_chat">
+            <column name="chat_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="group_chat_pkey"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="1677176005304-27" author="anast (generated)">
+        <createTable tableName="groupchat_has_users">
+            <column name="chat_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="groupchat_has_users_pkey"/>
+            </column>
+            <column name="user_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="groupchat_has_users_pkey"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="1677176005304-28" author="anast (generated)">
+        <createTable tableName="message">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="message_pkey"/>
+            </column>
+            <column name="last_redaction_date" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="message" type="TEXT"/>
+            <column name="persist_date" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="chat_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="user_sender_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="1677176005304-29" author="anast (generated)">
+        <createTable tableName="question">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="question_pkey"/>
+            </column>
+            <column name="description" type="TEXT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="is_deleted" type="BOOLEAN"/>
+            <column name="last_redaction_date" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="persist_date" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="title" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="user_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="1677176005304-30" author="anast (generated)">
+        <createTable tableName="question_has_tag">
+            <column name="question_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="tag_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="1677176005304-31" author="anast (generated)">
+        <createTable tableName="question_viewed">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="question_viewed_pkey"/>
+            </column>
+            <column name="persist_date" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="question_id" type="BIGINT"/>
+            <column name="user_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1677176005304-32" author="anast (generated)">
+        <createTable tableName="related_tag">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="related_tag_pkey"/>
+            </column>
+            <column name="child_tag" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="main_tag" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="1677176005304-33" author="anast (generated)">
+        <createTable tableName="reputation">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="reputation_pkey"/>
+            </column>
+            <column name="count" type="INTEGER"/>
+            <column name="persist_date" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="type" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="answer_id" type="BIGINT"/>
+            <column name="author_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="question_id" type="BIGINT"/>
+            <column name="sender_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1677176005304-34" author="anast (generated)">
+        <createTable tableName="role">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="role_pkey"/>
+            </column>
+            <column name="name" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1677176005304-35" author="anast (generated)">
+        <createTable tableName="singel_chat">
+            <column name="chat_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="singel_chat_pkey"/>
+            </column>
+            <column name="use_two_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="user_one_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="1677176005304-36" author="anast (generated)">
+        <createTable tableName="tag">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="tag_pkey"/>
+            </column>
+            <column name="description" type="VARCHAR(255)"/>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="persist_date" type="TIMESTAMP WITHOUT TIME ZONE"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1677176005304-37" author="anast (generated)">
+        <createTable tableName="tag_ignore">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="tag_ignore_pkey"/>
+            </column>
+            <column name="persist_date" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="ignored_tag_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="user_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="1677176005304-38" author="anast (generated)">
+        <createTable tableName="tag_tracked">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="tag_tracked_pkey"/>
+            </column>
+            <column name="persist_date" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="tracked_tag_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="user_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="1677176005304-39" author="anast (generated)">
+        <createTable tableName="user_badges">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="user_badges_pkey"/>
+            </column>
+            <column name="ready" type="BOOLEAN"/>
+            <column name="badges_id" type="BIGINT"/>
+            <column name="user_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1677176005304-40" author="anast (generated)">
+        <createTable tableName="user_entity">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="user_entity_pkey"/>
+            </column>
+            <column name="about" type="VARCHAR(255)"/>
+            <column name="city" type="VARCHAR(255)"/>
+            <column name="email" type="VARCHAR(255)"/>
+            <column name="full_name" type="VARCHAR(255)"/>
+            <column name="image_link" type="VARCHAR(255)"/>
+            <column name="is_deleted" type="BOOLEAN"/>
+            <column name="is_enabled" type="BOOLEAN"/>
+            <column name="last_redaction_date" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="link_github" type="VARCHAR(255)"/>
+            <column name="link_site" type="VARCHAR(255)"/>
+            <column name="link_vk" type="VARCHAR(255)"/>
+            <column name="nickname" type="VARCHAR(255)"/>
+            <column name="password" type="VARCHAR(255)"/>
+            <column name="persist_date" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="role_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="1677176005304-41" author="anast (generated)">
+        <createTable tableName="user_favorite_question">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="user_favorite_question_pkey"/>
+            </column>
+            <column name="persist_date" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="question_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="user_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="1677176005304-42" author="anast (generated)">
+        <createTable tableName="votes_on_answers">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="votes_on_answers_pkey"/>
+            </column>
+            <column name="persist_date" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="vote_type" type="VARCHAR(255)"/>
+            <column name="answer_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="user_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="1677176005304-43" author="anast (generated)">
+        <createTable tableName="votes_on_questions">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="votes_on_questions_pkey"/>
+            </column>
+            <column name="persist_date" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="vote" type="VARCHAR(255)"/>
+            <column name="question_id" type="BIGINT"/>
+            <column name="user_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1677176005304-44" author="anast (generated)">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="answer"
+                                 constraintName="fk2k36bpxtxus6sxyg8mlof5js1" onDelete="NO ACTION" onUpdate="NO ACTION"
+                                 referencedColumnNames="id" referencedTableName="user_entity"/>
+    </changeSet>
+    <changeSet id="1677176005304-45" author="anast (generated)">
+        <addForeignKeyConstraint baseColumnNames="comment_id" baseTableName="comment_question"
+                                 constraintName="fk2ob5qywtuo1093g7ql5kfx3rk" onDelete="NO ACTION" onUpdate="NO ACTION"
+                                 referencedColumnNames="id" referencedTableName="comment"/>
+    </changeSet>
+    <changeSet id="1677176005304-46" author="anast (generated)">
+        <addForeignKeyConstraint baseColumnNames="chat_id" baseTableName="groupchat_has_users"
+                                 constraintName="fk2rtdyfisemfv23xnmsxopptng" onDelete="NO ACTION" onUpdate="NO ACTION"
+                                 referencedColumnNames="chat_id" referencedTableName="group_chat"/>
+    </changeSet>
+    <changeSet id="1677176005304-47" author="anast (generated)">
+        <addForeignKeyConstraint baseColumnNames="badges_id" baseTableName="user_badges"
+                                 constraintName="fk337cc9ux9pqlb991y6w43to3j" onDelete="NO ACTION" onUpdate="NO ACTION"
+                                 referencedColumnNames="id" referencedTableName="badges"/>
+    </changeSet>
+    <changeSet id="1677176005304-48" author="anast (generated)">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="votes_on_questions"
+                                 constraintName="fk5rc898att1153186h64v2lym2" onDelete="NO ACTION" onUpdate="NO ACTION"
+                                 referencedColumnNames="id" referencedTableName="user_entity"/>
+    </changeSet>
+    <changeSet id="1677176005304-49" author="anast (generated)">
+        <addForeignKeyConstraint baseColumnNames="use_two_id" baseTableName="singel_chat"
+                                 constraintName="fk6nto53owdiythxo2h6dkbvu4t" onDelete="NO ACTION" onUpdate="NO ACTION"
+                                 referencedColumnNames="id" referencedTableName="user_entity"/>
+    </changeSet>
+    <changeSet id="1677176005304-50" author="anast (generated)">
+        <addForeignKeyConstraint baseColumnNames="ignored_tag_id" baseTableName="tag_ignore"
+                                 constraintName="fk7wnisc677h8s3wb6o4mv2oqkf" onDelete="NO ACTION" onUpdate="NO ACTION"
+                                 referencedColumnNames="id" referencedTableName="tag"/>
+    </changeSet>
+    <changeSet id="1677176005304-51" author="anast (generated)">
+        <addForeignKeyConstraint baseColumnNames="question_id" baseTableName="answer"
+                                 constraintName="fk8frr4bcabmmeyyu60qt7iiblo" onDelete="NO ACTION" onUpdate="NO ACTION"
+                                 referencedColumnNames="id" referencedTableName="question"/>
+    </changeSet>
+    <changeSet id="1677176005304-52" author="anast (generated)">
+        <addForeignKeyConstraint baseColumnNames="question_id" baseTableName="question_has_tag"
+                                 constraintName="fk95qkp3v84rs97v7alcfk77fdr" onDelete="NO ACTION" onUpdate="NO ACTION"
+                                 referencedColumnNames="id" referencedTableName="question"/>
+    </changeSet>
+    <changeSet id="1677176005304-53" author="anast (generated)">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="groupchat_has_users"
+                                 constraintName="fkd1tr2cxaudn9q2ea52ydi3sea" onDelete="NO ACTION" onUpdate="NO ACTION"
+                                 referencedColumnNames="id" referencedTableName="user_entity"/>
+    </changeSet>
+    <changeSet id="1677176005304-54" author="anast (generated)">
+        <addForeignKeyConstraint baseColumnNames="answer_id" baseTableName="comment_answer"
+                                 constraintName="fkdqdik3krvw5227fq8oiei7vn4" onDelete="NO ACTION" onUpdate="NO ACTION"
+                                 referencedColumnNames="id" referencedTableName="answer"/>
+    </changeSet>
+    <changeSet id="1677176005304-55" author="anast (generated)">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="user_badges"
+                                 constraintName="fkfb1c6pv1fesnielua9xtgci76" onDelete="NO ACTION" onUpdate="NO ACTION"
+                                 referencedColumnNames="id" referencedTableName="user_entity"/>
+    </changeSet>
+    <changeSet id="1677176005304-56" author="anast (generated)">
+        <addForeignKeyConstraint baseColumnNames="chat_id" baseTableName="group_chat"
+                                 constraintName="fkhwhjdn057057sx83g73m0iag5" onDelete="NO ACTION" onUpdate="NO ACTION"
+                                 referencedColumnNames="id" referencedTableName="chat"/>
+    </changeSet>
+    <changeSet id="1677176005304-57" author="anast (generated)">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="tag_tracked"
+                                 constraintName="fki60fykn402bntk377q2t9ybde" onDelete="NO ACTION" onUpdate="NO ACTION"
+                                 referencedColumnNames="id" referencedTableName="user_entity"/>
+    </changeSet>
+    <changeSet id="1677176005304-58" author="anast (generated)">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="votes_on_answers"
+                                 constraintName="fki8gxkndohkt08w93qkx756d8e" onDelete="NO ACTION" onUpdate="NO ACTION"
+                                 referencedColumnNames="id" referencedTableName="user_entity"/>
+    </changeSet>
+    <changeSet id="1677176005304-59" author="anast (generated)">
+        <addForeignKeyConstraint baseColumnNames="question_id" baseTableName="votes_on_questions"
+                                 constraintName="fkiu40gq78m9r2n8nmwnefjxyry" onDelete="NO ACTION" onUpdate="NO ACTION"
+                                 referencedColumnNames="id" referencedTableName="question"/>
+    </changeSet>
+    <changeSet id="1677176005304-60" author="anast (generated)">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="tag_ignore"
+                                 constraintName="fkjjdrwp57ok5c1ckuwqsft1qxf" onDelete="NO ACTION" onUpdate="NO ACTION"
+                                 referencedColumnNames="id" referencedTableName="user_entity"/>
+    </changeSet>
+    <changeSet id="1677176005304-61" author="anast (generated)">
+        <addForeignKeyConstraint baseColumnNames="answer_id" baseTableName="votes_on_answers"
+                                 constraintName="fkjyyufwvq2xtar6hhcajuv73f9" onDelete="NO ACTION" onUpdate="NO ACTION"
+                                 referencedColumnNames="id" referencedTableName="answer"/>
+    </changeSet>
+    <changeSet id="1677176005304-62" author="anast (generated)">
+        <addForeignKeyConstraint baseColumnNames="child_tag" baseTableName="related_tag"
+                                 constraintName="fkk5320uu5wbdyg2xku67qp8aqe" onDelete="NO ACTION" onUpdate="NO ACTION"
+                                 referencedColumnNames="id" referencedTableName="tag"/>
+    </changeSet>
+    <changeSet id="1677176005304-63" author="anast (generated)">
+        <addForeignKeyConstraint baseColumnNames="chat_id" baseTableName="singel_chat"
+                                 constraintName="fkl2cp5kdbj6ym2wgsgi218jej3" onDelete="NO ACTION" onUpdate="NO ACTION"
+                                 referencedColumnNames="id" referencedTableName="chat"/>
+    </changeSet>
+    <changeSet id="1677176005304-64" author="anast (generated)">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="comment"
+                                 constraintName="fkl4xlhaqa07wrvf446sjwngh8j" onDelete="NO ACTION" onUpdate="NO ACTION"
+                                 referencedColumnNames="id" referencedTableName="user_entity"/>
+    </changeSet>
+    <changeSet id="1677176005304-65" author="anast (generated)">
+        <addForeignKeyConstraint baseColumnNames="user_sender_id" baseTableName="message"
+                                 constraintName="fklgr15f5qgibclatnawcadb4x9" onDelete="NO ACTION" onUpdate="NO ACTION"
+                                 referencedColumnNames="id" referencedTableName="user_entity"/>
+    </changeSet>
+    <changeSet id="1677176005304-66" author="anast (generated)">
+        <addForeignKeyConstraint baseColumnNames="author_id" baseTableName="reputation"
+                                 constraintName="fklndsyfrqg3b6g87gplymx8y6r" onDelete="NO ACTION" onUpdate="NO ACTION"
+                                 referencedColumnNames="id" referencedTableName="user_entity"/>
+    </changeSet>
+    <changeSet id="1677176005304-67" author="anast (generated)">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="bookmarks"
+                                 constraintName="fklo0de495ruc6wr4j8uim9fc2e" onDelete="NO ACTION" onUpdate="NO ACTION"
+                                 referencedColumnNames="id" referencedTableName="user_entity"/>
+    </changeSet>
+    <changeSet id="1677176005304-68" author="anast (generated)">
+        <addForeignKeyConstraint baseColumnNames="question_id" baseTableName="user_favorite_question"
+                                 constraintName="fklp6cfgrasgyon52khtdjjgi02" onDelete="NO ACTION" onUpdate="NO ACTION"
+                                 referencedColumnNames="id" referencedTableName="question"/>
+    </changeSet>
+    <changeSet id="1677176005304-69" author="anast (generated)">
+        <addForeignKeyConstraint baseColumnNames="user_one_id" baseTableName="singel_chat"
+                                 constraintName="fklyuqnigj07exf26a7f0dakusa" onDelete="NO ACTION" onUpdate="NO ACTION"
+                                 referencedColumnNames="id" referencedTableName="user_entity"/>
+    </changeSet>
+    <changeSet id="1677176005304-70" author="anast (generated)">
+        <addForeignKeyConstraint baseColumnNames="chat_id" baseTableName="message"
+                                 constraintName="fkmejd0ykokrbuekwwgd5a5xt8a" onDelete="NO ACTION" onUpdate="NO ACTION"
+                                 referencedColumnNames="id" referencedTableName="chat"/>
+    </changeSet>
+    <changeSet id="1677176005304-71" author="anast (generated)">
+        <addForeignKeyConstraint baseColumnNames="question_id" baseTableName="bookmarks"
+                                 constraintName="fkmge2txjhd0hq1ji859u0ylwyw" onDelete="NO ACTION" onUpdate="NO ACTION"
+                                 referencedColumnNames="id" referencedTableName="question"/>
+    </changeSet>
+    <changeSet id="1677176005304-72" author="anast (generated)">
+        <addForeignKeyConstraint baseColumnNames="main_tag" baseTableName="related_tag"
+                                 constraintName="fknb1cmjyv0amiv491xlx4xi6w1" onDelete="NO ACTION" onUpdate="NO ACTION"
+                                 referencedColumnNames="id" referencedTableName="tag"/>
+    </changeSet>
+    <changeSet id="1677176005304-73" author="anast (generated)">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="user_favorite_question"
+                                 constraintName="fknhawqa1q89ai58etpxjbvlt3c" onDelete="NO ACTION" onUpdate="NO ACTION"
+                                 referencedColumnNames="id" referencedTableName="user_entity"/>
+    </changeSet>
+    <changeSet id="1677176005304-74" author="anast (generated)">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="question_viewed"
+                                 constraintName="fknw7lp8384y34tnaulsvmmfnub" onDelete="NO ACTION" onUpdate="NO ACTION"
+                                 referencedColumnNames="id" referencedTableName="user_entity"/>
+    </changeSet>
+    <changeSet id="1677176005304-75" author="anast (generated)">
+        <addForeignKeyConstraint baseColumnNames="comment_id" baseTableName="comment_answer"
+                                 constraintName="fkoe2xyxejln3qgk05w6y3pih6j" onDelete="NO ACTION" onUpdate="NO ACTION"
+                                 referencedColumnNames="id" referencedTableName="comment"/>
+    </changeSet>
+    <changeSet id="1677176005304-76" author="anast (generated)">
+        <addForeignKeyConstraint baseColumnNames="question_id" baseTableName="reputation"
+                                 constraintName="fkolofwdfwvpjawwa9gpfvtycwf" onDelete="NO ACTION" onUpdate="NO ACTION"
+                                 referencedColumnNames="id" referencedTableName="question"/>
+    </changeSet>
+    <changeSet id="1677176005304-77" author="anast (generated)">
+        <addForeignKeyConstraint baseColumnNames="tracked_tag_id" baseTableName="tag_tracked"
+                                 constraintName="fkpn5ysi8igj9rmnun213hg5uf" onDelete="NO ACTION" onUpdate="NO ACTION"
+                                 referencedColumnNames="id" referencedTableName="tag"/>
+    </changeSet>
+    <changeSet id="1677176005304-78" author="anast (generated)">
+        <addForeignKeyConstraint baseColumnNames="role_id" baseTableName="user_entity"
+                                 constraintName="fkpostrnt7qdgc4m56i71qlkl61" onDelete="NO ACTION" onUpdate="NO ACTION"
+                                 referencedColumnNames="id" referencedTableName="role"/>
+    </changeSet>
+    <changeSet id="1677176005304-79" author="anast (generated)">
+        <addForeignKeyConstraint baseColumnNames="question_id" baseTableName="question_viewed"
+                                 constraintName="fkqeg29r7uu1g1flepcpm4mv1g2" onDelete="NO ACTION" onUpdate="NO ACTION"
+                                 referencedColumnNames="id" referencedTableName="question"/>
+    </changeSet>
+    <changeSet id="1677176005304-80" author="anast (generated)">
+        <addForeignKeyConstraint baseColumnNames="sender_id" baseTableName="reputation"
+                                 constraintName="fkqm7j2hn9g8f57qjvw5r1vebcs" onDelete="NO ACTION" onUpdate="NO ACTION"
+                                 referencedColumnNames="id" referencedTableName="user_entity"/>
+    </changeSet>
+    <changeSet id="1677176005304-81" author="anast (generated)">
+        <addForeignKeyConstraint baseColumnNames="tag_id" baseTableName="question_has_tag"
+                                 constraintName="fkrg80k8r5dshnsufpxu1p0d8gp" onDelete="NO ACTION" onUpdate="NO ACTION"
+                                 referencedColumnNames="id" referencedTableName="tag"/>
+    </changeSet>
+    <changeSet id="1677176005304-82" author="anast (generated)">
+        <addForeignKeyConstraint baseColumnNames="answer_id" baseTableName="reputation"
+                                 constraintName="fksqo308es5w7bvg914o1mwrn2m" onDelete="NO ACTION" onUpdate="NO ACTION"
+                                 referencedColumnNames="id" referencedTableName="answer"/>
+    </changeSet>
+    <changeSet id="1677176005304-83" author="anast (generated)">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="question"
+                                 constraintName="fktg7oxllrdp5tf8isrfmory7yo" onDelete="NO ACTION" onUpdate="NO ACTION"
+                                 referencedColumnNames="id" referencedTableName="user_entity"/>
+    </changeSet>
+    <changeSet id="1677176005304-84" author="anast (generated)">
+        <addForeignKeyConstraint baseColumnNames="question_id" baseTableName="comment_question"
+                                 constraintName="fkup4pc0f37svsrid4lwxkeqf2" onDelete="NO ACTION" onUpdate="NO ACTION"
+                                 referencedColumnNames="id" referencedTableName="question"/>
+    </changeSet>
+
+</databaseChangeLog>
