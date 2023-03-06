@@ -1,4 +1,4 @@
-package com.javamentor.qa.platform.webapp;
+package com.javamentor.qa.platform.webapp.controllers;
 
 import com.javamentor.qa.platform.models.dto.UserDto;
 import com.javamentor.qa.platform.service.abstracts.dto.UserDtoService;
