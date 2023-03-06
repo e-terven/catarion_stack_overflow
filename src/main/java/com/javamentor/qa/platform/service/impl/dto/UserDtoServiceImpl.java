@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserDtoServiceImpl extends ReadWriteServiceImpl<UserDto, Long> implements UserDtoService {
 
-    public UserDtoServiceImpl(ReadWriteDao<UserDto, Long> readWriteDao) {
-        super(readWriteDao);
-    }
+	public UserDtoServiceImpl(ReadWriteDao<UserDto, Long> readWriteDao) {
+		super(readWriteDao);
+	}
 }
