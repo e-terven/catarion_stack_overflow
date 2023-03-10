@@ -24,7 +24,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("api/user/registration")
+@RequestMapping("/api/user/registration")
 @AllArgsConstructor
 public class RegistrationController {
 
@@ -76,7 +76,7 @@ public class RegistrationController {
 			message = "Истекло время действия ссылки"
 		)}
 	)
-	@GetMapping("verify")
+	@GetMapping("/verify")
 	public ResponseEntity<String> verifyUser(
 		@RequestParam("email") String email, @RequestParam("token") String token
 	) {
