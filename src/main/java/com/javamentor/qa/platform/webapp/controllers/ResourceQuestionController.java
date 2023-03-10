@@ -5,15 +5,19 @@ import com.javamentor.qa.platform.models.dto.QuestionDto;
 import com.javamentor.qa.platform.models.entity.question.Question;
 import com.javamentor.qa.platform.models.entity.user.User;
 import com.javamentor.qa.platform.service.abstracts.model.QuestionService;
-import com.javamentor.qa.platform.service.abstracts.model.UserService;
 import com.javamentor.qa.platform.webapp.converters.QuestionConverter;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
@@ -24,31 +28,26 @@ public class ResourceQuestionController {
 
     private final QuestionService questionService;
     private final QuestionConverter questionConverter;
-    private final UserService userService;
 
     public ResourceQuestionController(QuestionService questionService,
-                                      QuestionConverter questionConverter,
-                                      UserService userService) {
+                                      QuestionConverter questionConverter) {
         this.questionService = questionService;
         this.questionConverter = questionConverter;
-        this.userService = userService;
     }
 
-    @Operation(summary = "Создание нового вопроса",
-            description = """
-                          Заголовок вопроса и описание вопроса не должны быть пустыми, у вопроса
-                          должен быть минимум один тэг c названием.
-                          Возвращает объект QuestionDto.
-                          """
-    )
-    @PostMapping()
+    @PostMapping
+    @Operation(summary = "Добавляет новый вопрос, возвращает QuestionDto")
+    @ApiResponses(value = {@ApiResponse(responseCode = "200",
+            description = "Ответ успешно добавлен",
+            content = @Content(mediaType = "application/json",
+                    schema = @Schema(implementation = QuestionDto.class))),
+            @ApiResponse(responseCode = "400",
+                    description = "Ответ не добавлен, проверьте обязательные поля")})
+    @ResponseBody
     public ResponseEntity<QuestionDto> createQuestion(
-            @Valid @RequestBody QuestionCreateDto questionCreateDto) {
+            @Valid @RequestBody QuestionCreateDto questionCreateDto,
+            @AuthenticationPrincipal User user) {
         Question question = questionConverter.questionCreateDtoToQuestion(questionCreateDto);
-        // TODO: 06.03.2023 Нужно брать юзера из секьюрити, заменить когда появится авторизация
-//        User user = userService.getByEmail(
-//                 SecurityContextHolder.getContext().getAuthentication().getName()).get();
-        User user = userService.getById(1L).get();
         question.setUser(user);
         questionService.persist(question);
         return new ResponseEntity<>(
