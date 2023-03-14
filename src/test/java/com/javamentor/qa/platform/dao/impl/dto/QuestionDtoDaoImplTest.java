@@ -11,6 +11,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 import java.util.Optional;
 
@@ -19,6 +20,8 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
 public class QuestionDtoDaoImplTest {
+
+    @PersistenceContext
     private EntityManager entityManager;
     private QuestionDtoDaoImpl questionDtoDao;
 
@@ -26,7 +29,6 @@ public class QuestionDtoDaoImplTest {
     public void testGetById() {
         entityManager = mock(EntityManager.class);
         questionDtoDao = new QuestionDtoDaoImpl();
-        questionDtoDao.setEntityManager(entityManager);
 
         Long questionId = 1L;
         Long authorizedUserId = 2L;
@@ -53,7 +55,6 @@ public class QuestionDtoDaoImplTest {
     public void testGetByIdReturnsEmpty() {
         entityManager = mock(EntityManager.class);
         questionDtoDao = new QuestionDtoDaoImpl();
-        questionDtoDao.setEntityManager(entityManager);
         Long questionId = 1L;
         Long authorizedUserId = 2L;
 

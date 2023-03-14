@@ -5,6 +5,6 @@ import com.javamentor.qa.platform.service.abstracts.repository.ReadWriteService;
 
 import java.util.List;
 
-public interface AnswerDtoService extends ReadWriteService<AnswerDto, Long> {
+public interface AnswerDtoService {
     List<AnswerDto> getAllAnswersDtoByQuestionId(Long id, Long userId);
 }

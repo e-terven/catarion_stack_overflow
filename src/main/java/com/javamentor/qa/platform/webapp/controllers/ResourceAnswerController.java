@@ -13,7 +13,12 @@ import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 import java.util.Optional;
@@ -36,13 +41,10 @@ public class ResourceAnswerController {
     @ApiResponses(
             value = {
                     @ApiResponse(code = 200, message = "Список ответов получен"),
-                    @ApiResponse(code = 404, message = "Список ответов не найден")
-            }
-    )
-
+                    @ApiResponse(code = 404, message = "Список ответов не найден")})
     @GetMapping("/answer")
-    public ResponseEntity<List<AnswerDto>> getAllAnswers(@PathVariable Long questionId, @AuthenticationPrincipal User user) {
-
+    public ResponseEntity<List<AnswerDto>> getAllAnswers(@PathVariable Long questionId,
+                                                         @AuthenticationPrincipal User user) {
         try {
             List<AnswerDto> answerDtoList = answerDtoService.getAllAnswersDtoByQuestionId(questionId, user.getId());
             return new ResponseEntity<>(answerDtoList, HttpStatus.OK);
@@ -55,7 +57,6 @@ public class ResourceAnswerController {
     public ResponseEntity<Optional<CommentAnswerDto>> addCommentAnswer(@RequestBody User user,
                                                                        @RequestBody Long answerId,
                                                                        @PathVariable String comment) {
-    // isBlank() выгодней использовать т.к. isEmpty() считает пробел за не нулевое значение (ошибка закралась из DRF)
         if (comment.isBlank()) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
