@@ -1,4 +1,10 @@
 package com.javamentor.qa.platform.service.abstracts.dto;
 
-public interface AnswerDtoService {
+import com.javamentor.qa.platform.models.dto.AnswerDto;
+import com.javamentor.qa.platform.service.abstracts.repository.ReadWriteService;
+
+import java.util.List;
+
+public interface AnswerDtoService extends ReadWriteService<AnswerDto, Long> {
+    List<AnswerDto> getAllAnswersDtoByQuestionId(Long id, Long userId);
 }
