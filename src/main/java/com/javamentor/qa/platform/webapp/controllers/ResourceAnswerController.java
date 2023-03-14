@@ -54,9 +54,9 @@ public class ResourceAnswerController {
     }
 
     @PostMapping(value = "/answer/{answerId}/comment")
-    public ResponseEntity<Optional<CommentAnswerDto>> addCommentAnswer(@RequestBody User user,
-                                                                       @RequestBody Long answerId,
-                                                                       @PathVariable String comment) {
+    public ResponseEntity<Optional<CommentAnswerDto>> addCommentAnswer(@AuthenticationPrincipal User user,
+                                                                       @RequestBody String comment,
+                                                                       @PathVariable Long answerId) {
         if (comment.isBlank()) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
