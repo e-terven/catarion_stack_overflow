@@ -1,4 +1,4 @@
-package com.javamentor.qa.platform.webapp.controllers;
+package com.javamentor.qa.platform.webapp.controllers.rest;
 
 import com.javamentor.qa.platform.models.dto.UserRegistrationDto;
 import com.javamentor.qa.platform.models.entity.user.Role;
