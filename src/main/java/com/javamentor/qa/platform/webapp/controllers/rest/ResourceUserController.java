@@ -33,8 +33,7 @@ public class ResourceUserController {
 	@GetMapping("/{id}")
 	public ResponseEntity<UserDto> getUserDtoById(@PathVariable("id") Long id) {
 		Optional<UserDto> userDtoOptional = userDtoService.getById(id);
-		return userDtoOptional.isPresent()
-			   ? new ResponseEntity<>(userDtoOptional.get(), HttpStatus.OK)
-			   : new ResponseEntity<>(new UserDto(), HttpStatus.NOT_FOUND);
+		return userDtoOptional.map(userDto -> new ResponseEntity<>(userDto, HttpStatus.OK))
+				.orElseGet(() -> new ResponseEntity<>(new UserDto(), HttpStatus.NOT_FOUND));
 	}
 }
