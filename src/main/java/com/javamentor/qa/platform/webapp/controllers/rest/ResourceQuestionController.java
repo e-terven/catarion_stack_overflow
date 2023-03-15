@@ -32,7 +32,7 @@ import javax.validation.Valid;
 
 @AllArgsConstructor
 @RestController
-@RequestMapping
+@RequestMapping("/api/user/question")
 @Api(value = "API для взаимодействия с вопросами")
 public class ResourceQuestionController {
 
@@ -40,16 +40,13 @@ public class ResourceQuestionController {
     private final QuestionConverter questionConverter;
     private final QuestionDtoService questionDtoService;
 
-
-    @PostMapping("/api/user/question")
+    @PostMapping
     @Operation(summary = "Добавляет новый вопрос, возвращает QuestionDto")
     @ApiResponses(value = {
-            @ApiResponse(
-                    responseCode = "200",
+            @ApiResponse(responseCode = "200",
                     description = "Ответ успешно добавлен",
                     content = @Content(mediaType = "application/json",
-                            schema = @Schema(implementation = QuestionDto.class))
-            ),
+                            schema = @Schema(implementation = QuestionDto.class))),
             @ApiResponse(responseCode = "400",
                     description = "Ответ не добавлен, проверьте обязательные поля")})
     @ResponseBody
@@ -64,20 +61,19 @@ public class ResourceQuestionController {
     }
 
     @ApiOperation(value = "Получение вопроса по ID",
-            notes = "Предоставляет модель DTO вопроса(аунтефицированного пользователя) по его ID из БД",
+            notes = "Предоставляет модель DTO вопроса(аутентифицированного пользователя) по его ID из БД",
             httpMethod = "GET",
-            response = QuestionDto.class
-    )
+            response = QuestionDto.class)
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Вопрос успешно получен из БД",
                     content = @Content(mediaType = "application/json",
                             schema = @Schema(implementation = QuestionDto.class))),
-            @ApiResponse(responseCode = "401", description = "Необходима аунтификация"),
-            @ApiResponse(responseCode = "403", description = "Доступ закрыт для неавтаризированного пользователя"),
+            @ApiResponse(responseCode = "401", description = "Необходима аутентификация"),
+            @ApiResponse(responseCode = "403", description = "Доступ закрыт для неавторизованного пользователя"),
             @ApiResponse(responseCode = "404", description = "Вопрос не найден в БД"),
             @ApiResponse(responseCode = "500", description = "Ошибка на стороне сервера")
     })
-    @GetMapping("/api/user/question/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<QuestionDto> getQuestionDtoById(@Parameter @PathVariable("id") Long questionId,
                                                           @ApiIgnore @AuthenticationPrincipal User user) {
         return questionDtoService.getById(questionId, user.getId())

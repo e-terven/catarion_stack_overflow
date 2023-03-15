@@ -25,21 +25,17 @@ import java.util.Optional;
 
 @RestController
 @AllArgsConstructor
-@RequestMapping(value = "api/user/question/{questionId}")
+@RequestMapping(value = "/api/user/question/{questionId}")
 public class ResourceAnswerController {
 
     private final AnswerDtoService answerDtoService;
     private final CommentAnswerDtoService commentAnswerDtoService;
     private final CommentAnswerService commentAnswerService;
 
-    @ApiOperation(
-            value = "Получение списка DTO ответов по id вопроса",
+    @ApiOperation(value = "Получение списка DTO ответов по id вопроса",
             response = AnswerDto.class,
-            notes = "Возвращает список AnswerDto"
-    )
-
-    @ApiResponses(
-            value = {
+            notes = "Возвращает список AnswerDto")
+    @ApiResponses(value = {
                     @ApiResponse(code = 200, message = "Список ответов получен"),
                     @ApiResponse(code = 404, message = "Список ответов не найден")})
     @GetMapping("/answer")
