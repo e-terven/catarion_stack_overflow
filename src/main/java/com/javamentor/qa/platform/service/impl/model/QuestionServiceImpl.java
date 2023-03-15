@@ -1,5 +1,6 @@
 package com.javamentor.qa.platform.service.impl.model;
 
+import com.javamentor.qa.platform.dao.abstracts.model.QuestionDao;
 import com.javamentor.qa.platform.dao.abstracts.repository.ReadWriteDao;
 import com.javamentor.qa.platform.models.entity.question.Question;
 import com.javamentor.qa.platform.models.entity.question.Tag;
@@ -12,14 +13,17 @@ import org.springframework.util.StringUtils;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class QuestionServiceImpl extends ReadWriteServiceImpl<Question, Long> implements QuestionService {
 
+    public final QuestionDao questionDao;
     public final TagService tagService;
 
-    public QuestionServiceImpl(ReadWriteDao<Question, Long> readWriteDao, TagService tagService) {
+    public QuestionServiceImpl(ReadWriteDao<Question, Long> readWriteDao, QuestionDao questionDao, TagService tagService) {
         super(readWriteDao);
+        this.questionDao = questionDao;
         this.tagService = tagService;
     }
 
@@ -39,5 +43,10 @@ public class QuestionServiceImpl extends ReadWriteServiceImpl<Question, Long> im
         }
         question.setTags(tags);
         super.persist(question);
+    }
+
+    @Override
+    public Optional<Long> getCountQuestion() {
+        return questionDao.getCountQuestion();
     }
 }
