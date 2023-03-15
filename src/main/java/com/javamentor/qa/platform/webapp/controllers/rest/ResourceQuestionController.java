@@ -32,7 +32,7 @@ import javax.validation.Valid;
 
 @AllArgsConstructor
 @RestController
-@RequestMapping("/api/user/question")
+@RequestMapping
 @Api(value = "API для взаимодействия с вопросами")
 public class ResourceQuestionController {
 
@@ -41,7 +41,7 @@ public class ResourceQuestionController {
     private final QuestionDtoService questionDtoService;
 
 
-    @PostMapping
+    @PostMapping("/api/user/question")
     @Operation(summary = "Добавляет новый вопрос, возвращает QuestionDto")
     @ApiResponses(value = {
             @ApiResponse(
@@ -77,7 +77,7 @@ public class ResourceQuestionController {
             @ApiResponse(responseCode = "404", description = "Вопрос не найден в БД"),
             @ApiResponse(responseCode = "500", description = "Ошибка на стороне сервера")
     })
-    @GetMapping("/{id}")
+    @GetMapping("/api/user/question/{id}")
     public ResponseEntity<QuestionDto> getQuestionDtoById(@Parameter @PathVariable("id") Long questionId,
                                                           @ApiIgnore @AuthenticationPrincipal User user) {
         return questionDtoService.getById(questionId, user.getId())

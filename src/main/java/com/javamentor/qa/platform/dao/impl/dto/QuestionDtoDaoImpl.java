@@ -1,10 +1,12 @@
 package com.javamentor.qa.platform.dao.impl.dto;
 
 import com.javamentor.qa.platform.dao.abstracts.dto.QuestionDtoDao;
+import com.javamentor.qa.platform.dao.impl.repository.ReadOnlyDaoImpl;
 import com.javamentor.qa.platform.dao.util.ResultListUtil;
 import com.javamentor.qa.platform.dao.util.SingleResultUtil;
 import com.javamentor.qa.platform.models.dto.QuestionDto;
 import com.javamentor.qa.platform.models.dto.TagDto;
+import com.javamentor.qa.platform.models.entity.question.Question;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -13,7 +15,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public class QuestionDtoDaoImpl implements QuestionDtoDao {
+public class QuestionDtoDaoImpl extends ReadOnlyDaoImpl<Question, Long> implements QuestionDtoDao {
 
     @PersistenceContext
     private EntityManager entityManager;
