@@ -8,5 +8,9 @@ import java.util.Optional;
 public interface VoteQuestionDao extends ReadWriteDao<VoteQuestion, Long> {
 
     Optional<VoteQuestion> getVoteByQuestionIdAndUserId(Long questionId, Long UserId);
+
     Long voteQuestion(Long questionId);
+
+    Optional<VoteQuestion> getByUserQuestion(Long userId, Long questionId);
+
 }
