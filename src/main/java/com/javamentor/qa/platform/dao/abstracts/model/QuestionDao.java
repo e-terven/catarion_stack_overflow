@@ -8,4 +8,6 @@ import java.util.Optional;
 public interface QuestionDao extends ReadWriteDao<Question, Long> {
 
     Optional<Long> getCountQuestion();
+
+    Optional<Question> getQuestionByQuestionIdAndUserId(Long questionId, Long userId);
 }
