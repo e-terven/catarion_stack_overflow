@@ -26,4 +26,12 @@ public class QuestionDaoImpl extends ReadWriteDaoImpl<Question, Long> implements
                         """, Long.class
         ));
     }
+    @Override
+    public Optional<Question> getQuestionByQuestionIdAndUserId(Long questionId, Long userId) {
+        return Optional.ofNullable(entityManager.createQuery("""
+SELECT u FROM Question u WHERE u.id = :questionId AND NOT u.user.id = : userId
+""", Question.class)
+                .setParameter("questionId", questionId).setParameter("userId", userId)
+                .setMaxResults(1).getSingleResult());
+    }
 }

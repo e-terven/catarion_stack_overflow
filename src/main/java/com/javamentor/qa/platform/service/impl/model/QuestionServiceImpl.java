@@ -18,10 +18,12 @@ import java.util.Optional;
 @Service
 public class QuestionServiceImpl extends ReadWriteServiceImpl<Question, Long> implements QuestionService {
 
-    public final QuestionDao questionDao;
     public final TagService tagService;
 
-    public QuestionServiceImpl(ReadWriteDao<Question, Long> readWriteDao, QuestionDao questionDao, TagService tagService) {
+    private final QuestionDao questionDao;
+
+    public QuestionServiceImpl(ReadWriteDao<Question, Long> readWriteDao, TagService tagService,
+                               QuestionDao questionDao) {
         super(readWriteDao);
         this.questionDao = questionDao;
         this.tagService = tagService;
@@ -48,5 +50,11 @@ public class QuestionServiceImpl extends ReadWriteServiceImpl<Question, Long> im
     @Override
     public Optional<Long> getCountQuestion() {
         return questionDao.getCountQuestion();
+    }
+
+    @Transactional(readOnly = true)
+    @Override
+    public Optional<Question> getQuestionByQuestionIdAndUserId(Long questionId, Long userId) {
+        return questionDao.getQuestionByQuestionIdAndUserId(questionId, userId);
     }
 }
