@@ -109,20 +109,6 @@ public class ResourceQuestionController {
                     """
     )
 
-    @PostMapping()
-    public ResponseEntity<QuestionDto> createQuestion(@Valid @AuthenticationPrincipal QuestionCreateDto questionCreateDto) {
-        Question question = questionConverter.questionCreateDtoToQuestion(questionCreateDto);
-        // TODO: 06.03.2023 Нужно брать юзера из секьюрити, заменить когда появится авторизация
-//        User user = userService.getByEmail(
-//                 SecurityContextHolder.getContext().getAuthentication().getName()).get();
-        User user = userService.getById(1L).get();
-        question.setUser(user);
-        questionService.persist(question);
-        return new ResponseEntity<>(
-                questionConverter.questionToQuestionDto(question), HttpStatus.CREATED);
-    }
-
-
     @ApiOperation(
             value = "Голосование за вопрос",
             response = Long.class,
@@ -139,18 +125,15 @@ public class ResourceQuestionController {
         if (!questionService.existsById(questionId)) { //Проверяем есть вопрос такой или нет
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);//"Вопрос отсутствует для голосования",
         }
-
         Long authorId = questionService.getById(questionId).get().getUser().getId();
 
-        if (user.getId() == authorId) { // Проверяем является ли пользователь автором вопроса
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST); //"Пользователь не может голосовать сам за себя"
+        if (user.getId() == authorId) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
-
-        if (voteQuestionService.getByUserQuestion(user.getId(), questionId)  //Проверка на дублирование, голосовал пользователь ЗА или нет
+        if (voteQuestionService.getByUserQuestion(user.getId(), questionId)
                 .filter(qv -> qv.getVote() == VoteType.UP).isPresent()) {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);//"Пользователь проголосовал 'ЗА' ранее",
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         } else {
-
             return ResponseEntity.ok(voteQuestionService.upVoteQuestion(user, questionId));
         }
 
