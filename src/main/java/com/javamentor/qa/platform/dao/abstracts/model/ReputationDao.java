@@ -8,4 +8,6 @@ import java.util.Optional;
 public interface ReputationDao extends ReadWriteDao<Reputation, Long> {
 
     Optional<Reputation> getReputationByQuestionIdAndUserId(Long questionId, Long userId);
+
+    Optional<Reputation> getByAuthor(Long author, Long answer);
 }
