@@ -25,7 +25,7 @@ import java.util.Optional;
 
 @RestController
 @AllArgsConstructor
-@RequestMapping(value = "/api/user/question/{questionId}")
+@RequestMapping("/api/user/question/{questionId}")
 public class ResourceAnswerController {
 
     private final AnswerDtoService answerDtoService;
