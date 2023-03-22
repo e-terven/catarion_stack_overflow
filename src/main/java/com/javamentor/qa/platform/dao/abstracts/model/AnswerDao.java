@@ -7,5 +7,7 @@ import java.util.Optional;
 
 public interface AnswerDao extends ReadWriteDao<Answer, Long> {
 
-	Optional<Answer> getByIdIfNotAuthor(Long answerId, Long userId);
+    Optional<Answer> getByIdIfNotAuthor(Long answerId, Long userId);
+
+    public void deleteAnswerById(Long id);
 }

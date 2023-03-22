@@ -7,6 +7,7 @@ import com.javamentor.qa.platform.service.abstracts.model.AnswerService;
 import com.javamentor.qa.platform.service.impl.repository.ReadWriteServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
@@ -14,6 +15,7 @@ import java.util.Optional;
 public class AnswerServiceImpl extends ReadWriteServiceImpl<Answer, Long> implements AnswerService {
 
     private final AnswerDao answerDao;
+
 
 
     @Autowired
@@ -25,5 +27,14 @@ public class AnswerServiceImpl extends ReadWriteServiceImpl<Answer, Long> implem
     @Override
     public Optional<Answer> getByIdIfNotAuthor(Long answerId, Long userId) {
         return answerDao.getByIdIfNotAuthor(answerId, userId);
+    }
+
+    @Override
+    @Transactional
+   public void deleteAnswer(Long answerId) {
+        Optional answerFromDb = answerDao.getById(answerId);
+        if (answerFromDb != null) {
+            answerDao.deleteAnswerById(answerId);
+        }
     }
 }

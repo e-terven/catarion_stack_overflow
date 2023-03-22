@@ -19,7 +19,7 @@ public class AnswerDaoImpl extends ReadWriteDaoImpl<Answer, Long> implements Ans
 
     @Override
     public Optional<Answer> getByIdIfNotAuthor(Long answerId, Long userId) {
-            Query query = entityManager.createQuery("""
+        Query query = entityManager.createQuery("""
                 SELECT a
                 FROM Answer a
                 LEFT JOIN User u ON u.id = a.user.id
@@ -30,8 +30,15 @@ public class AnswerDaoImpl extends ReadWriteDaoImpl<Answer, Long> implements Ans
 
         query.setParameter("userId", userId);
         query.setParameter("answerId", answerId);
-
         return SingleResultUtil.getSingleResultOrNull(query);
     }
 
+    public void deleteAnswerById(Long answerId) {
+
+        Query query = entityManager.createQuery("""
+                        UPDATE Answer a  
+                        SET  a.isDeleted = true 
+                        WHERE a.id =:answerId""")
+                .setParameter("answerId", answerId);
+    }
 }
