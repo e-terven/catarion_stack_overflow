@@ -16,8 +16,6 @@ public class AnswerServiceImpl extends ReadWriteServiceImpl<Answer, Long> implem
 
     private final AnswerDao answerDao;
 
-
-
     @Autowired
     public AnswerServiceImpl(ReadWriteDao<Answer, Long> readWriteDao, AnswerDao answerDao) {
         super(readWriteDao);
@@ -31,10 +29,7 @@ public class AnswerServiceImpl extends ReadWriteServiceImpl<Answer, Long> implem
 
     @Override
     @Transactional
-   public void deleteAnswer(Long answerId) {
-        Optional answerFromDb = answerDao.getById(answerId);
-        if (answerFromDb != null) {
-            answerDao.deleteAnswerById(answerId);
-        }
+    public void deleteAnswer(Long answerId) {
+        answerDao.deleteAnswerById(answerId);
     }
 }

@@ -16,14 +16,13 @@ import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.DeleteMapping;
-
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 import java.util.Optional;
@@ -88,8 +87,15 @@ public class ResourceAnswerController {
     }
 
     @DeleteMapping("/{answerId}")
-    public ResponseEntity<HttpStatus> markAnswerDel(@PathVariable Long answerId) {
-        answerService.deleteAnswer(answerId);
-        return ResponseEntity.ok(HttpStatus.OK);
+    @Operation(summary = "Помечает ответ на удаление")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Вопрос успешно помечен на удаление"),
+            @ApiResponse(code = 403, message = "Вопрос не найден")})
+    public ResponseEntity<HttpStatus> markAnswerToDelete(@PathVariable ("answerId") Long answerId) {
+        if (answerService.getById(answerId).isPresent()) {
+            answerService.deleteAnswer(answerId);
+            return new ResponseEntity<>(HttpStatus.OK);
+        }
+        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
 }

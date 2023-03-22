@@ -7,5 +7,5 @@ import java.util.Optional;
 
 public interface AnswerService extends ReadWriteService<Answer, Long> {
 	Optional<Answer> getByIdIfNotAuthor(Long answerId, Long userId);
-	public void deleteAnswer(Long id);
+	void deleteAnswer(Long id);
 }
