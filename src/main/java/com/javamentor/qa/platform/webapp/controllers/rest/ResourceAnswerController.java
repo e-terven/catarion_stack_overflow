@@ -18,10 +18,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.DeleteMapping;
+
 
 import java.util.List;
 import java.util.Optional;
@@ -83,5 +85,11 @@ public class ResourceAnswerController {
         }
 
         return new ResponseEntity<>(voteAnswerService.downVote(user, answer.get()), HttpStatus.OK);
+    }
+
+    @DeleteMapping("/{answerId}")
+    public ResponseEntity<HttpStatus> markAnswerDel(@PathVariable Long answerId) {
+        answerService.deleteAnswer(answerId);
+        return ResponseEntity.ok(HttpStatus.OK);
     }
 }
