@@ -1,13 +1,15 @@
 package com.javamentor.qa.platform.service.impl.repository;
 
 import com.javamentor.qa.platform.dao.abstracts.repository.ReadOnlyDao;
+import com.javamentor.qa.platform.service.abstracts.repository.ReadOnlyService;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
-public abstract class ReadOnlyServiceImpl<E, K> {
+//public abstract class ReadOnlyServiceImpl<E, K> {
+    public abstract class ReadOnlyServiceImpl<E, K> implements ReadOnlyService<E, K> {
 
     private final ReadOnlyDao<E, K> readOnlyDao;
 
