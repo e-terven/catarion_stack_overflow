@@ -44,6 +44,7 @@ public class ResourceQuestionController {
     private final QuestionConverter questionConverter;
     private final QuestionDtoService questionDtoService;
     private final VoteQuestionService voteQuestionService;
+
     private final UserService userService;
 
 
@@ -98,6 +99,18 @@ public class ResourceQuestionController {
         }
         Long resultVote = voteQuestionService.getVoteByQuestionAndUser(question.get(), user,
                 -5, VoteType.DOWN);
+        return new ResponseEntity<>(resultVote, HttpStatus.OK);
+    }
+    @PostMapping(value = "/{questionId}/upVoteQestion")
+    public ResponseEntity<Long> upVoteQestion (@PathVariable("questionId") Long questionId,
+                                                 @AuthenticationPrincipal User user) {
+        Optional<Question> question = questionService.getQuestionByQuestionIdAndUserId(questionId,
+                user.getId());
+        if (question.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        Long resultVote = voteQuestionService.getVoteByQuestionAndUser(question.get(), user,
+                +10, VoteType.UP);
         return new ResponseEntity<>(resultVote, HttpStatus.OK);
     }
 

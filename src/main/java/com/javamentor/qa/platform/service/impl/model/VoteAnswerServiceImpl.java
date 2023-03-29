@@ -69,4 +69,41 @@ public class VoteAnswerServiceImpl extends ReadWriteServiceImpl<VoteAnswer, Long
 
         return Long.valueOf(reputation.getCount());
     }
+    @Override
+    @Transactional
+    public Long upVote(User voteAuthor, Answer answer) {
+        VoteAnswer voteAnswer;
+        Reputation reputation;
+
+        Optional<VoteAnswer> voteAnswerOptional = voteAnswerDao.getByAuthorIdAndAnswerId(voteAuthor.getId(), answer.getId());
+        voteAnswer = voteAnswerOptional.orElseGet(VoteAnswer::new);
+
+        if (voteAnswer.getAnswer() == null) {
+            voteAnswer.setUser(voteAuthor);
+            voteAnswer.setAnswer(answer);
+            voteAnswer.setVoteType(VoteType.UP);
+
+            voteAnswerDao.persist(voteAnswer);
+        }
+
+
+        Optional<Reputation> reputationOptional = reputationDao.getByAuthor(voteAuthor.getId(), answer.getId());
+        reputation = reputationOptional.orElseGet(Reputation::new);
+
+        if (reputation.getCount() == null) {
+            reputation.setCount(0);
+        }
+
+        if (voteAnswer.getVoteType() == VoteType.UP) {
+            reputation.setCount(reputation.getCount() + 10);
+            reputation.setAnswer(answer);
+            reputation.setAuthor(answer.getUser());
+            reputation.setType(ReputationType.VoteAnswer);
+            reputation.setSender(voteAuthor);
+            reputation.setQuestion(answer.getQuestion());
+            reputationDao.update(reputation);
+        }
+
+        return Long.valueOf(reputation.getCount());
+    }
 }
