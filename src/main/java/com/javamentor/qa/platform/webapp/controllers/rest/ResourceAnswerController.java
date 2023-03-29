@@ -85,6 +85,18 @@ public class ResourceAnswerController {
 
         return new ResponseEntity<>(voteAnswerService.downVote(user, answer.get()), HttpStatus.OK);
     }
+    @PostMapping("/{id}/upVote")
+    @Operation(description = "увеличивает репутацию автору ответа")
+    @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = "успешно")
+    @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "400", description = "Ответа по ID не существует")
+    public ResponseEntity<Long> upVote(@RequestBody User user, @PathVariable Long id) {
+        Optional<Answer> answer = answerService.getByIdIfNotAuthor(id, user.getId());
+        if (answer.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+
+        return new ResponseEntity<>(voteAnswerService.upVote(user, answer.get()), HttpStatus.OK);
+    }
 
     @DeleteMapping("/{answerId}")
     @Operation(summary = "Помечает ответ на удаление")
