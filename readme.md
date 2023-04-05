@@ -523,26 +523,6 @@ https://habr.com/ru/post/310460/
 - services: -относятся к сервисам, которые мы настраиваем (БД).
 - build: context: . говорит о том, что мы будем искать Dockerfile в той же директории, что и docker-compose.yml.
 
-# Как работать с разными конфигурациями БД?
-По пути `src/main/resources` вы найдете два дополнительных файла конфигурации `application-dev.properties` и `application-local.properties`, предназначенные для удаленной и локальной БД соответственно.
-
-Чтобы не вносить свои данные, связанные с базой данных в properties, необходимо настроить конфигурацию запуска приложения через меню **Edit configurations...** в Intellij IDEA:
-1. Добавить из меню **Modify options** пункт **Add VM options**
-2. В появившейся строке указать параметры БД:
-   - **-DDB_BASE=**<провайдер/вид базы> (_postgresql_)
-   - **-DDB_SERVER=**<сервер/хост> (_localhost_) 
-   - **-DDB_PORT=**<порт, на котором запущена БД / докер контейнер> (_5434_)
-   - **-DDB_NAME=**<название БД для приложения> (_my_db_)
-   - **-DDB_PARAMS=**<строка с параметрами БД>. По умолчанию заданы для локальной среды (прим. _characterEncoding=UTF-8&useSSL=false_)
-   - **-DDB_USERNAME=**<имя пользователя> (_admin_)
-   - **-DDB_PASS=**<пароль> (_root_)
-   - **-DHIBERNATE_DDL=**<поведение hibernate.ddl-auto>. По умолчанию _none_
-3. Указать в строке **Active profile** название профиля, в данном случае **local**
-
-Профиль также можно указывать через параметры VM `-Dspring.profiles.active=<названеи профиля>`.
-
-![](src/main/resources/static/images/spring_profiles/db-config.png)
-
 # Как писать тесты к rest-контроллерам
 
 ### Основные требования

@@ -30,7 +30,7 @@ import java.util.Objects;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-// @CombinedNotNullQuestionOrAnswer
+@CombinedNotNullQuestionOrAnswer
 @Table(name = "reputation")
 public class Reputation implements Serializable {
 

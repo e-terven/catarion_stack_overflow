@@ -2,13 +2,11 @@ package com.javamentor.qa.platform.dao.impl.model;
 
 import com.javamentor.qa.platform.dao.abstracts.model.QuestionDao;
 import com.javamentor.qa.platform.dao.impl.repository.ReadWriteDaoImpl;
-import com.javamentor.qa.platform.dao.util.SingleResultUtil;
 import com.javamentor.qa.platform.models.entity.question.Question;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import java.util.Optional;
 
 @Repository
 public class QuestionDaoImpl extends ReadWriteDaoImpl<Question, Long> implements QuestionDao {
@@ -16,22 +14,4 @@ public class QuestionDaoImpl extends ReadWriteDaoImpl<Question, Long> implements
     @PersistenceContext
     private EntityManager entityManager;
 
-    @Override
-    public Optional<Long> getCountQuestion() {
-        return SingleResultUtil.getSingleResultOrNull(entityManager.createQuery(
-                """
-                        select count (q)
-                        from Question q
-                        where q.isDeleted = FALSE
-                        """, Long.class
-        ));
-    }
-    @Override
-    public Optional<Question> getQuestionByQuestionIdAndUserId(Long questionId, Long userId) {
-        return Optional.ofNullable(entityManager.createQuery("""
-SELECT u FROM Question u WHERE u.id = :questionId AND NOT u.user.id = : userId
-""", Question.class)
-                .setParameter("questionId", questionId).setParameter("userId", userId)
-                .setMaxResults(1).getSingleResult());
-    }
 }
