@@ -20,3 +20,5 @@ target/
 
 #Any
 .jpb
+/data/
+/src/main/resources/db/changelog/
