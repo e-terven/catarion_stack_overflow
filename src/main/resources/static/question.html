@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Создание вопроса</title>
+    <!-- Подключение стилей Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <script type="text/javascript" src="/js/sidebar.js"></script>
+    <script type="text/javascript" src="/js/header.js"></script>
+    <script type="text/javascript" src="/js/footer.js"></script>
+</head>
+<body>
+<div class="container mt-4">
+    <h1>Создание вопроса</h1>
+    <!-- Форма создания вопроса -->
+    <form action="/question" method="post">
+        <!-- Поле ввода заголовка вопроса -->
+        <div class="form-group">
+            <label for="title">Заголовок вопроса</label>
+            <input type="text" class="form-control" id="title" name="title" required>
+        </div>
+        <!-- Поле ввода подробного описания вопроса -->
+        <div class="form-group">
+            <label for="description">Подробное описание вопроса</label>
+            <textarea class="form-control" id="description" name="description" rows="4" required></textarea>
+        </div>
+        <!-- Поле ввода тегов -->
+        <div class="form-group">
+            <label for="tags">Теги</label>
+            <input type="text" class="form-control" id="tags" name="tags" data-role="tagsinput">
+        </div>
+        <!-- Кнопка отправки формы -->
+        <button type="submit" class="btn btn-primary">Создать вопрос</button>
+    </form>
+</div>
+
+<!-- Подключение скриптов Bootstrap и библиотеки jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<!-- Подключение скрипта для поля ввода тегов -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.min.js"></script>
+</body>
+</html>
