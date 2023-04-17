@@ -1,5 +1,21 @@
 # Документация JMStack
 
+## Выбор и настройка профиля для подключения и работы с БД
+
+1. Для конфигурирования настроек профилей нажмите на "Edit Configurations" в меню запуска приложения (верхний правый угол)
+   ![](src/main/resources/static/images/profile_tutor/ide_profile_edit.png)
+
+2. В открывшемся окне выберите "Modify options" и добавьте при необходимости поля настройки профилей.
+
+   ![](src/main/resources/static/images/profile_tutor/ide_run_options.png)
+
+3. В поле "VM options" ведите команду -ea -Dspring.profiles.active=local,dev (указав тем самым список профилей). 
+А в поле "Active profile" текущий активный профиль.
+
+4. В поле "Environment variables" указать соответствующие переменные окружения (DB_URL, DB_USERNAME, DB_PASSWORD и пр.).
+
+   ![](src/main/resources/static/images/profile_tutor/ide_environment_set.png)
+
 ## Работа c git
 
 ### Клонирование проекта
