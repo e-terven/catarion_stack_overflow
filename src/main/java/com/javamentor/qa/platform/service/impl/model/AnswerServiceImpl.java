@@ -6,10 +6,22 @@ import com.javamentor.qa.platform.service.abstracts.model.AnswerService;
 import com.javamentor.qa.platform.service.impl.repository.ReadWriteServiceImpl;
 import org.springframework.stereotype.Service;
 
+import java.util.NoSuchElementException;
+
 @Service
 public class AnswerServiceImpl extends ReadWriteServiceImpl<Answer, Long> implements AnswerService {
 
+
     public AnswerServiceImpl(ReadWriteDao<Answer, Long> readWriteDao) {
         super(readWriteDao);
+    }
+
+
+    @Override
+    public Answer markDeleted(Long answerId) {
+        Answer answer = this.getById(answerId)
+                .orElseThrow(NoSuchElementException::new);
+        answer.setIsDeleted(true);
+        return answer;
     }
 }
