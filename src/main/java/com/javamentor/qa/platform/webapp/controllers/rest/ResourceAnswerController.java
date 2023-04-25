@@ -29,7 +29,5 @@ public class ResourceAnswerController {
         } catch (NoSuchElementException e) {
             return new ResponseEntity<>("Bad request", HttpStatus.BAD_REQUEST);
         }
-
     }
-
 }
