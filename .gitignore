@@ -22,3 +22,4 @@ target/
 .jpb
 /data/
 /src/main/resources/db/changelog/
+/pgdata/
