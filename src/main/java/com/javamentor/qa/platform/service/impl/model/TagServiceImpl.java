@@ -1,5 +1,6 @@
 package com.javamentor.qa.platform.service.impl.model;
 
+import com.javamentor.qa.platform.dao.abstracts.model.TagDao;
 import com.javamentor.qa.platform.dao.abstracts.repository.ReadWriteDao;
 import com.javamentor.qa.platform.models.entity.question.Tag;
 import com.javamentor.qa.platform.service.abstracts.model.TagService;
@@ -9,7 +10,15 @@ import org.springframework.stereotype.Service;
 @Service
 public class TagServiceImpl extends ReadWriteServiceImpl<Tag, Long> implements TagService {
 
-    public TagServiceImpl(ReadWriteDao<Tag, Long> readWriteDao) {
+    private final TagDao tagDao;
+
+    public TagServiceImpl(ReadWriteDao<Tag, Long> readWriteDao, TagDao tagDao) {
         super(readWriteDao);
+        this.tagDao = tagDao;
+    }
+
+    @Override
+    public boolean existsByName(String name) {
+        return tagDao.existsByName(name);
     }
 }
