@@ -10,8 +10,6 @@ import javax.persistence.PersistenceContext;
 
 @Repository
 public class ReputationDaoImpl extends ReadWriteDaoImpl<Reputation, Long> implements ReputationDao {
-
     @PersistenceContext
     private EntityManager entityManager;
-
 }
