@@ -2,12 +2,11 @@ package com.javamentor.qa.platform.service.impl.repository;
 
 import com.javamentor.qa.platform.dao.abstracts.repository.ReadWriteDao;
 import com.javamentor.qa.platform.exception.ConstrainException;
-import com.javamentor.qa.platform.service.abstracts.repository.ReadWriteService;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Collection;
 
-public abstract class ReadWriteServiceImpl<E, K> extends ReadOnlyServiceImpl<E, K> implements ReadWriteService <E, K> {
+public abstract class ReadWriteServiceImpl<E, K> extends ReadOnlyServiceImpl<E, K> {
 
     private final ReadWriteDao<E, K> readWriteDao;
     private static final String ENTITIES_MUST_NOT_BE_NULL = "Entities cannot be null and empty";

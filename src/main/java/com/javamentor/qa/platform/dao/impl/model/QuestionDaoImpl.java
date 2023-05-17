@@ -10,6 +10,8 @@ import javax.persistence.PersistenceContext;
 
 @Repository
 public class QuestionDaoImpl extends ReadWriteDaoImpl<Question, Long> implements QuestionDao {
+
     @PersistenceContext
     private EntityManager entityManager;
+
 }
