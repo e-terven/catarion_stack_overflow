@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
+    <title>Questions</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <div class="mt-5 mb-5">
+        <div class="container my-5">
+            <h3>
+                Ask a question
+            </h3>
+        </div>
+        <div class="row">
+            <div class="col-sm-8">
+                <div class="border bg-light rounded-1 border-primary mb-3">
+                    <div class="row">
+                        <div class="col-sm-1">
+
+                        </div>
+                        <div class="col-sm-11">
+                            <div class="my-3">
+                                <h4>Writing a good question</h4>
+                                <span>You're ready to ask your first programming-related question and the community is here to help!
+          Looking to ask a non-programming question?
+          See all topics</span>
+                                <a href="#" class="text-decoration-none">here</a>
+                                <span>to ask on a different site.</span>
+                            </div>
+
+                            <div>
+                                <small>
+                                    <p class="fw-bold">Step 1: Propose a question</p>
+                                    <p>
+                                        Write a question. Follow the step by step instructions
+                                        on how to write a good, detailed question.
+                                        The more information you provide,
+                                        the better chances you have of it being answered.
+                                    </p>
+                                </small>
+
+                            </div>
+                            <div>
+                                <small>
+                                    <p class="fw-bold">Step 2: In review</p>
+                                    <p>
+                                        Your question is locked and awaits review from experienced community members.
+                                        The quicker you act on any feedback,
+                                        the quicker your question will be posted to get answers.
+                                    </p>
+                                </small>
+                            </div>
+                            <div>
+                                <small>
+                                    <p class="fw-bold">Step 3: Approved</p>
+                                    <p>
+                                        Your post question has been approved and published!
+                                        It is now live to the community and open for votes, answers and comments.
+                                    </p>
+                                </small>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="border-top p-3">
+                                <span>Want more information?</span>
+                                <a href="#" class="text-decoration-none">Visit the Help center</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4"></div>
+        </div>
+        <div class="row">
+            <div class="col-sm-8">
+
+                <div class="border bg-white p-3 rounded-1">
+                    <div>
+                        <h5><small>Title</small> </h5>
+                        <p><small>Be specific and imagine you’re asking a question to another person.</small></p>
+                    </div>
+                    <label class="d-flex">
+                        <input class="form-control me-2" type="text"
+                               placeholder="e.g. Is there an R function for finding the index of an element in a vector?">
+                    </label>
+                    <button class="btn btn-primary btn-small d-flex justify-content-start mt-3">
+                        <small>Next</small>
+                    </button>
+                </div>
+
+            </div>
+            <div class="col-sm-4">
+                <div class="border">
+                    <div class="border-bottom d-flex p-2">
+                        <p>
+                            <small>Writing a good title</small>
+                        </p>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-2"></div>
+                        <div class="col-sm-10">
+                            <div>
+                                <p>
+                                    <small>
+                                        Your title should summarize the problem.
+                                    </small>
+                                </p>
+                                <p>
+                                    <small>
+                                        You might find that you have a better idea of your title after writing out the rest of the question.
+                                    </small>
+                                </p>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-8">
+                    <div class="border bg-white p-3 rounded-1 mt-3" style="pointer-events: none; opacity: 0.6; background-color: lightgray; cursor: not-allowed;">
+                        <div>
+                            <h5>
+                                <small>
+                                    What are the details of your problem?
+                                </small>
+                            </h5>
+                            <p>
+                                <small>
+                                    Introduce the problem and expand on what you put in the title. Minimum 20 characters.
+                                </small>
+
+                            </p>
+                            <textarea class="form-control" rows="5"></textarea>
+                        </div>
+                        <button class="btn btn-primary btn-small d-flex justify-content-start mt-3">
+                            <small>
+                                Next
+                            </small>
+                        </button>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="border mt-3">
+                        <div class="border-bottom d-flex p-2">
+                            <p>
+                                <small>
+                                    Introduce the problem
+                                </small>
+                            </p>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-2"></div>
+                            <div class="col-sm-10">
+                                <div>
+                                    <p>
+                                        <small>
+                                            Explain how you encountered the problem you’re trying to solve,
+                                            and any difficulties that have prevented you from solving it yourself.
+                                        </small>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-8">
+                    <div class="border bg-white p-3 rounded-1 mt-3" style="pointer-events: none; opacity: 0.6; background-color: lightgray; cursor: not-allowed;">
+                        <div>
+                            <h5>
+                                <small>What did you try and what were you expecting?</small>
+                            </h5>
+                            <p>
+                                <small>
+                                    Describe what you tried, what you expected to happen, and what actually resulted. Minimum 20
+                                    characters.
+                                </small>
+                            </p>
+                            <textarea class="form-control" rows="5"></textarea>
+                        </div>
+                        <button class="btn btn-primary btn-small d-flex justify-content-start mt-3">
+                            <small>
+                                Next
+                            </small>
+                        </button>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="border mt-3">
+                        <div class="border-bottom d-flex p-2">
+                            <p>
+                                <small>
+                                    Expand on the problem
+                                </small>
+                            </p>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-2"></div>
+                            <div class="col-sm-10">
+                                <div>
+                                    <p>
+                                        <small>
+                                            Show what you’ve tried, tell us what happened, and why it didn’t
+                                            meet your needs.
+                                        </small>
+                                    </p>
+                                    <p>
+                                        <small>
+                                            Not all questions benefit from including code,
+                                            but if your problem is better understood with code you’ve written,
+                                            you should include a minimal, reproducible example.
+                                        </small>
+                                    </p>
+                                    <p>
+                                        <small>
+                                            Please make sure to post code and errors as text directly
+                                            to the question (and not as images), and format them appropriately.
+                                        </small>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-8">
+                    <div class="border bg-white p-3 rounded-1 mt-3" style="pointer-events: none; opacity: 0.6; background-color: lightgray; cursor: not-allowed;">
+                        <div>
+                            <h5><small>Tags</small></h5>
+                            <p>
+                                <small>
+                                    Add up to 5 tags to describe what your question is about.
+                                    Start typing to see suggestions.
+                                </small>
+                            </p>
+                        </div>
+                        <label class="d-flex">
+                            <input class="form-control me-2" type="text" placeholder="e.g. (vba ruby asp.net)">
+                        </label>
+                        <button class="btn btn-primary btn-small d-flex justify-content-start mt-3">
+                            <small>Next</small>
+                        </button>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="border mt-3">
+                        <div class="border-bottom d-flex p-2">
+                            <p><small>Adding tags</small></p>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-2"></div>
+                            <div class="col-sm-10">
+                                <div>
+                                    <p>
+                                        <small>Tags help ensure that your question will get attention from the right people.</small>
+                                    </p>
+                                    <p>
+                                        <small>Tag things in more than one way so people can find them more easily.
+                                            Add tags for product lines, projects, teams,
+                                            and the specific technologies or languages used.
+                                        </small>
+                                    </p>
+                                    <small>
+                                        <a href="#">Learn more about tagging</a>
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-8">
+                    <div class="border bg-white p-3 rounded-1 mt-3" style="pointer-events: none; opacity: 0.6; background-color: lightgray; cursor: not-allowed;">
+                        <div>
+                            <h5><small>Review questions already on Stack Overflow to see if your question is a duplicate.</small></h5>
+                            <p>
+                                <small>Clicking on these questions will open them in a new tab for you to review. Your progress here
+                                    will be saved so you can come back and continue.
+                                </small>
+                            </p>
+                        </div>
+                        <div class="border rounded-1">
+                            <div class="d-grid gap-2">
+                                <button class="btn btn-outline-secondary border-0 rounded-1 d-flex" data-bs-toggle="collapse"
+                                        data-bs-target="#duplicate">
+                                    <small>Do any of this posts answer your question?</small>
+                                </button>
+                            </div>
+                            <div id="duplicate" class="collapse">
+                                <div class="border-top p-4 d-flex justify-content-center">
+                                    <small>No duplicate questions found.</small>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="btn btn-primary btn-small d-flex justify-content-start mt-3">
+                            <small>Review your question</small>
+                        </button>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="border mt-3">
+                        <div class="border-bottom d-flex p-2">
+                            <p><small>Adding tags</small></p>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-2"></div>
+                            <div class="col-sm-10">
+                                <div>
+                                    <p>
+                                        <small>Tags help ensure that your question will get attention from the right people.</small>
+                                    </p>
+                                    <p>
+                                        <small>Tag things in more than one way so people can find them more easily.
+                                            Add tags for product lines, projects, teams,
+                                            and the specific technologies or languages used.
+                                        </small>
+                                    </p>
+                                    <small>
+                                        <a href="#">Learn more about tagging</a>
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button class="btn btn-sm d-flex justify-content-start mt-3 text-danger">
+                Discard draft
+            </button>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="/js/sidebar.js"></script>
+<script type="text/javascript" src="/js/header.js"></script>
+<script type="text/javascript" src="/js/footer.js"></script>
+</body>
+</html>
