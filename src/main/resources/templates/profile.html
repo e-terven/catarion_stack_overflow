@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml"
+      lang="en" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.js"></script>
+  <title>Admin</title>
+
+</head>
+<body>
+
+<div class="container">
+
+
+  <!--------------------------------------BODY--------------------------------------->
+
+  <div class="row mt-3 gx-5">
+  <div class="col-2">
+    <img src="images/profile/defoult_user.jpeg" style="width: 200px">
+  </div>
+  <div class="col-4 text-start">
+    <p></p>
+    <p></p>
+    <p class="fs-2" id="username_profile">User Name</p>
+
+  </div>
+  <div class="col">
+    <button>Edit profile</button>
+    <button>Network profile</button>
+  </div>
+  </div>
+
+        <!-------------Content----------------->
+
+        <div class="row mt-3">
+          <div class="col-9 ">
+            <div class="tab-content" id="nav-tabContent">
+              <div class="tab-pane fade show active" id="list-home" role="tabpanel" aria-labelledby="list-home-list">
+                <!------------Menu-------->
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                  <li class="nav-item">
+                    <a class="nav-link active" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
+                       aria-controls="profile" aria-selected="true">Profile</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" id="activity-tab" data-toggle="tab" href="#activity" role="tab"
+                       aria-controls="activity" aria-selected="false">Activity</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" id="saves-tab" data-toggle="tab" href="#saves" role="tab"
+                       aria-controls="saves" aria-selected="false">Saves</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" id="settings-tab" data-toggle="tab" href="#settings" role="tab"
+                       aria-controls="settings" aria-selected="false">Settings</a>
+                  </li>
+                </ul>
+
+                <!------------Profile-------->
+                <div class="tab-content" id="myTabContent">
+                  <div class="tab-pane fade show active" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                    <div class="container-fluid border bg-white px-4">
+                      <div class="row align-items-start gx-5">
+                      <div class="col-md-3">
+                        <div class="row">
+                          <p><h5>Stats</h5></p>
+                          <div class="container-sm border bg-white">
+                          <div class="row" align="center">
+                            <div class="col">
+                              <p class="fs-6" id="reputation_count">0</p>
+                              <p class="fs-6 fw-light">reputation</p>
+                            </div>
+                            <div class="col">
+                              <p class="fs-6" id="reached_count">0</p>
+                              <p class="fs-6 fw-light">reached</p>
+                            </div>
+
+                            <div class="w-100"></div>
+
+                            <div class="col">
+                              <p class="fs-6" id="answers_count">0</p>
+                              <p class="fs-6 fw-light">answers</p>
+                            </div>
+                            <div class="col">
+                              <p class="fs-6" id="questions_count">0</p>
+                              <p class="fs-6 fw-light">questions</p>
+                            </div>
+                          </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col">
+                          <p class="text-sm-start"><h6>Communities</h6></p>
+                          </div>
+                          <div class="col">
+                            <p class="fs-6"></p>
+                          <p class="fs-6 text-end fw-lighter">Edit</p>
+                          </div>
+                          <div class="container-sm border bg-white">
+                            <div class="row" align="center">
+                              <p class="text-primary fs-6">Link to communities</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col">
+                        <div class="row">
+                          <p><h5>About</h5></p>
+                          <p class="fs-6 fw-light" id="about">Lorem from</p>
+                        </div>
+                        <div class="row">
+                          <p><h5>Badges</h5></p>
+                          <div class="col text-center">
+                            <div class="container-sm border bg-white">
+                              <img src="images/profile/Gold badges.png" class="rounded img-" alt="" style="width: 85px">
+                              <p><h12>You don’t have a gold badge yet. Write an answer that scores 100 or more to earn your first.</h12></p>
+                              <button>Browse questions</button>
+                            </div>
+                          </div>
+                          <div class="col text-center">
+                            <div class="container-sm border bg-white">
+                              <img src="images/profile/silver%20badges.png" class="rounded img-" alt="100x100" style="width: 75px">
+                              <p><h12>You don’t have a silver badge yet. Ask a question that scores 25 or more to earn your first.</h12></p>
+                              <button>Ask a question</button>
+                            </div>
+                          </div>
+                          <div class="col text-center">
+                            <div class="container-sm border bg-white">
+                              <img src="images/profile/Bronze%20badges.png" class="rounded img-" alt="100x100" style="width: 60px">
+                              <p><h12>You don’t have a gold badge yet. Write an answer that scores 100 or more to earn your first.</h12></p>
+                              <button>Get link</button>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <p><h5>Posts</h5></p>
+                          <div class="container-sm border bg-black-05 text-center">
+                            <img src="images/profile/no_posts.png" class="rounded img-" alt="" style="width: 200px">
+                            <p><h12>Just getting started? Try answering a question!
+
+                              Your most helpful questions, answers and tags will appear here. Start by answering a question or selecting tags that match topics you’re interested in.</h12></p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    </div>
+                  </div>
+                  <!------------Activity-------->
+                  <div class="tab-pane fade" id="activity" role="tabpanel" aria-labelledby="activity-tab">
+                    <div class="container-fluid border">
+                      <p><h4>Activity</h4></p>
+                    </div>
+                    <div class="container-fluid border bg-white">
+                      ....
+                    </div>
+                  </div>
+                </div>
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <!-------------------------------------SCRIPTS---------------------------------------->
+
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+                integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+                crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+                integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+                crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+                integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+                crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="/js/sidebar.js"></script>
+<script type="text/javascript" src="/js/header.js"></script>
+<script type="text/javascript" src="/js/footer.js"></script>
+
+</body>
+</html>
