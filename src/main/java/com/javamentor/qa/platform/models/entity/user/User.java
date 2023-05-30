@@ -127,6 +127,7 @@ public class User implements UserDetails {
         return isEnabled;
     }
 
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -142,4 +143,6 @@ public class User implements UserDetails {
     public int hashCode() {
         return Objects.hash(id, email, password, fullName);
     }
+
+
 }
