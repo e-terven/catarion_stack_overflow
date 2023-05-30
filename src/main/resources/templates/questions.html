@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>All Questions</title>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+<div class="container-fluid">
+    <!-- HEADER -->
+    <header class="site-header" id="header"></header>
+    <!-- HEADER -->
+    <div class="row justify-content-md-center">
+
+        <div class="col-sm-2 mt-5">
+            <!-- SIDEBAR -->
+            <div class="sidebar" id="sidebar"></div>
+            <!-- SIDEBAR -->
+        </div>
+
+        <div class="col-sm-10 mt-5 overflow-scroll">
+            <div class="row">
+
+                <div class="col-sm-8" style="overflow: auto; height: 500px; position: relative">
+
+                    <h3 class="d-flex justify-content-between">
+                        <span class="ps-3">All Questions</span>
+                        <span>
+                            <button class="btn btn-primary ps-3" id="askQuestion">Ask Question</button>
+                        </span>
+                    </h3>
+
+                    <div class="d-flex justify-content-between mt-4">
+                        <div>
+                            <span class="px-3" id="questionsAmount" style="margin-right: -15px;">100</span>
+                            <span>questions</span>
+                        </div>
+
+                        <nav class="btn-group" role="group">
+
+                            <button class="btn btn-outline-secondary active" href="#">Newest</button>
+                            <button class="btn btn-outline-secondary" href="#">Active</button>
+                            <div class="btn-group" style="flex-wrap: wrap; flex-basis: 50%;">
+                                <button id="buttonMore" class="btn btn-outline-secondary dropdown-toggle"
+                                        data-bs-toggle="dropdown">More</button>
+
+                                <ul class="dropdown-menu">
+                                    <li><a class="small dropdown-item" href="#">Bountied</a></li>
+                                    <li><a class="small dropdown-item" href="#">Unanswered</a></li>
+                                    <li><a class="small dropdown-item" href="#">Frequent</a></li>
+                                    <li><a class="small dropdown-item" href="#">Score</a></li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li><a class="small dropdown-item text-muted" id="unansweredTag" href="#">Unanswered (my tag)</a></li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li><a class="small dropdown-item">CUSTOM FILTERS</a></li>
+                                    <li><a class="small dropdown-item fw-bold" id="filter" href="#">my filter</a></li>
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+
+                    <!-- ARTICLE -->
+                    <div class="row">
+                        <p><hr class="divider"></p>
+                        <div class="col-2 px-0">
+                            <div class="text-end small pb-1" id="votesAmount">0 votes</div>
+                            <div class="text-end small text-muted p-1" id="answersAmount">0 answers</div>
+                            <div class="text-end small text-muted p-1" id="viewsAmount">0 views</div>
+                            <div class="text-end p-1 pt-0">
+                                <div class="badge bg-primary text-wrap" id="boutiesAmount">0</div>
+                            </div>
+                        </div>
+
+                        <div class="col-10 px-3">
+                            <a class="text-decoration-none" href="#">How to run commands in Slack programmatically from the API called by running a command?</a>
+                            <div class="small lh-sm py-1">
+                                I need to recode an equivalent of numpy interp function. In order to do that, I thought of building a pairwise distance matrix, and then using this matrix to define "weights" that I use to multiply the target values.
+                            </div>
+
+                            <div class="d-flex justify-content-between p-0 pt-1">
+                                <div class="flex-row bd-highlight" id="questionTag">
+                                    <div class="bd-highlight badge bg-secondary text-wrap me-2">java</div>
+                                </div>
+                                <div class="d-flex flex-row-reverse bd-highlight">
+                                    <div class="small text-muted ps-0 me-2" id="questionDate">May 16 at 12:53</div>
+                                    <div class="small text-muted me-2">asked</div>
+                                    <div class="small text-muted fw-bold me-2" id="questionAsked">0</div>
+                                    <a class="text-decoration-none me-2" id="questionAuthor" href="#">Artegon</a>
+                                </div>
+
+                            </div>
+                        </div>
+                        <p><hr class="divider"></p>
+                    </div>
+                    <!-- ARTICLE -->
+                </div>
+
+                <!-- RIGHT COLUMN -->
+                <div class="col-sm-4">
+                    <div>
+                        <div class="container pb-1">
+                            <div class="card border-secondary text-secondary bg-dark bg-opacity-10">
+                                <h6 class="card-header border-secondary">The Overflow Blog</h6>
+                                <div class="card-body">
+                                    <li class="small text-muted lh-sm" href="#">How to use marketing techniques to build a better resume</li>
+                                    <li class="small text-muted lh-sm pb-1" href="#">How the creator of Angular is dehydrating the web</li>
+                                </div>
+                                <h6 class="card-header border-secondary border-top">Featured on Meta</h6>
+                                <div class="card-body">
+                                    <li class="small text-muted lh-sm" href="#">We are graduating the updated button styling for vote arrows</li>
+                                    <li class="small text-muted lh-sm" href="#">Temporary policy: ChatGPT is banned</li>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="container py-1">
+                            <div class="card border-secondary text-secondary">
+                                <h6 class="card-header border-secondary">Custom Filters</h6>
+                                <div class="card-body py-2">
+                                    <div class="small text-muted fw-bold me-2" id="customFilter">Filter 1</div>
+                                    <a class="text-decoration-none small" href="#"
+                                       data-bs-toggle="modal" data-bs-target="#createFilterModal">Create a custom filter</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- MODAL "Create a Custom Filter" -->
+                        <div class="modal fade bg-dark bg-opacity-10" id="createFilterModal" tabindex="-1" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header bg-dark bg-opacity-25">
+                                        <h6 class="modal-title" id="createFilterModalLabel">Create a Custom Filter</h6>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <card class="row">
+                                            <div class="col-sm">
+                                                <h6 class="fw-bold">Filter  by</h6>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" id="check1" name="option1" value="something" checked>
+                                                    <label class="form-check-label">No answers</label>
+                                                    <label class="form-check-label">Has bounty</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm">
+                                                <h6 class="fw-bold">Sorted  by</h6>
+                                                <div class="form-check">
+                                                    <input type="radio" class="form-check-input" id="radio1" name="optradio" value="option1" checked>
+                                                    Newest
+                                                    <label class="form-check-label" for="radio1"></label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input type="radio" class="form-check-input" id="radio2" name="optradio" value="option2">
+                                                    Higest score
+                                                    <label class="form-check-label" for="radio2"></label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input type="radio" class="form-check-input" disabled>
+                                                    Most frequent
+                                                    <label class="form-check-label"></label>
+                                                </div>
+                                            </div>
+
+                                        </card>
+                                    </div>
+                                    <div class="modal-footer bg-dark bg-opacity-25">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-primary">Save changes</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- MODAL "Create a Custom Filter" -->
+
+                        <div class="container py-1">
+                            <div class="card border-secondary text-secondary">
+                                <h6 class="card-header border-secondary fw-normal">Watched Tags</h6>
+                                <div class="card-body py-2 d-flex flex-column align-items-center">
+                                    <p class="text-decoration-none small text-center pt-3">Watch tags to curate your list of questions.</p>
+                                    <button class="btn btn-secondary" id="watchTagButton" href="#">Watch a tag</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="container py-1">
+                            <div class="card border-secondary text-secondary">
+                                <h6 class="card-header border-secondary">Ignored Tags</h6>
+                                <div class="card-body py-2 d-flex flex-column align-items-center">
+                                    <button class="btn btn-secondary" id="watchIgnoredTagButton" href="#">Add an ignored tag</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- RIGHT COLUMN -->
+            </div>
+
+
+            <!-- PAGE NUMBER -->
+            <ul class="pagination pagination-sm p-0">
+                <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item active"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item"><a class="page-link" href="#">Next</a></li>
+            </ul>
+            <!-- PAGE NUMBER -->
+
+        </div>
+    </div>
+
+    <footer class="footer" id="footer"></footer>
+</div>
+
+<script src="../../static/header.js"></script>
+<script src="../../static/sidebar.js"></script>
+<script src="../../static/footer.js"></script>
+
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+</body>
+</html>
