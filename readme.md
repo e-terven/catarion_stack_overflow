@@ -587,3 +587,30 @@ this.mockMvc
 ```
 
 5. Если ожидаемые результаты не совпадут, тест сообщит об ошибке и распечатает все параметры. В ином случае вы увидите сообщение о том, что тест успешно пройден.
+
+# Настройка и выбор профилей в конфигурации проекта с параметрами базы данных
+
+### Создание профилей в конфигурации проекта
+
+1. Создать файл с названием "application-local.properties".
+
+2. Для профиля dev будет использоваться файл application.properties, а для профиля local будем использовать файл application-local.properties, значения в файле назначить как здесь:
+![](src/main/resources/static/images/profiles_tutor/profile_application_local.png)
+
+3. "1" Зайти в конфигурации проекта и "2" сделать 2 профиля для запуска:
+![](src/main/resources/static/images/profiles_tutor/configuration_profile.png)
+
+![](src/main/resources/static/images/profiles_tutor/local_config.png)
+
+4. В поле Active profiles, устанавливаем значение local, для профиля dev все оставляем по-умолчанию.
+
+5. Настроить параметры среды. "1" Зайти в "Modify options", "2" добавить "Environment variables", "3" изменить параметры среды и "4" добавить свои параметры среды:
+![](src/main/resources/static/images/profiles_tutor/modify_options.png)
+
+![](src/main/resources/static/images/profiles_tutor/Environment_variables.png)
+
+![](src/main/resources/static/images/profiles_tutor/edit_environment.png)
+
+![](src/main/resources/static/images/profiles_tutor/add_local_environment.png)
+
+6. Запускаем, выбрав нужный профиль.
