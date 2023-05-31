@@ -1,0 +1,52 @@
+.active-page a {
+    text-decoration: none;
+}
+
+.bg-hover-grey:hover {
+    background-color: gray;
+    cursor: pointer;
+}
+
+.active-page {
+    background-color: #dee2e4;
+    border-right: orange solid 5px;
+}
+
+.nav-div a {
+    color: grey;
+}
+
+.nav-div a:hover {
+    color: black;
+}
+
+.active-page a {
+    color: black;
+    font-weight: bold;
+}
+
+#public {
+  color: gainsboro;
+}
+
+.footer {
+    font-size: 0.9em;
+}
+
+.footer a {
+    text-decoration: none;
+    color: #505050;
+}
+
+.footer a:hover {
+    text-decoration: none;
+    color: #dee0e1;
+}
+
+.social a {
+    font-size: 0.8em;
+}
+.copyrights {
+    font-size: 0.8em;
+    color: #505050;
+}
