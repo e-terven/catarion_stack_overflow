@@ -1,6 +1,7 @@
 function isFooter(currentPath) {
     let sidebarPages = [
         "/",
+        "/main",
         "/questions",
         "/tag_page",
         "/question",
