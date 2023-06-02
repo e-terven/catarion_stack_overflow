@@ -1,6 +1,7 @@
 function isSidebar(currentPath) {
     let sidebarPages = [
         "/",
+        "/main",
         "/questions",
         "/tag_page",
         "/question",
