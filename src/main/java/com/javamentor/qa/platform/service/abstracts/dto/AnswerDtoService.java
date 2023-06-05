@@ -5,5 +5,5 @@ import com.javamentor.qa.platform.models.dto.AnswerDto;
 import java.util.List;
 
 public interface AnswerDtoService {
-    public List<AnswerDto> getAllAnswersDtoByQuestionId(Long questionId);
+    List<AnswerDto> getAllAnswersDtoByQuestionId(Long questionId, Long userId);
 }
