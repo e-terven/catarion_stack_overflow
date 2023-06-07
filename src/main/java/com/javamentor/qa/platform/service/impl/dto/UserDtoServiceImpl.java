@@ -7,8 +7,11 @@ import com.javamentor.qa.platform.service.abstracts.dto.UserDtoService;
 import com.javamentor.qa.platform.service.impl.repository.ReadWriteServiceImpl;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class UserDtoServiceImpl extends ReadWriteServiceImpl<UserDto, Long> implements UserDtoService {
+
     private final UserDtoDao userDtoDao;
 
     public UserDtoServiceImpl(ReadWriteDao<UserDto, Long> readWriteDao, UserDtoDao userDtoDao) {
@@ -16,8 +19,8 @@ public class UserDtoServiceImpl extends ReadWriteServiceImpl<UserDto, Long> impl
         this.userDtoDao = userDtoDao;
     }
 
-    public UserDto getUserDtoById(Long id) {
-        return userDtoDao.getById(id).get();
+    public Optional<UserDto> getUserDtoById(Long id) {
+        return userDtoDao.getById(id);
     }
 }
 

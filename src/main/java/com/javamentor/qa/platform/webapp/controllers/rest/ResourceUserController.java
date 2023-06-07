@@ -9,9 +9,9 @@ import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @ApiOperation("User API")
 @RestController
@@ -25,14 +25,16 @@ public class ResourceUserController {
     }
 
     @Operation(summary = "Получение userDto", description = "Позволяет получить экземпляр userDto по id user")
-    @GetMapping("/{id}")
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Успешно получен экземпляр userDto", response = UserDto.class),
             @ApiResponse(code = 401, message = "Пользователь не авторизирован"),
             @ApiResponse(code = 403, message = "Доступ запрещен"),
             @ApiResponse(code = 404, message = "Ответ не найден")
     })
+    @GetMapping("/{id}")
     public ResponseEntity<UserDto> getUserDtoById(@PathVariable Long id) {
-        return new ResponseEntity<>(userDtoService.getUserDtoById(id), HttpStatus.OK);
+        return userDtoService.getUserDtoById(id)
+                .map(userDto -> new ResponseEntity<>(userDto, HttpStatus.OK))
+                .orElseGet(() -> new ResponseEntity<>(new UserDto(), HttpStatus.NOT_FOUND));
     }
 }
