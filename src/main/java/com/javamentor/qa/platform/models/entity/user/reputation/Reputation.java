@@ -68,7 +68,6 @@ public class Reputation implements Serializable {
     @JoinColumn(name = "answer_id")
     private Answer answer;
 
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

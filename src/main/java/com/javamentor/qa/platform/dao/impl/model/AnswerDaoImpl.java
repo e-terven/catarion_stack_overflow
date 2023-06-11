@@ -2,12 +2,15 @@ package com.javamentor.qa.platform.dao.impl.model;
 
 import com.javamentor.qa.platform.dao.abstracts.model.AnswerDao;
 import com.javamentor.qa.platform.dao.impl.repository.ReadWriteDaoImpl;
+import com.javamentor.qa.platform.dao.util.SingleResultUtil;
 import com.javamentor.qa.platform.models.entity.question.answer.Answer;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
+import java.util.Optional;
 
 
 @Repository
@@ -24,5 +27,14 @@ public class AnswerDaoImpl extends ReadWriteDaoImpl<Answer, Long> implements Ans
                 """)
                 .setParameter("id", id)
                 .executeUpdate();
+    }
+
+    @Override
+    public Optional<Answer> getAnswerById(Long id, Long userId) {
+        return SingleResultUtil.getSingleResultOrNull((Query) entityManager.createQuery("""
+        from Answer a where a.id =: id and a.user.id !=: userId
+        """, Answer.class)
+                .setParameter("id", id)
+                .setParameter("userId", userId));
     }
 }
