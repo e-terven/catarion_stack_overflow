@@ -7,13 +7,12 @@ import com.javamentor.qa.platform.service.abstracts.model.AnswerService;
 import com.javamentor.qa.platform.service.impl.repository.ReadWriteServiceImpl;
 import org.springframework.stereotype.Service;
 
-import java.util.NoSuchElementException;
+import java.util.Optional;
 
 @Service
 public class AnswerServiceImpl extends ReadWriteServiceImpl<Answer, Long> implements AnswerService {
 
     private final AnswerDao answerDao;
-
 
     public AnswerServiceImpl(ReadWriteDao<Answer, Long> readWriteDao, AnswerDao answerDao) {
         super(readWriteDao);
@@ -25,6 +24,10 @@ public class AnswerServiceImpl extends ReadWriteServiceImpl<Answer, Long> implem
         answerDao.markAnswerAsDeleted(id);
     }
 
+    @Override
+    public Optional<Answer> getAnswerById(Long id, Long userId) {
+        return answerDao.getAnswerById(id, userId);
+    }
 
 
 }
