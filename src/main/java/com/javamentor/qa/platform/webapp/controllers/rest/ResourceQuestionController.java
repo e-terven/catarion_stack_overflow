@@ -3,6 +3,7 @@ package com.javamentor.qa.platform.webapp.controllers.rest;
 import com.javamentor.qa.platform.models.dto.QuestionDto;
 import com.javamentor.qa.platform.models.entity.user.User;
 import com.javamentor.qa.platform.service.abstracts.dto.QuestionDtoService;
+import com.javamentor.qa.platform.service.abstracts.model.QuestionService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -21,8 +22,11 @@ public class ResourceQuestionController {
 
     private final QuestionDtoService questionDtoService;
 
-    public ResourceQuestionController(QuestionDtoService questionDtoService) {
+    private final QuestionService  questionService;
+
+    public ResourceQuestionController(QuestionDtoService questionDtoService, QuestionService questionService) {
         this.questionDtoService = questionDtoService;
+        this.questionService = questionService;
     }
 
     @GetMapping("/{id}")
@@ -34,6 +38,14 @@ public class ResourceQuestionController {
 
         return questionDtoService.getById(id, user.getId()).map(ResponseEntity::ok)
                 .orElseGet(() -> new ResponseEntity<>(new QuestionDto(), HttpStatus.NOT_FOUND));
+    }
+
+    @GetMapping("/count")
+    @Operation(summary = "Получение количества всех вопросе в бд")
+    @ApiResponse(responseCode = "200", description = "Запрос успешно выполнен")
+    public ResponseEntity<Long> getCountQuestion() {
+
+        return new ResponseEntity<>(questionService.getCountQuestion(), HttpStatus.OK);
     }
 }
 
