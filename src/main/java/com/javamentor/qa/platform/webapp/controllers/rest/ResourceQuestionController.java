@@ -1,9 +1,11 @@
 package com.javamentor.qa.platform.webapp.controllers.rest;
 
+import com.javamentor.qa.platform.models.dto.QuestionCommentDto;
 import com.javamentor.qa.platform.models.dto.QuestionCreateDto;
 import com.javamentor.qa.platform.models.dto.QuestionDto;
 import com.javamentor.qa.platform.models.entity.question.Question;
 import com.javamentor.qa.platform.models.entity.user.User;
+import com.javamentor.qa.platform.service.abstracts.dto.CommentDtoService;
 import com.javamentor.qa.platform.service.abstracts.dto.QuestionDtoService;
 import com.javamentor.qa.platform.service.abstracts.model.QuestionService;
 import com.javamentor.qa.platform.service.abstracts.model.TagService;
@@ -22,6 +24,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/user/question")
 @Tag(name = "Контроллер вопросов")
@@ -31,14 +35,28 @@ public class ResourceQuestionController {
     private final QuestionService questionService;
     private final QuestionDtoService questionDtoService;
     private final TagService tagService;
-
+    private  final CommentDtoService commentDtoService;
 
     @Autowired
-    public ResourceQuestionController(UserService userService, QuestionService questionService, QuestionDtoService questionDtoService, TagService tagService) {
+    public ResourceQuestionController(UserService userService, QuestionService questionService, QuestionDtoService questionDtoService, TagService tagService, CommentDtoService commentDtoService) {
         this.userService = userService;
         this.questionService = questionService;
         this.questionDtoService = questionDtoService;
         this.tagService = tagService;
+        this.commentDtoService = commentDtoService;
+    }
+
+    @GetMapping("/{id}/comment")
+    @Operation(summary = "получение всех комментариев к вопросу по идентификатору (id)")
+    @ApiResponse(responseCode = "200", description = "Запрос успешно выполнен")
+    @ApiResponse(responseCode = "404", description = "Вопрос по данному id не найден")
+    public ResponseEntity<List<QuestionCommentDto>> getAllCommentsOnQuestion(@PathVariable Long id) {
+
+        if (!questionService.getById(id).isPresent()) {
+            return ResponseEntity.notFound().build();
+        }
+
+        return new ResponseEntity<>(commentDtoService.getAllQuestionCommentDtoById(id), HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
