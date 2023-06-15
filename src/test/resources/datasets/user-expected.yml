@@ -1,0 +1,18 @@
+user_entity:
+
+  - id: "3"
+    email: "user_3@user.com"
+    fullName: User_3
+    password: ${passwordEncoder().encode('user')}
+    persistDateTime: ${T(java.time.LocalDateTime).now()}
+    isEnabled: true
+    isDeleted: false
+    city: "City"
+    linkSite: "linkSite"
+    linkGitHub: "linkGitHub"
+    linkVk: "linkVk"
+    about: "about"
+    imageLink: "imageLink"
+    lastUpdateDateTime: ${T(java.time.LocalDateTime).now()}
+    nickname: "nickname"
+    role: "role"

@@ -1,0 +1,53 @@
+user_entity:
+
+  - id: "1"
+    email: "user_1@user.com"
+    fullName: User_1
+    password: ${passwordEncoder().encode('user')}
+    persistDateTime: ${T(java.time.LocalDateTime).now()}
+    isEnabled: true
+    isDeleted: false
+    city: "City"
+    linkSite: "linkSite"
+    linkGitHub: "linkGitHub"
+    linkVk: "linkVk"
+    about: "about"
+    imageLink: "imageLink"
+    lastUpdateDateTime: ${T(java.time.LocalDateTime).now()}
+    nickname: "nickname"
+    role: "role"
+
+  - id: "2"
+    email: "user_2@user.com"
+    fullName: User_2
+    password: ${passwordEncoder().encode('user')}
+    persistDateTime: ${T(java.time.LocalDateTime).now()}
+    isEnabled: true
+    isDeleted: false
+    city: "City"
+    linkSite: "linkSite"
+    linkGitHub: "linkGitHub"
+    linkVk: "linkVk"
+    about: "about"
+    imageLink: "imageLink"
+    lastUpdateDateTime: ${T(java.time.LocalDateTime).now()}
+    nickname: "nickname"
+    role: "role"
+
+  - id: "3"
+    email: "user_3@user.com"
+    fullName: User_3
+    password: ${passwordEncoder().encode('user')}
+    persistDateTime: ${T(java.time.LocalDateTime).now()}
+    isEnabled: true
+    isDeleted: false
+    city: "City"
+    linkSite: "linkSite"
+    linkGitHub: "linkGitHub"
+    linkVk: "linkVk"
+    about: "about"
+    imageLink: "imageLink"
+    lastUpdateDateTime: ${T(java.time.LocalDateTime).now()}
+    nickname: "nickname"
+    role: "role"
+
