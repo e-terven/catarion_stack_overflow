@@ -8,20 +8,16 @@
 
 #### BACKEND
   
-🧩 
+🧩 Installed and configured **Docker** (dockerfile and docker compose).
 
-🧩 
+🧩 Set up **Liquibase** and connected it to database.
 
-🧩 
-
-🧩 
+🧩 Customized **DBRider**
 
 🧩 Verified and resolved bug reports and issues.
   
 #### FRONTEND
   
-🧩 Designed the front end of the web app. Used HTML (page structure), CSS (style information)
-
-🧩 JavaScript (behavior control of different elements) adding jQuery (load() Method) and  Bootstrap (grid system) to simplify JavaScript coding. Learned about asynchronous method that runs separately from the main thread
-
-## Screenshots 
+🧩 Built All Questions page with **HTML** and **Bootstrap** ~~(http://www.catarion/stackoverflow/admin/allquestions)~~.
+------
+#### TASKS 
