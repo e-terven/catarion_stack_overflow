@@ -5,7 +5,7 @@
     
 
 ## What I implemented
-___
+
 #### BACKEND
   
 🧩 Installed and configured **Docker** (dockerfile and docker compose).
@@ -19,6 +19,7 @@ ___
 #### FRONTEND
   
 🧩 Built All Questions page with **HTML** and **Bootstrap** ~~(http://www.catarion/stackoverflow/admin/allquestions)~~.
-___
 
-#### TASKS 
+
+
+## Tasks 
