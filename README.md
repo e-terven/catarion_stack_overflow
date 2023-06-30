@@ -13,7 +13,7 @@
 
 🧩 **DBRider**
 
-🧩 Verified and resolved bug reports and issues
+Verified and resolved bug reports and issues
 
 
 ## Tasks 
