@@ -21,5 +21,5 @@ Verified and resolved bug reports and issues
 ✅ Built All Questions page with **HTML** and **Bootstrap** ~~(http://www.catarion/stackoverflow/admin/allquestions)~~.
 
 #### ✅ Database Rider configeration
-![alt-текст]([https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png](https://github.com/e-terven/catarion_stack_overflow/blob/main/Screenshot%202023-07-01%20at%2016.27.57.png)](https://github.com/e-terven/catarion_stack_overflow/blob/main/Screenshot%202023-07-01%20at%2016.27.57.png)https://github.com/e-terven/catarion_stack_overflow/blob/main/Screenshot%202023-07-01%20at%2016.27.57.png "Annotations")
+![alt-текст](https://github.com/e-terven/catarion_stack_overflow/blob/main/Screenshot%202023-07-01%20at%2016.27.57.png?raw=true "Annotations")
 
