@@ -23,7 +23,7 @@ Verified and resolved bug reports and issues
 #### ✅ Database Rider
 ![alt-текст](https://github.com/e-terven/catarion_stack_overflow/blob/5b7387ae1d6f4bb2b2e1336fc85c75abb873e689/dbrider_annotations.png "Annotations")
 
-Here _@DataSet_ is specified with the following feature:
+There is @DataSet annotation is implemented to configure a DataSet (vs. DBUnit) and is specified with the following feature:
 strategy - 
 skipCleaningFor - 
 cleanAfter - 
