@@ -21,6 +21,21 @@ Verified and resolved bug reports and issues
 ✅ Built All Questions page with **HTML** and **Bootstrap**.
 
 #### ✅ Database Rider
+
+<dependency>
+      <groupId>com.github.database-rider</groupId>
+      <artifactId>rider-core</artifactId>
+      <version>1.35.0</version>
+      <scope>test</scope>
+</dependency>
+
+<dependency>
+      <groupId>com.github.database-rider</groupId>
+      <artifactId>rider-core</artifactId>
+      <version>1.35.0</version>
+      <scope>test</scope>
+</dependency>
+
 ##### is a Java testing library that facilitates writing integration tests for database-related code
 ![alt-текст](https://github.com/e-terven/catarion_stack_overflow/blob/5b7387ae1d6f4bb2b2e1336fc85c75abb873e689/dbrider_annotations.png "Annotations")
 
