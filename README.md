@@ -27,10 +27,10 @@ There is _@DataSet_ annotation is implemented to configure a DataSet (vs. DBUnit
 
 __ _strategy = SeedStrategy.INSERT_ meaning that DBUnit will insert data in tables present on provided data;  
 
-_skipCleaningFor_ allows to skip cleaning for _"db_liquibase"_ to preserve data that is managed by an external tool - Liquibase;  
+__ _skipCleaningFor_ allows to skip cleaning for _"db_liquibase"_ to preserve data that is managed by an external tool - Liquibase;  
 
-_cleanAfter_ calls a cleaning process after test that will ensure any changes are rolled back to leave the database in its original state;  
+__ _cleanAfter_ calls a cleaning process after test that will ensure any changes are rolled back to leave the database in its original state;  
 
-_tableOrder_ defines the order in which tables should be cleaned after the test to ensure child tables will be cleaned before their parents;  
+__ _tableOrder_ defines the order in which tables should be cleaned after the test to ensure child tables will be cleaned before their parents;  
 
 ![alt-текст](https://github.com/e-terven/catarion_stack_overflow/blob/2e4e92dadea035ec9bcbd1570de0fa6a84a80af6/dbrider_findByEmail.png "findByEmail_testMethod")
