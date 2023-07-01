@@ -25,7 +25,7 @@ Verified and resolved bug reports and issues
 
 There is _@DataSet_ annotation is implemented to configure a DataSet (vs. DBUnit) and is specified with the following feature:  
 
-____strategy = SeedStrategy.INSERT_ meaning that DBUnit will insert data in tables present on provided data;  
+__ _strategy = SeedStrategy.INSERT_ meaning that DBUnit will insert data in tables present on provided data;  
 
 _skipCleaningFor_ allows to skip cleaning for _"db_liquibase"_ to preserve data that is managed by an external tool - Liquibase;  
 
