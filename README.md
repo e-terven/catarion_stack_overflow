@@ -16,7 +16,7 @@
 Verified and resolved bug reports and issues
 
 
-## Tasks 
+## Tasks I complited
 
 #### ✅ Built All Questions page with **HTML** and **Bootstrap**
 ------
