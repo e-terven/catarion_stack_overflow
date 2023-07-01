@@ -21,7 +21,7 @@ Verified and resolved bug reports and issues
 #### ✅ Built All Questions page with **HTML** and **Bootstrap**
 ------
 
-![alt-текст](https://github.com/e-terven/catarion_stack_overflow/blob/9955172249d45d855804246f5beaec8fe58f6d70/AllQuestions.png)
+![alt-текст](https://github.com/e-terven/catarion_stack_overflow/blob/5af8114d05fae37628bd7af0391f60a15caf9218/images/catarion_stack_overflow/AllQuestions.png)
 
 #### ✅ Configurated and connected **Database Rider**
 ------
@@ -34,9 +34,9 @@ Verified and resolved bug reports and issues
           <scope>test</scope>
     </dependency>
 
-![alt-текст](https://github.com/e-terven/catarion_stack_overflow/blob/1cfb5e61227209813ccbc21c9c33cee8902e5090/dbRider_tree.png)
+![alt-текст](https://github.com/e-terven/catarion_stack_overflow/blob/5af8114d05fae37628bd7af0391f60a15caf9218/images/catarion_stack_overflow/dbRider_tree.png)
 
-![alt-текст](https://github.com/e-terven/catarion_stack_overflow/blob/5b7387ae1d6f4bb2b2e1336fc85c75abb873e689/dbrider_annotations.png "Annotations")
+![alt-текст](https://github.com/e-terven/catarion_stack_overflow/blob/5af8114d05fae37628bd7af0391f60a15caf9218/images/catarion_stack_overflow/dbrider_annotations.png "Annotations")
 
 _@DataSet_ annotation is implemented to configure a DataSet (vs. DBUnit) and is specified with the following feature:  
 
@@ -48,4 +48,4 @@ _@DataSet_ annotation is implemented to configure a DataSet (vs. DBUnit) and is 
 
 - _tableOrder_  defines the order in which tables should be cleaned after the test to ensure child tables will be cleaned before their parents.
 
-![alt-текст](https://github.com/e-terven/catarion_stack_overflow/blob/2e4e92dadea035ec9bcbd1570de0fa6a84a80af6/dbrider_findByEmail.png "findByEmail_testMethod")
+![alt-текст](https://github.com/e-terven/catarion_stack_overflow/blob/5af8114d05fae37628bd7af0391f60a15caf9218/images/catarion_stack_overflow/dbrider_findByEmail.png "findByEmail_testMethod")
