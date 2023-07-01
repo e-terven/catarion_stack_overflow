@@ -18,7 +18,7 @@ Verified and resolved bug reports and issues
 
 ## Tasks 
 
-###### ✅ Built All Questions page with **HTML** and **Bootstrap**
+##### ✅ Built All Questions page with **HTML** and **Bootstrap**
 ------
 
 ![alt-текст](https://github.com/e-terven/catarion_stack_overflow/blob/9955172249d45d855804246f5beaec8fe58f6d70/AllQuestions.png)
