@@ -11,7 +11,7 @@
 
 🧩 **Liquibase** (connected it to database)
 
-🧩 **DBRider**
+🧩 **DBRider** customization
 
 Verified and resolved bug reports and issues
 
@@ -20,6 +20,13 @@ Verified and resolved bug reports and issues
 
 ✅ Built All Questions page with **HTML** and **Bootstrap**.
 
-#### ✅ Database Rider configeration
+#### ✅ Database Rider
 ![alt-текст](https://github.com/e-terven/catarion_stack_overflow/blob/5b7387ae1d6f4bb2b2e1336fc85c75abb873e689/dbrider_annotations.png "Annotations")
+
+Here _@DataSet_ is specified with the following feature:
+strategy - 
+skipCleaningFor - 
+cleanAfter - 
+tableOrder - 
+
 ![alt-текст](https://github.com/e-terven/catarion_stack_overflow/blob/2e4e92dadea035ec9bcbd1570de0fa6a84a80af6/dbrider_findByEmail.png "findByEmail_testMethod")
