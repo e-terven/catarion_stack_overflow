@@ -20,7 +20,7 @@ Verified and resolved bug reports and issues
 
 ✅ Built All Questions page with **HTML** and **Bootstrap**.
 
-#### ✅ Database Rider
+✅ Configurated and connected **Database Rider**
 ##### is a Java testing library that facilitates writing integration tests for database-related code
 
     <dependency>
