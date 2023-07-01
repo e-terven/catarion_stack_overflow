@@ -29,7 +29,7 @@ Verified and resolved bug reports and issues
           <scope>test</scope>
     </dependency>
 
-![alt-текст]()
+![alt-текст](https://github.com/e-terven/catarion_stack_overflow/blob/1cfb5e61227209813ccbc21c9c33cee8902e5090/dbRider_tree.png)
 
 ##### is a Java testing library that facilitates writing integration tests for database-related code
 ![alt-текст](https://github.com/e-terven/catarion_stack_overflow/blob/5b7387ae1d6f4bb2b2e1336fc85c75abb873e689/dbrider_annotations.png "Annotations")
