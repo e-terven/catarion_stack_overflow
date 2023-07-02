@@ -42,7 +42,7 @@ QuestionService / AnswerService / VoteAnswerService / ReputationService classes 
 The next step is update points value in Reputation and count how many votes (both up and down) has the Answer  
 ![alt-текст]()  
 
-Let us focus on the _**reputationService.** updateCountByDown_-method that takes two parameters: a User who wrote the Answer and an Answer's ID:
+Let us focus on the _**reputationService.** updateCountByDown_ that takes two parameters: a User who wrote the Answer and an Answer's ID:
 
 
 
