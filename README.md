@@ -26,8 +26,8 @@ Verified and resolved bug reports and issues
 
 #### ✅ Implemented API in ResourceAnswerController:
     POST api/user/question/{questionId}/answer/{id}/downVote.
-    Only for authorized users. When user votes for an Answer, Reputation of the Answer's author looses 5 points.
-    The API returns a Total Vote Count (sum of up- and downvotes) and should be documented.
+    When User votes for an Answer, Reputation of the Answer's author looses 5 points.
+    The API returns a Total Vote Count (sum of up- and downvotes) and should be documented. Only for authorized users. 
 
 ------
 
