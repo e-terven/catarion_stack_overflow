@@ -37,6 +37,7 @@ QuestionService / AnswerService / VoteAnswerService / ReputationService classes 
 - User is authorized
 - Answer and Question exist
 - User voted down already  
+  
 ![alt-текст]()  
 The next step is update points value in Reputation and count how many votes (both up and down) has the Answer  
 ![alt-текст]()  
