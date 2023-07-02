@@ -30,6 +30,21 @@ Verified and resolved bug reports and issues
     The API returns a Total Vote Count (sum of up- and downvotes) and should be documented. Only for authorized users. 
 
 ------
+Here I begin by determining the path and description:
+![alt-текст]()
+Then I add dependencies using constructor injection for
+QuestionService / AnswerService / VoteAnswerService / ReputationService classes and check if:
+- User is authorized
+- Answer and Question exist
+- User voted down already
+![alt-текст]()
+The next step is update points value in Reputation and count how many votes (both up and down) has the Answer
+![alt-текст]()
+
+Let us focus on the _.updateCountByDown_ that takes two parameters: a User who wrote the Answer and an Answer's ID:
+
+
+
 
 
 #### ✅ Configurated and connected **Database Rider**
