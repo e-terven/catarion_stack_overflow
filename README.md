@@ -37,9 +37,9 @@ QuestionService / AnswerService / VoteAnswerService / ReputationService classes 
 - User is authorized
 - Answer and Question exist
 - User voted down already  
-![alt-текст]()
+![alt-текст]()  
 The next step is update points value in Reputation and count how many votes (both up and down) has the Answer  
-![alt-текст]()
+![alt-текст]()  
 
 Let us focus on the _.updateCountByDown_ that takes two parameters: a User who wrote the Answer and an Answer's ID:
 
