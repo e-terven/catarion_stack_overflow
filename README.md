@@ -1,6 +1,5 @@
 # catarion_stack_overflow
 
-    Solved Taskes:
     - Git Version Control to track changes and deal with Git Conflict
     - Verified and resolved bug reports and issues
     - Frontend with HTML and Bootstrap
