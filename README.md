@@ -1,8 +1,11 @@
 # catarion_stack_overflow
 
     Solved Taskes:
-    - page design with HTML and Bootstrap
-    - API in ResourceAnswerController
+    - Git Version Control to track changes and deal with Git Conflict
+    - Verified and resolved bug reports and issues
+    - Frontend with HTML and Bootstrap
+    - API implementation
+    - Environment configuration
     
 
 ## What I configured
@@ -13,8 +16,6 @@
 🧩 **Liquibase** (connected it to database)
 
 🧩 **DBRider** customization
-
-Verified and resolved bug reports and issues
 
 
 ## Tasks I complited
