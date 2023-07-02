@@ -1,7 +1,8 @@
 # catarion_stack_overflow
 
-    The RESTful API defines:
-     - endpoints specification (URL)
+    Solved Taskes:
+    - page design with HTML and Bootstrap
+    - API in ResourceAnswerController
     
 
 ## What I configured
@@ -22,6 +23,14 @@ Verified and resolved bug reports and issues
 ------
 
 ![alt-текст](https://github.com/e-terven/catarion_stack_overflow/blob/5af8114d05fae37628bd7af0391f60a15caf9218/images/catarion_stack_overflow/AllQuestions.png)
+
+#### ✅ Implemented API in ResourceAnswerController:
+    POST api/user/question/{questionId}/answer/{id}/downVote.
+    Only for authorized users. When user votes for an Answer, Reputation of the Answer's author looses 5 points.
+    The API returns a Total Vote Count (sum of up- and downvotes) and should be documented.
+
+------
+
 
 #### ✅ Configurated and connected **Database Rider**
 ------
