@@ -30,7 +30,7 @@
     The API returns a Total Vote Count (sum of up- and downvotes) and should be documented. Only for authorized users. 
 
 ------
-Ok. I took answer and question id from url and an authorized user frrom SecurityContext container:
+Ok. I took answer and question id from url and an authorized user frrom SecurityContext container:  
    !![alt-текст](https://github.com/e-terven/catarion_stack_overflow/blob/6bd579791d64e8fe773589c4dd55fc1450951fc0/images/catarion_stack_overflow/Parameters_1.png)
 
 The interesting thing here is that there are conditions we have to consider before counting and post a total amount of votes. Such as:
