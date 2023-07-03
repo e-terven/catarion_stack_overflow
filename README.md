@@ -47,7 +47,7 @@ The interesting thing here is that there are conditions we have to consider befo
 ![alt-текст](https://github.com/e-terven/catarion_stack_overflow/blob/6dedd3602cbe77cc9224bb737029be5abfae8d43/images/catarion_stack_overflow/Answer-3.png)
 
 
-4. The author of the Answer has to be "granted" by -5 points that means his Reputation status should be updated
+4. The author of the Answer has to be "granted" by -5 points; ergo, his Reputation status should be updated
 5. To return the Total amount of votes we have to compute both down and up votes of the Answer.
 
 Besides, we have to check if the answer and the question (related to the answer) exist. Here I use EnitityManager in Dao layer to query information from database.
