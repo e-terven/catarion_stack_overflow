@@ -30,6 +30,21 @@
     The API returns a Total Vote Count (sum of up- and downvotes) and should be documented. Only for authorized users. 
 
 ------
+The interesting thing here is that there are conditions we have to consider before counting and post a total amount of votes. Such as:
+1. User can vote down only once. Thus, I wrote method _voteAnswerExists_ the VoteAnswer.class to confirm that the object does not exist in database:
+   in ResourceAnswerController:
+![alt-текст](https://github.com/e-terven/catarion_stack_overflow/blob/9390c2dc0decfd82bb74f2203c6681eabfced310/images/catarion_stack_overflow/VoteAnswer-1.png)
+   in VoteAnswerService:
+![alt-текст](https://github.com/e-terven/catarion_stack_overflow/blob/9390c2dc0decfd82bb74f2203c6681eabfced310/images/catarion_stack_overflow/VoteAnswer-2.png)
+   in VoteAnswerDao:
+![alt-текст](https://github.com/e-terven/catarion_stack_overflow/blob/9390c2dc0decfd82bb74f2203c6681eabfced310/images/catarion_stack_overflow/VoteAnswer-3.png)
+- User cannot vote for own answer
+- The author of the Answer has to be "granted" by -5 points that means his Reputation status should be updated
+- To return the Total amount of votes we have to compute both down and up votes of the Answer.
+
+Besides, we have to check if the answer and the question (related to the answer) exist. Here I use EnitityManager in Dao layer to query information from database.
+
+
 Here I begin by determining the path and description:  
 ![alt-текст]()
 Then I add dependencies using constructor injection for
