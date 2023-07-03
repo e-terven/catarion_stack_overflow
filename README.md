@@ -38,8 +38,8 @@ The interesting thing here is that there are conditions we have to consider befo
 ![alt-текст](https://github.com/e-terven/catarion_stack_overflow/blob/6011183f856fc58e4060dde2918b85a06ad6702e/images/catarion_stack_overflow/VoteAnswer-2.png)
    finally, in a Dao Layer:
 ![alt-текст](https://github.com/e-terven/catarion_stack_overflow/blob/6011183f856fc58e4060dde2918b85a06ad6702e/images/catarion_stack_overflow/VoteAnswer-3.png)
-2. User cannot vote for own answer
-![alt-текст]()
+2. User cannot vote for own answer  
+![alt-текст](https://github.com/e-terven/catarion_stack_overflow/blob/a349773fcfc427160ab69823e8225b002ebb588f/images/catarion_stack_overflow/Answer-1.png)
 3. The author of the Answer has to be "granted" by -5 points that means his Reputation status should be updated
 4. To return the Total amount of votes we have to compute both down and up votes of the Answer.
 
