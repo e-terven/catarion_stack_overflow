@@ -36,7 +36,7 @@ The interesting thing here is that there are conditions we have to consider befo
 ![alt-текст](https://github.com/e-terven/catarion_stack_overflow/blob/6011183f856fc58e4060dde2918b85a06ad6702e/images/catarion_stack_overflow/VoteAnswer-1.png)
    further, in VoteAnswerService:
 ![alt-текст](https://github.com/e-terven/catarion_stack_overflow/blob/6011183f856fc58e4060dde2918b85a06ad6702e/images/catarion_stack_overflow/VoteAnswer-2.png)
-   finally, in a Dao Layer:
+   finally, in a VoteAnswerDao:
 ![alt-текст](https://github.com/e-terven/catarion_stack_overflow/blob/6011183f856fc58e4060dde2918b85a06ad6702e/images/catarion_stack_overflow/VoteAnswer-3.png)
 
 2. User cannot vote for own answer. Therefore, I checked if the User is not an author of the Answer in REST-Controller by implementing the _getByIdAndChecked_ method that queries the information from database:
