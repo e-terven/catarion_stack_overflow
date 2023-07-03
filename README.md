@@ -34,13 +34,14 @@ The interesting thing here is that there are conditions we have to consider befo
 1. User can vote down only once.
    Thus, the method _voteAnswerExists_ in ResourceAnswerController validates if the object already exists in database:
 ![alt-текст](https://github.com/e-terven/catarion_stack_overflow/blob/6011183f856fc58e4060dde2918b85a06ad6702e/images/catarion_stack_overflow/VoteAnswer-1.png)
-   Further, in VoteAnswerService:
+   further, in VoteAnswerService:
 ![alt-текст](https://github.com/e-terven/catarion_stack_overflow/blob/6011183f856fc58e4060dde2918b85a06ad6702e/images/catarion_stack_overflow/VoteAnswer-2.png)
-   And on a Dao Layer:
+   finally, in a Dao Layer:
 ![alt-текст](https://github.com/e-terven/catarion_stack_overflow/blob/6011183f856fc58e4060dde2918b85a06ad6702e/images/catarion_stack_overflow/VoteAnswer-3.png)
-- User cannot vote for own answer
-- The author of the Answer has to be "granted" by -5 points that means his Reputation status should be updated
-- To return the Total amount of votes we have to compute both down and up votes of the Answer.
+2. User cannot vote for own answer
+![alt-текст]()
+3. The author of the Answer has to be "granted" by -5 points that means his Reputation status should be updated
+4. To return the Total amount of votes we have to compute both down and up votes of the Answer.
 
 Besides, we have to check if the answer and the question (related to the answer) exist. Here I use EnitityManager in Dao layer to query information from database.
 
