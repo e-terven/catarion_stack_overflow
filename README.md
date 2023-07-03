@@ -31,12 +31,12 @@
 
 ------
 The interesting thing here is that there are conditions we have to consider before counting and post a total amount of votes. Such as:
-1. User can vote down only once. Thus, I wrote method _voteAnswerExists_ the VoteAnswer.class to confirm that the object does not exist in database:
-   in ResourceAnswerController:
+1. User can vote down only once.
+   Thus, the method _voteAnswerExists_ in ResourceAnswerController validates if the object already exists in database:
 ![alt-текст](https://github.com/e-terven/catarion_stack_overflow/blob/6011183f856fc58e4060dde2918b85a06ad6702e/images/catarion_stack_overflow/VoteAnswer-1.png)
-   in VoteAnswerService:
+   Further, in VoteAnswerService:
 ![alt-текст](https://github.com/e-terven/catarion_stack_overflow/blob/6011183f856fc58e4060dde2918b85a06ad6702e/images/catarion_stack_overflow/VoteAnswer-2.png)
-   in VoteAnswerDao:
+   And on a Dao Layer:
 ![alt-текст](https://github.com/e-terven/catarion_stack_overflow/blob/6011183f856fc58e4060dde2918b85a06ad6702e/images/catarion_stack_overflow/VoteAnswer-3.png)
 - User cannot vote for own answer
 - The author of the Answer has to be "granted" by -5 points that means his Reputation status should be updated
