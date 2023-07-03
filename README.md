@@ -33,7 +33,7 @@
 The interesting thing here is that there are conditions we have to consider before counting and post a total amount of votes. Such as:
 1. User can vote down only once. Thus, I wrote method _voteAnswerExists_ the VoteAnswer.class to confirm that the object does not exist in database:
    in ResourceAnswerController:
-![alt-текст](https://github.com/e-terven/catarion_stack_overflow/blob/9390c2dc0decfd82bb74f2203c6681eabfced310/images/catarion_stack_overflow/VoteAnswer-1.png)
+![alt-текст](https://github.com/e-terven/catarion_stack_overflow/blob/ee12357474f8f792063a960e0a812c39f5fd3025/images/catarion_stack_overflow/VoteAnswer-3.png)
    in VoteAnswerService:
 ![alt-текст](https://github.com/e-terven/catarion_stack_overflow/blob/9390c2dc0decfd82bb74f2203c6681eabfced310/images/catarion_stack_overflow/VoteAnswer-2.png)
    in VoteAnswerDao:
