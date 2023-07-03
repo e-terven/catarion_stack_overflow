@@ -38,9 +38,9 @@ The interesting thing here is that there are conditions we have to consider befo
 ![alt-текст](https://github.com/e-terven/catarion_stack_overflow/blob/6011183f856fc58e4060dde2918b85a06ad6702e/images/catarion_stack_overflow/VoteAnswer-2.png)
    finally, in a Dao Layer:
 ![alt-текст](https://github.com/e-terven/catarion_stack_overflow/blob/6011183f856fc58e4060dde2918b85a06ad6702e/images/catarion_stack_overflow/VoteAnswer-3.png)
-2. User cannot vote for own answer. Therefore, I checked if the User is not an author of the Answer in REST-Controller:
+
+2. User cannot vote for own answer. Therefore, I checked if the User is not an author of the Answer in REST-Controller by implementing the _getByIdAndChecked_ method that queries the information from database:
 ![alt-текст](https://github.com/e-terven/catarion_stack_overflow/blob/a349773fcfc427160ab69823e8225b002ebb588f/images/catarion_stack_overflow/Answer-1.png)
-   the _getByIdAndChecked_ method queries the information from database
    Service layer:      
 ![alt-текст](https://github.com/e-terven/catarion_stack_overflow/blob/6dedd3602cbe77cc9224bb737029be5abfae8d43/images/catarion_stack_overflow/Answer-2.png)
    Dao layer:
