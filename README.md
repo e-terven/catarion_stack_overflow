@@ -33,11 +33,11 @@
 The interesting thing here is that there are conditions we have to consider before counting and post a total amount of votes. Such as:
 1. User can vote down only once. Thus, I wrote method _voteAnswerExists_ the VoteAnswer.class to confirm that the object does not exist in database:
    in ResourceAnswerController:
-![alt-текст](https://github.com/e-terven/catarion_stack_overflow/blob/ee12357474f8f792063a960e0a812c39f5fd3025/images/catarion_stack_overflow/VoteAnswer-3.png)
+![alt-текст](https://github.com/e-terven/catarion_stack_overflow/blob/66fdbaa3e69540bc4d29b646a25c39388b188242/images/catarion_stack_overflow/VoteAnswer-1.png)
    in VoteAnswerService:
-![alt-текст](https://github.com/e-terven/catarion_stack_overflow/blob/9390c2dc0decfd82bb74f2203c6681eabfced310/images/catarion_stack_overflow/VoteAnswer-2.png)
+![alt-текст](https://github.com/e-terven/catarion_stack_overflow/blob/66fdbaa3e69540bc4d29b646a25c39388b188242/images/catarion_stack_overflow/VoteAnswer-2.png)
    in VoteAnswerDao:
-![alt-текст](https://github.com/e-terven/catarion_stack_overflow/blob/9390c2dc0decfd82bb74f2203c6681eabfced310/images/catarion_stack_overflow/VoteAnswer-3.png)
+![alt-текст](https://github.com/e-terven/catarion_stack_overflow/blob/66fdbaa3e69540bc4d29b646a25c39388b188242/images/catarion_stack_overflow/VoteAnswer-3.png)
 - User cannot vote for own answer
 - The author of the Answer has to be "granted" by -5 points that means his Reputation status should be updated
 - To return the Total amount of votes we have to compute both down and up votes of the Answer.
