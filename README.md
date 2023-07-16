@@ -56,18 +56,6 @@ The interesting thing here is that there are conditions we have to consider befo
 Besides, we have to check if the answer and the question (related to the answer) exist. Here I use EnitityManager in Dao layer to query information from database.
 
 
-Here I begin by determining the path and description:  
-![alt-текст]()
-Then I add dependencies using constructor injection for
-QuestionService / AnswerService / VoteAnswerService / ReputationService classes and check if:
-- User is authorized
-- Answer and Question exist
-- User voted down already  
-  
-![alt-текст]()  
-The next step is update points value in Reputation and count how many votes (both up and down) has the Answer  
-![alt-текст]()  
-
 Let us focus on the _**reputationService.updateCountByDown**_ that takes two parameters: a User who wrote the Answer and an Answer's ID:
 
 
