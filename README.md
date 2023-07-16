@@ -1,10 +1,10 @@
 # catarion_stack_overflow
 
-    - Git Version Control to track changes and deal with Git Conflict
-    - Verified and resolved bug reports and issues
+    - Environment configuration
     - Frontend with HTML and Bootstrap
     - API implementation
-    - Environment configuration
+    - Verified and resolved bug reports and issues
+    - Git Version Control to track changes and deal with Git Conflict
     
 
 ## What I configured
