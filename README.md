@@ -55,10 +55,9 @@ The interesting thing here is that there are conditions we have to consider befo
 
 Besides, we have to check if the answer and the question (related to the answer) exist. Here I use EnitityManager in Dao layer to query information from database.
 
-
 Let us focus on the _**reputationService.updateCountByDown**_ that takes two parameters: a User who wrote the Answer and an Answer's ID:
 
-
+_... to be continued_
 
 
 
