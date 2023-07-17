@@ -25,24 +25,26 @@
 ![alt-текст](https://github.com/e-terven/catarion_stack_overflow/blob/5af8114d05fae37628bd7af0391f60a15caf9218/images/catarion_stack_overflow/AllQuestions.png)
 
 #### ✅ Implemented API in ResourceAnswerController:
-    POST api/user/question/{questionId}/answer/{id}/downVote.
-    When User votes for an Answer, Reputation of the Answer's author looses 5 points.
-    The API returns a Total Vote Count (sum of up- and downvotes) and should be documented. Only for authorized users. 
+    POST _api/user/question/{questionId}/answer/{id}/downVote_
+    In Stack Overflow forum, when a User votes for an Answer, the Reputation of the answer's author decreases by 5 points. API should include a documented feature that returns the Total Vote Count, which is the sum of upvotes and downvotes. However, this functionality is only available to authorized users.
 
 ------
-Ok. I took answer and question id from url and an authorized user frrom SecurityContext container:  
+First, I took _answer id_ and _question id_ from Url adding an authorized user - from SecurityContextHolder:  
+(path: src/main/java/com/javamentor/qa/platform/webapp/controllers/rest/ResourceAnswerController.java)
 - ![alt-текст](https://github.com/e-terven/catarion_stack_overflow/blob/1cf21fbc6ea4a7e81a01ef083978f942e49682da/images/catarion_stack_overflow/Param_1.png)
 
-The interesting thing here is that there are conditions we have to consider before counting and post a total amount of votes. Such as:
-1. User can vote down only once.
+The interesting thing here is that there are multiple edge cases we have to consider to count the Total Amount of Votes. Such as:
+1. User can **Votedown only once**.
    Thus, the method _voteAnswerExists_ in ResourceAnswerController validates if the object already exists in database:
 ![alt-текст](https://github.com/e-terven/catarion_stack_overflow/blob/6011183f856fc58e4060dde2918b85a06ad6702e/images/catarion_stack_overflow/VoteAnswer-1.png)
    further, in VoteAnswerService:
+   (path: src/main/java/com/javamentor/qa/platform/service/impl/model/VoteAnswerServiceImpl.java)
 ![alt-текст](https://github.com/e-terven/catarion_stack_overflow/blob/6011183f856fc58e4060dde2918b85a06ad6702e/images/catarion_stack_overflow/VoteAnswer-2.png)
    finally, in a VoteAnswerDao:
+   (path: src/main/java/com/javamentor/qa/platform/dao/impl/model/VoteAnswerDaoImpl.java)
 ![alt-текст](https://github.com/e-terven/catarion_stack_overflow/blob/6011183f856fc58e4060dde2918b85a06ad6702e/images/catarion_stack_overflow/VoteAnswer-3.png)
 
-2. User cannot vote for own answer. Therefore, I checked if the User is not an author of the Answer in REST-Controller by implementing the _getByIdAndChecked_ method that queries the information from database:
+2. **User cannot vote for own answer**. Therefore, I checked if the User is not an author of the Answer in REST-Controller by implementing the _getByIdAndChecked_ method that queries the information from database:
 ![alt-текст](https://github.com/e-terven/catarion_stack_overflow/blob/a349773fcfc427160ab69823e8225b002ebb588f/images/catarion_stack_overflow/Answer-1.png)
    Service layer:      
 ![alt-текст](https://github.com/e-terven/catarion_stack_overflow/blob/6dedd3602cbe77cc9224bb737029be5abfae8d43/images/catarion_stack_overflow/Answer-2.png)
@@ -50,14 +52,26 @@ The interesting thing here is that there are conditions we have to consider befo
 ![alt-текст](https://github.com/e-terven/catarion_stack_overflow/blob/6dedd3602cbe77cc9224bb737029be5abfae8d43/images/catarion_stack_overflow/Answer-3.png)
 
 
-4. The author of the Answer has to be "granted" by -5 points; ergo, his Reputation status should be updated
-5. To return the Total amount of votes we have to compute both down and up votes of the Answer.
+3. The author of the Answer has to be **"granted" by -5 points**; ergo, his Reputation status should be updated in a few steps:
+(path: src/main/java/com/javamentor/qa/platform/service/impl/model/ReputationServiceImpl.java)
+![alt-текст](
+   __ check if the instance of the Rreputation exists:
+![alt-текст](
+   __ update points or create a new Reputation:
+![alt-текст](
+   __ fill in the fields of _newReputation_ in case it was created:
+![alt-текст](
 
-Besides, we have to check if the answer and the question (related to the answer) exist. Here I use EnitityManager in Dao layer to query information from database.
+4. To return the Total Amount of Votes we have **to compute both down and up votes** of the Answer:
+![alt-текст](
+
+5. Besides, we have to check **if the Answer and the Question** (related to the answer) **exist**. Here I use EnitityManager in Dao layer to query information from database:
+![alt-текст](
+
 
 Let us focus on the _**reputationService.updateCountByDown**_ that takes two parameters: a User who wrote the Answer and an Answer's ID:
 
-_... to be continued_
+
 
 
 
