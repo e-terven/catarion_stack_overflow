@@ -53,20 +53,20 @@ The interesting thing here is that there are multiple edge cases we have to cons
 
 
 3. The author of the Answer has to be **"granted" by -5 points**; ergo, his Reputation status should be updated in a few steps:
-(path: src/main/java/com/javamentor/qa/platform/service/impl/model/ReputationServiceImpl.java)
+(path: src/main/java/com/javamentor/qa/platform/service/impl/model/ReputationServiceImpl.java)  
 ![alt-текст](
    __ check if the instance of the Rreputation exists:
 ![alt-текст](
-   __ update points or create a new Reputation:
+   __ update points or create a new Reputation:  
 ![alt-текст](
-   __ fill in the fields of _newReputation_ in case it was created:
-![alt-текст](
-
-4. To return the Total Amount of Votes we have **to compute both down and up votes** of the Answer:
+   __ fill in the fields of _newReputation_ in case it was created:  
 ![alt-текст](
 
-5. Besides, we have to check **if the Answer and the Question** (related to the answer) **exist**. Here I use EnitityManager in Dao layer to query information from database:
+4. To return the Total Amount of Votes we have **to compute both down and up votes** of the Answer:  
 ![alt-текст](
+
+5. Besides, we have to check **if the Answer and the Question** (related to the answer) **exist**. Here I use EnitityManager in Dao layer to query information from database:  
+![alt-текст]( 
 
 
 Let us focus on the _**reputationService.updateCountByDown**_ that takes two parameters: a User who wrote the Answer and an Answer's ID:
