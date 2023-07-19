@@ -55,7 +55,7 @@ The interesting thing here is that there are multiple edge cases we have to cons
 3. The author of the Answer has to be **"granted" by -5 points**; ergo, his Reputation status should be updated in a few steps:  
 (path: src/main/java/com/javamentor/qa/platform/service/impl/model/ReputationServiceImpl.java)  
 ![alt-текст](https://github.com/e-terven/catarion_stack_overflow/blob/5d92aaad3a1626284d752dc7c75917c7676db995/images/catarion_stack_overflow/Screenshot%202023-07-17%20at%2019.18.57.png)  
-   __ check if the instance of the Rreputation exists:
+   __ check if the instance of the Rreputation exists:  
 ![alt-текст]()  
    __ update points or create a new Reputation:  
 ![alt-текст]()  
