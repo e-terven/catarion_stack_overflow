@@ -29,7 +29,7 @@
     In Stack Overflow forum, when a User votes for an Answer, the Reputation of the answer's author decreases by 5 points. API should include a documented feature that returns the Total Vote Count, which is the sum of upvotes and downvotes. However, this functionality is only available to authorized users.
 
 ------
-First, I took _answer id_ and _question id_ from Url adding an authorized user - from SecurityContextHolder:  
+First, I took _answer id_ and _question id_ from Url adding an authorized user - from SecurityContextHolder:    
 (path: src/main/java/com/javamentor/qa/platform/webapp/controllers/rest/ResourceAnswerController.java)
 - ![alt-текст](https://github.com/e-terven/catarion_stack_overflow/blob/1cf21fbc6ea4a7e81a01ef083978f942e49682da/images/catarion_stack_overflow/Param_1.png)
 
