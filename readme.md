@@ -1,5 +1,5 @@
 # catarion_stack_overflow
-[check the branch "290-dbrider-dataset-2" please]
+I was a commuter to an open source project. [check the branch "290-dbrider-dataset-2"]
 
     - Environment configuration
     - Frontend with HTML and Bootstrap
